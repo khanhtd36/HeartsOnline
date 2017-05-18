@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="HeartsOnline:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/HeartsOnline_jar</output-path>
+    <root id="archive" name="HeartsOnline.jar">
+      <element id="module-output" name="HeartsOnline" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/commons-lang3-3.5.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

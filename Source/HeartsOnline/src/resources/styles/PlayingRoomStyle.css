@@ -1,0 +1,125 @@
+
+/*Nút bấm bằng imageView -------------------------*/
+
+.button-img:hover{
+    -fx-blend-mode: lighten;
+    -fx-cursor: hand;
+}
+
+.button-img:pressed{
+    -fx-blend-mode: src-over;
+}
+
+.start {
+    -fx-image: url("../images/start.png");
+}
+
+.left-arrow {
+	-fx-image: url("../images/leftArrow.png");
+}
+
+.right-arrow {
+    -fx-image: url("../images/rightArrow.png");
+}
+
+.up-arrow{
+    -fx-image: url("../images/upArrow.png");
+}
+
+/*End nút bấm bằng imageView ----------------------*/
+
+
+
+/*Các lá bài ---------------------------------------*/
+.trick-card {
+}
+
+.my-card:hover{
+	-fx-translate-y:-10;
+    -fx-cursor: hand;
+}
+
+.gone-card{
+	visibility: hidden;
+}
+
+.gone-card:hover{
+	-fx-translate-y:0;
+}
+
+.invisible-img{
+	visibility: hidden;
+}
+
+.visible-img {
+    visibility: visible;
+}
+
+.unchoosen-card{
+    -fx-translate-y: 0;
+}
+
+.choosen-card{
+    -fx-translate-y: -20;
+}
+
+/*End các lá bài -----------------------------------*/
+
+
+
+
+/*Khung chat ----------------------------*/
+
+.chat-window {
+    -fx-background-color: transparent;
+}
+
+.chat-window .list-cell:even {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-focus-traversable: false;
+}
+.chat-window .list-cell:odd {
+    -fx-background-color: transparent;
+    -fx-text-fill: lightcyan;
+    -fx-focus-traversable: false;
+}
+
+.chat-window .scroll-bar:horizontal .track,
+.chat-window .scroll-bar:vertical .track{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius:1.5em;
+}
+
+.chat-window .scroll-bar:horizontal .increment-button ,
+.chat-window .scroll-bar:horizontal .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 0 10 0;
+}
+
+.chat-window .scroll-bar:vertical .increment-button ,
+.chat-window .scroll-bar:vertical .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 10 0 0;
+}
+
+.chat-window  .scroll-bar .increment-arrow,
+.chat-window  .scroll-bar .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding:0;
+}
+
+.chat-window .scroll-bar:horizontal .thumb,
+.chat-window .scroll-bar:vertical .thumb {
+    -fx-background-color:derive(black,90%);
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+
+}
+
+/*End Khung chat -------------------------*/
+
