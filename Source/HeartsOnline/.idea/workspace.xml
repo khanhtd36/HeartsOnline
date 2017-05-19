@@ -67,40 +67,51 @@
       <file leaf-file-name="PlayingRoomController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+            <state relative-caret-position="166">
+              <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#openRoom#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#joinRoom#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#clickOnCard#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#submitChat#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#exitRoom#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#onListenerOpenFailed#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#onListenerOpenSucceeded#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#onConnectionReceived#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#onConnectToServerFailed#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#addChatLine#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#setTheme#0;class#PlayingRoomController#0" expanded="false" />
-                <element signature="method#setDisableCommand#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#showPopUpMessage#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#resetView#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="e#6397#6398#0" expanded="true" />
+                <element signature="e#6450#6451#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Connector.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/controller/Connector.java">
+      <file leaf-file-name="Connector.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/java/controller/connection/Connector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="299">
-              <caret line="31" column="60" lean-forward="true" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
+            <state relative-caret-position="150">
+              <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#openListener#0;class#Connector#0" expanded="false" />
+                <element signature="method#stopListen#0;class#Connector#0" expanded="false" />
+                <element signature="method#connectTo#0;class#Connector#0" expanded="false" />
                 <element signature="method#close#0;class#Connector#0" expanded="false" />
+                <element signature="method#sendToAll#0;class#Connector#0" expanded="false" />
+                <element signature="method#onConnectionReceived#0;class#Connector#0" expanded="false" />
+                <element signature="method#onStreamClosed#0;class#Connector#0" expanded="false" />
+                <element signature="class#Listener#0" expanded="false" />
+                <element signature="method#run#0;class#Listener#0" expanded="false" />
+                <element signature="method#start#0;class#Listener#0" expanded="false" />
+                <element signature="method#resumeListen#0;class#Listener#0" expanded="false" />
+                <element signature="method#MessageReceiver#0;class#MessageReceiver#0" expanded="false" />
+                <element signature="method#start#0;class#MessageReceiver#0" expanded="false" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CardSkin1.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/resources/styles/CardSkin1.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="12" column="53" lean-forward="true" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -114,12 +125,17 @@
         <option value="package-info" />
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="JavaFXApplication" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>listView</find>
+      <find>if(socket != so</find>
+      <find>!= socket</find>
+      <find>onReceived</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -135,11 +151,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Client/Controller.java" />
-        <option value="$PROJECT_DIR$/Client/src/Controller.java" />
-        <option value="$PROJECT_DIR$/Client/src/Java/Main.java" />
-        <option value="$PROJECT_DIR$/Client/src/java/Main.java" />
-        <option value="$PROJECT_DIR$/client/src/java/Controller.java" />
         <option value="$PROJECT_DIR$/client/src/java/Main.java" />
         <option value="$PROJECT_DIR$/client/src/resources/views/MainHall.fxml" />
         <option value="$PROJECT_DIR$/client/src/java/MainHallController.java" />
@@ -181,10 +192,16 @@
         <option value="$PROJECT_DIR$/src/java/controller/AnimationUtil.java" />
         <option value="$PROJECT_DIR$/src/java/model/Connector.java" />
         <option value="$PROJECT_DIR$/src/java/MainLauncher.java" />
-        <option value="$PROJECT_DIR$/src/resources/styles/PlayingRoomStyle.css" />
         <option value="$PROJECT_DIR$/src/java/model/HeartGame.java" />
-        <option value="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" />
+        <option value="$PROJECT_DIR$/src/resources/styles/PlayingRoomStyle.css" />
+        <option value="$PROJECT_DIR$/src/java/controller/ConnectionCallback.java" />
+        <option value="$PROJECT_DIR$/src/java/controller/ListenCallback.java" />
         <option value="$PROJECT_DIR$/src/java/controller/Connector.java" />
+        <option value="$PROJECT_DIR$/src/java/controller/connection/ListenCallback.java" />
+        <option value="$PROJECT_DIR$/src/java/controller/connection/MessageReceiveCallback.java" />
+        <option value="$PROJECT_DIR$/src/java/controller/connection/ConnectionCallback.java" />
+        <option value="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" />
+        <option value="$PROJECT_DIR$/src/java/controller/connection/Connector.java" />
       </list>
     </option>
   </component>
@@ -219,6 +236,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -355,11 +374,35 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="connection" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="Scratches" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -858,11 +901,13 @@
       <workItem from="1494959204583" duration="9510000" />
       <workItem from="1495030808680" duration="89000" />
       <workItem from="1495031215337" duration="5086000" />
+      <workItem from="1495117902804" duration="5523000" />
+      <workItem from="1495195990650" duration="28430000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84289000" />
+    <option name="totallyTimeSpent" value="118242000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -883,7 +928,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19364598" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19969743" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -918,13 +963,13 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/controller/Connector.java</url>
-          <line>31</line>
+          <url>file://$PROJECT_DIR$/src/java/controller/connection/Connector.java</url>
+          <line>154</line>
           <properties />
-          <option name="timeStamp" value="2" />
+          <option name="timeStamp" value="13" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="3" />
+      <option name="time" value="14" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -933,34 +978,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/resources/styles/CardSkin1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="1" lean-forward="true" selection-start-line="6" selection-start-column="1" selection-end-line="6" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/styles/PlayingRoomStyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/styles/PlayingRoomStyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/MainLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1037,13 +1054,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/views/PlayingRoom.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="273">
           <caret line="426" column="42" lean-forward="true" selection-start-line="426" selection-start-column="42" selection-end-line="426" selection-end-column="42" />
         </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa0.232/Synchronization1.java" />
@@ -1063,14 +1080,6 @@
     <entry file="file://$PROJECT_DIR$/server/src/java/model/Room.java" />
     <entry file="file://$PROJECT_DIR$/client/src/java/controller/MainHallController.java" />
     <entry file="file://$PROJECT_DIR$/client/src/java/controller/HeartServer.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/controller/AnimationUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="8" lean-forward="false" selection-start-line="0" selection-start-column="8" selection-end-line="0" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/MainLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
@@ -1079,62 +1088,122 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/styles/CardSkin1.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/resources/styles/PlayingRoomStyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="39" column="1" lean-forward="false" selection-start-line="39" selection-start-column="1" selection-end-line="39" selection-end-column="1" />
+        <state relative-caret-position="68">
+          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/controller/AnimationUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="14" column="74" lean-forward="true" selection-start-line="14" selection-start-column="74" selection-end-line="14" selection-end-column="74" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/Thread.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="162" column="21" lean-forward="false" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/controller/connection/MessageReceiveCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="24" lean-forward="true" selection-start-line="2" selection-start-column="24" selection-end-line="2" selection-end-column="24" />
+        <state relative-caret-position="68">
+          <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="1770" column="0" lean-forward="false" selection-start-line="1770" selection-start-column="0" selection-end-line="1770" selection-end-column="0" />
+        <state relative-caret-position="209">
+          <caret line="1776" column="13" lean-forward="true" selection-start-line="1776" selection-start-column="13" selection-end-line="1776" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/controller/connection/ListenCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/controller/connection/ConnectionCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="82" column="0" lean-forward="true" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+        <state relative-caret-position="166">
+          <caret line="141" column="0" lean-forward="true" selection-start-line="141" selection-start-column="0" selection-end-line="141" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#openRoom#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#joinRoom#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#clickOnCard#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#submitChat#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#exitRoom#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#onListenerOpenFailed#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#onListenerOpenSucceeded#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#onConnectionReceived#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#onConnectToServerFailed#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#addChatLine#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#setTheme#0;class#PlayingRoomController#0" expanded="false" />
-            <element signature="method#setDisableCommand#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#showPopUpMessage#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#resetView#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="e#6397#6398#0" expanded="true" />
+            <element signature="e#6450#6451#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/controller/Connector.java">
+    <entry file="file://$PROJECT_DIR$/src/java/controller/connection/Connector.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="299">
-          <caret line="31" column="60" lean-forward="true" selection-start-line="31" selection-start-column="60" selection-end-line="31" selection-end-column="60" />
+        <state relative-caret-position="150">
+          <caret line="164" column="0" lean-forward="true" selection-start-line="164" selection-start-column="0" selection-end-line="164" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#openListener#0;class#Connector#0" expanded="false" />
+            <element signature="method#stopListen#0;class#Connector#0" expanded="false" />
+            <element signature="method#connectTo#0;class#Connector#0" expanded="false" />
             <element signature="method#close#0;class#Connector#0" expanded="false" />
+            <element signature="method#sendToAll#0;class#Connector#0" expanded="false" />
+            <element signature="method#onConnectionReceived#0;class#Connector#0" expanded="false" />
+            <element signature="method#onStreamClosed#0;class#Connector#0" expanded="false" />
+            <element signature="class#Listener#0" expanded="false" />
+            <element signature="method#run#0;class#Listener#0" expanded="false" />
+            <element signature="method#start#0;class#Listener#0" expanded="false" />
+            <element signature="method#resumeListen#0;class#Listener#0" expanded="false" />
+            <element signature="method#MessageReceiver#0;class#MessageReceiver#0" expanded="false" />
+            <element signature="method#start#0;class#MessageReceiver#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/styles/CardSkin1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="53" lean-forward="true" selection-start-line="12" selection-start-column="53" selection-end-line="12" selection-end-column="53" />
-          <folding />
         </state>
       </provider>
     </entry>
