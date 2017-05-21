@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane fx:id="rootSceneNode" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="1277.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PlayingRoomController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <MenuBar>
+              <menus>
+                <Menu mnemonicParsing="false" text="Theme">
+                     <items>
+                        <RadioMenuItem mnemonicParsing="false" onAction="#chooseSkin1" selected="true" text="Legend">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="theme" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem mnemonicParsing="false" onAction="#chooseSkin2" text="Classic" toggleGroup="$theme" />
+                     </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Help">
+                  <items>
+                    <MenuItem mnemonicParsing="false" text="About" />
+                  </items>
+                </Menu>
+              </menus>
+            </MenuBar>
+            <Pane prefHeight="492.0" prefWidth="814.0" style="-fx-background-color: green;" VBox.vgrow="ALWAYS">
+               <children>
+                  <Text fx:id="txtNameWest" fill="WHITE" layoutX="37.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tây">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtNameNorth" fill="WHITE" layoutX="277.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bắc">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtNameEast" fill="WHITE" layoutX="891.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đông">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="txtNameMe" fill="WHITE" layoutX="216.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bạn">
+                     <font>
+                        <Font name="System Bold" size="15.0" />
+                     </font>
+                  </Text>
+                  <ImageView fx:id="cardNorth01" fitHeight="120.0" layoutX="276.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardNorth02" fitHeight="120.0" layoutX="306.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardNorth03" fitHeight="120.0" layoutX="336.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardNorth04" fitHeight="120.0" layoutX="366.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardNorth05" fitHeight="120.0" layoutX="396.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardNorth06" fitHeight="120.0" layoutX="426.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardNorth07" fitHeight="120.0" layoutX="456.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardNorth08" fitHeight="120.0" layoutX="486.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardNorth09" fitHeight="120.0" layoutX="516.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardNorth10" fitHeight="120.0" layoutX="546.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardNorth11" fitHeight="120.0" layoutX="576.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardNorth12" fitHeight="120.0" layoutX="606.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardNorth13" fitHeight="120.0" layoutX="637.0" layoutY="33.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest01" fitHeight="120.0" layoutX="38.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest02" fitHeight="120.0" layoutX="38.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest03" fitHeight="120.0" layoutX="38.0" layoutY="88.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest04" fitHeight="120.0" layoutX="38.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest05" fitHeight="120.0" layoutX="38.0" layoutY="138.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest06" fitHeight="120.0" layoutX="38.0" layoutY="163.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest07" fitHeight="120.0" layoutX="38.0" layoutY="188.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest08" fitHeight="120.0" layoutX="38.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest09" fitHeight="120.0" layoutX="38.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest10" fitHeight="120.0" layoutX="38.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest11" fitHeight="120.0" layoutX="38.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest12" fitHeight="120.0" layoutX="38.0" layoutY="312.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardWest13" fitHeight="120.0" layoutX="38.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast01" fitHeight="120.0" layoutX="892.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast02" fitHeight="120.0" layoutX="892.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast03" fitHeight="120.0" layoutX="892.0" layoutY="85.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast04" fitHeight="120.0" layoutX="892.0" layoutY="110.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast05" fitHeight="120.0" layoutX="892.0" layoutY="135.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast06" fitHeight="120.0" layoutX="892.0" layoutY="160.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast07" fitHeight="120.0" layoutX="892.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast08" fitHeight="120.0" layoutX="892.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast09" fitHeight="120.0" layoutX="892.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast10" fitHeight="120.0" layoutX="892.0" layoutY="259.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast11" fitHeight="120.0" layoutX="892.0" layoutY="284.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardEast12" fitHeight="120.0" layoutX="892.0" layoutY="308.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView id="thisCard" fx:id="cardEast13" fitHeight="120.0" layoutX="892.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="others-card" />
+                        <String fx:value="card-back" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <ImageView fx:id="cardMe01" fitHeight="120.0" layoutX="53.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="four-of-clubs" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe02" fitHeight="120.0" layoutX="118.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="nine-of-clubs" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe03" fitHeight="120.0" layoutX="186.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="ten-of-clubs" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe04" fitHeight="120.0" layoutX="252.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="three-of-diamonds" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe05" fitHeight="120.0" layoutX="322.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="six-of-diamonds" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe06" fitHeight="120.0" layoutX="391.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="seven-of-diamonds" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe07" fitHeight="120.0" layoutX="463.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="ten-of-diamonds" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe08" fitHeight="120.0" layoutX="532.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="two-of-spades" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe09" fitHeight="120.0" layoutX="601.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="queen-of-spades" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe10" fitHeight="120.0" layoutX="673.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="ace-of-spades" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe11" fitHeight="120.0" layoutX="741.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="seven-of-hearts" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe12" fitHeight="120.0" layoutX="809.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="eight-of-hearts" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardMe13" fitHeight="120.0" layoutX="878.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="my-card" />
+                        <String fx:value="king-of-hearts" />
+                        <String fx:value="visible-img" />
+                        <String fx:value="unchoosen-card" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardTrickWest" fitHeight="120.0" layoutX="362.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="trick-card" />
+                        <String fx:value="two-of-clubs" />
+                        <String fx:value="invisible-img" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardTrickNorth" fitHeight="120.0" layoutX="451.0" layoutY="166.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="trick-card" />
+                        <String fx:value="five-of-clubs" />
+                        <String fx:value="invisible-img" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardTrickEast" fitHeight="120.0" layoutX="540.0" layoutY="252.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="trick-card" />
+                        <String fx:value="ace-of-clubs" />
+                        <String fx:value="invisible-img" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="cardTrickMe" fitHeight="120.0" layoutX="451.0" layoutY="324.0" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="trick-card" />
+                        <String fx:value="jack-of-clubs" />
+                        <String fx:value="invisible-img" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="leftArrow" fitHeight="68.0" layoutX="204.0" layoutY="364.0" onMouseClicked="#toTheWest" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="button-img" />
+                        <String fx:value="left-arrow" />
+                        <String fx:value="invisible-img" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="rightArrow" fitHeight="68.0" layoutX="741.0" layoutY="364.0" onMouseClicked="#toTheEast" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="button-img" />
+                        <String fx:value="right-arrow" />
+                        <String fx:value="invisible-img" />
+                     </styleClass>
+                  </ImageView>
+                  <ImageView fx:id="upArrow" fitWidth="68.0" layoutX="482.0" layoutY="335.0" onMouseClicked="#toTheNorth" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="button-img" />
+                        <String fx:value="up-arrow" />
+                        <String fx:value="invisible-img" />
+                     </styleClass>
+                  </ImageView>
+                  <ListView fx:id="lstChatView" focusTraversable="false" layoutX="1000.0" layoutY="172.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="394.0" prefWidth="267.0" styleClass="chat-window">
+                     <padding>
+                        <Insets left="-7.0" />
+                     </padding></ListView>
+                  <TextField fx:id="txtChatTextField" layoutX="1000.0" layoutY="568.0" onAction="#submitChat" prefHeight="30.0" prefWidth="267.0" promptText="Chat ở đây" />
+                  <ImageView fx:id="btnStart" fitWidth="250.0" layoutX="369.0" layoutY="208.0" onMouseClicked="#startGame" pickOnBounds="true" preserveRatio="true">
+                     <styleClass>
+                        <String fx:value="button-img" />
+                        <String fx:value="start" />
+                        <String fx:value="visible-img" />
+                     </styleClass></ImageView>
+                  <AnchorPane fx:id="pnControl" layoutX="996.0" layoutY="13.0" prefHeight="155.0" prefWidth="267.0">
+                     <children>
+                        <TextField fx:id="txtConnectionString" focusTraversable="false" layoutX="3.0" layoutY="114.0" prefHeight="34.0" prefWidth="177.0" promptText="Chuỗi kết nối tới phòng" text="192.168.1.2:4444" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="90.0" />
+                        <Button fx:id="btnJoinRoom" defaultButton="true" focusTraversable="false" layoutX="182.0" layoutY="113.0" mnemonicParsing="false" onAction="#joinRoom" prefHeight="34.0" prefWidth="88.0" style="-fx-background-color: #6dff96;" styleClass="button-img" text="Vào Sòng" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="0.0" />
+                        <Button focusTraversable="false" layoutX="182.0" layoutY="68.0" mnemonicParsing="false" onAction="#updateDisplayName" prefHeight="34.0" prefWidth="88.0" style="-fx-background-color: #6dffe9;" styleClass="button-img" text="Cập nhật Tên" AnchorPane.rightAnchor="0.0" />
+                        <TextField fx:id="txtDisplayName" focusTraversable="false" layoutY="68.0" onAction="#updateDisplayName" prefHeight="34.0" prefWidth="177.0" promptText="Tên của Thánh" text="Thánh Bài" AnchorPane.rightAnchor="90.0" />
+                        <Button fx:id="btnOpenRoom" focusTraversable="false" layoutX="94.0" layoutY="10.0" mnemonicParsing="false" onAction="#openRoom" prefHeight="52.0" prefWidth="88.0" style="-fx-background-color: yellow;" styleClass="button-img" text="Mở Sòng" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="85.0" AnchorPane.topAnchor="10.0" />
+                     </children>
+                  </AnchorPane>
+               </children>
+            </Pane>
+            <AnchorPane>
+               <children>
+                  <Text fx:id="txtCurRoundPoint" layoutX="819.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Điểm ván hiện tại: 0" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="104.0" AnchorPane.topAnchor="9.0" />
+                  <Button fx:id="btnExitRoom" cancelButton="true" disable="true" focusTraversable="false" mnemonicParsing="false" onAction="#exitRoom" pickOnBounds="false" prefHeight="30.0" prefWidth="75.0" style="-fx-background-color: red;" styleClass="button-img" text="Rời Sòng" AnchorPane.bottomAnchor="2.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="2.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+   <stylesheets>
+      <URL value="@../styles/PlayingRoomStyle.css" />
+      <URL value="@../styles/CardSkin1.css" />
+   </stylesheets>
+</AnchorPane>
