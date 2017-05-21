@@ -53,6 +53,7 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
     }
 
     public synchronized void connectTo(String connectionString) {
+        if(socketToServer != null) return;
         try {
             String hostAddress = connectionString.split(":")[0];
             int port = Integer.parseInt(connectionString.split(":")[1]);
@@ -72,7 +73,7 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
         }
     }
 
-    public void close() {
+    public synchronized void close() {
         try {
             if (listenerThread != null) {
                 listenerThread.stopListen();
@@ -110,34 +111,38 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
         this.connectionCallback = callback;
     }
 
-    public void openMessageReceiver(Socket socket) {
-        messageReceiver.get(socket).start();
-    }
-
     public void sendMessageTo(Object msg, Socket socket) {
+        //TEST
+        System.out.println("Connector - sendMessageTo A Specific Person");
         try {
             outputStreams.get(socket).writeObject(msg);
         } catch (Exception e) {
+            //TEST
+            System.out.println("Connector.sendMessageTo - catch exception while writing msg to output stream");
             if (socket != socketToServer) {
+                //TEST
+                System.out.println("Connector.sendMessageTo - calling lost connection to client callback");
                 connectionCallback.onConnectionToAClientLost(socket);
             } else {
+                //TEST
+                System.out.println("Connector.sendMessageTo - calling lost connection to server callback");
                 connectionCallback.onConnectionToServerLost(socket);
             }
         }
     }
 
-    public void sendToAll(Object msg) {
+    public void sendMessageToAll(Object msg) {
         //TEST
-        System.out.println("Connector - sendToAll called");
+        System.out.println("Connector - sendMessageToAll called");
         if(socketToServer != null) {
             try {
                 //TEST
-                System.out.println("Connector - sendToAll - send to Server");
+                System.out.println("Connector - sendMessageToAll - send to Server");
                 outputStreams.get(socketToServer).writeObject(msg);
             }
             catch (Exception e) {
                 //TEST
-                System.out.println("Connector - sendToAll - send to server catch an exception");
+                System.out.println("Connector - sendMessageToAll - send to server catch an exception");
                 System.out.println("Connector - calling onConnectionToServerLost callback");
                 connectionCallback.onConnectionToServerLost(socketToServer);
             }
@@ -146,12 +151,12 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
             for (Socket client : clients) {
                 try {
                     //TEST
-                    System.out.println("Connector.sendToAll - send to a Client");
+                    System.out.println("Connector.sendMessageToAll - send to a Client");
                     outputStreams.get(client).writeObject(msg);
                 }
                 catch (Exception e) {
                     //TEST
-                    System.out.println("Connector.sendToAll - send to Client catch an exception");
+                    System.out.println("Connector.sendMessageToAll - send to Client catch an exception");
                     System.out.println("Connector - calling onConnectionToAClientLost callback");
                     connectionCallback.onConnectionToAClientLost(client);
                 }
@@ -216,7 +221,6 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
 class Listener extends Thread {
     private ServerSocket listener = null;
     private Thread thread;
-    private boolean running = true;
 
     private ListenCallback listenCallback;
 
@@ -225,7 +229,7 @@ class Listener extends Thread {
             if (listener == null) {
                 listener = new ServerSocket(0);
             }
-            while (running) {
+            while (true) {
                 //TEST
                 System.out.println("Listener - waiting at listener.Accept()");
                 Socket socket = listener.accept();
@@ -235,8 +239,6 @@ class Listener extends Thread {
                 Thread callbackThread = new Thread(()->listenCallback.onConnectionReceived(socket));
                 callbackThread.start();
             }
-            //TEST
-            System.out.println("Listener - thread ended");
         } catch (Exception e) {
             //TEST
             System.out.println("Listener - catch an exception");
@@ -254,8 +256,13 @@ class Listener extends Thread {
 
     public synchronized void stopListen() {
         //TEST
-        System.out.println("Listener - set running to false, stop listen");
-        running = false;
+        System.out.println("Listener - close listener SocketServer");
+        try {
+            listener.close();
+        }
+        catch (Exception e) {
+
+        }
     }
 
     public synchronized void resumeListen() {
@@ -288,16 +295,16 @@ class MessageReceiver extends Thread {
 
     public void run() {
         //TEST
-        System.out.println("MessageReceiver - opening inputstream");
+        System.out.println("MessageReceiver - opening inputStream");
         try {
             inputStream = new ObjectInputStream(socket.getInputStream());
             //TEST
-            System.out.println("MessageReceiver - inputstream opened");
+            System.out.println("MessageReceiver - inputStream opened");
         }
         catch (Exception e) {
             Thread callBackThread = new Thread(()->msgCallback.onStreamClosed(socket));
             //TEST
-            System.out.println("MessageReceiver - calling onStreamClosedCallback");
+            System.out.println("MessageReceiver - open inputStream failed, calling onStreamClosedCallback");
             callBackThread.start();
             //TEST
             System.out.println("MessageReceiver Thread ended");
@@ -315,7 +322,7 @@ class MessageReceiver extends Thread {
                 callBackThread.start();
             } catch (Exception e) {
                 //TEST
-                System.out.println("MessageReceiver - connection lost, calling callback");
+                System.out.println("MessageReceiver - exception at inputStream.readObject, calling callback " + e.toString());
                 Thread callBackThread = new Thread(()->msgCallback.onStreamClosed(socket));
                 callBackThread.start();
                 break;

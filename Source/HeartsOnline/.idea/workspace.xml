@@ -7,9 +7,135 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/META-INF/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/MainLauncher.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/controller/AnimationUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/controller/PlayingRoomController.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/controller/connection/ConnectionCallback.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/controller/connection/Connector.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/controller/connection/ListenCallback.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/controller/connection/Listener.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/controller/connection/MessageReceiveCallback.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/controller/connection/MessageReceiver.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/leftArrow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/rightArrow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/10_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/10_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/10_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/10_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/2_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/2_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/2_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/2_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/3_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/3_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/3_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/3_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/4_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/4_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/4_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/4_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/5_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/5_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/5_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/5_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/6_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/6_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/6_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/6_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/7_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/7_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/7_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/7_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/8_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/8_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/8_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/8_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/9_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/9_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/9_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/9_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/ace_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/ace_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/ace_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/ace_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/card_back.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/jack_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/jack_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/jack_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/jack_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/king_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/king_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/king_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/king_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/queen_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/queen_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/queen_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin1/queen_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/10_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/10_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/10_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/10_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/2_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/2_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/2_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/2_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/3_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/3_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/3_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/3_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/4_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/4_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/4_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/4_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/5_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/5_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/5_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/5_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/6_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/6_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/6_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/6_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/7_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/7_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/7_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/7_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/8_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/8_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/8_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/8_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/9_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/9_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/9_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/9_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/ace_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/ace_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/ace_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/ace_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/card_back.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/jack_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/jack_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/jack_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/jack_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/king_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/king_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/king_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/king_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/queen_of_clubs.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/queen_of_diamonds.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/queen_of_hearts.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/skin2/queen_of_spades.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/start.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/images/upArrow.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/model/HeartGame.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/styles/CardSkin1.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/styles/CardSkin2.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/styles/PlayingRoomStyle.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/HeartsOnline/views/PlayingRoom.fxml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" afterPath="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/controller/connection/Connector.java" afterPath="$PROJECT_DIR$/src/java/controller/connection/Connector.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resources/views/PlayingRoom.fxml" afterPath="$PROJECT_DIR$/src/resources/views/PlayingRoom.fxml" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -68,31 +194,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Connector.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/java/controller/connection/Connector.java">
+      <file leaf-file-name="PlayingRoomStyle.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/resources/styles/PlayingRoomStyle.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="276" column="31" lean-forward="true" selection-start-line="276" selection-start-column="31" selection-end-line="276" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#Connector#0;class#Connector#0" expanded="false" />
-                <element signature="method#openListener#0;class#Connector#0" expanded="false" />
-                <element signature="method#stopListen#0;class#Connector#0" expanded="false" />
-                <element signature="method#connectTo#0;class#Connector#0" expanded="false" />
-                <element signature="method#close#0;class#Connector#0" expanded="false" />
-                <element signature="method#sendToAll#0;class#Connector#0" expanded="false" />
-                <element signature="method#onConnectionReceived#0;class#Connector#0" expanded="false" />
-                <element signature="method#onMsgReceived#0;class#Connector#0" expanded="false" />
-                <element signature="method#onStreamClosed#0;class#Connector#0" expanded="false" />
-                <element signature="class#Listener#0" expanded="false" />
-                <element signature="method#run#0;class#Listener#0" expanded="false" />
-                <element signature="method#start#0;class#Listener#0" expanded="false" />
-                <element signature="method#stopListen#0;class#Listener#0" expanded="false" />
-                <element signature="method#resumeListen#0;class#Listener#0" expanded="false" />
-                <element signature="method#MessageReceiver#0;class#MessageReceiver#0" expanded="false" />
-                <element signature="method#run#0;class#MessageReceiver#0" expanded="false" />
-                <element signature="method#start#0;class#MessageReceiver#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="187">
+              <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -117,6 +224,8 @@
       <find>if(socket != so</find>
       <find>!= socket</find>
       <find>onReceived</find>
+      <find>visi</find>
+      <find>open</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -185,8 +294,8 @@
         <option value="$PROJECT_DIR$/src/java/controller/connection/ListenCallback.java" />
         <option value="$PROJECT_DIR$/src/java/controller/connection/MessageReceiveCallback.java" />
         <option value="$PROJECT_DIR$/src/java/controller/connection/ConnectionCallback.java" />
-        <option value="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" />
         <option value="$PROJECT_DIR$/src/java/controller/connection/Connector.java" />
+        <option value="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" />
       </list>
     </option>
   </component>
@@ -222,7 +331,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -359,66 +468,10 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="connection" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Connector.java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
-      <pane id="PackagesPane" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -921,16 +974,24 @@
       <workItem from="1495117902804" duration="5523000" />
       <workItem from="1495195990650" duration="28430000" />
       <workItem from="1495253391348" duration="4612000" />
-      <workItem from="1495386564132" duration="159000" />
+      <workItem from="1495386564132" duration="10284000" />
+      <workItem from="1495397585968" duration="19000" />
     </task>
+    <task id="LOCAL-00001" summary="Connector gan hoan thien">
+      <created>1495386782593</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1495386782593</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="123013000" />
+    <option name="totallyTimeSpent" value="133157000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -943,10 +1004,10 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20574887" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20877458" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -975,9 +1036,13 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="Connector gan hoan thien" />
+    <option name="LAST_COMMIT_MESSAGE" value="" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -990,13 +1055,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="36" lean-forward="false" selection-start-line="1" selection-start-column="36" selection-end-line="1" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/MainLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1100,20 +1158,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/styles/CardSkin1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/styles/PlayingRoomStyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="18" lean-forward="false" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controller/AnimationUtil.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1125,7 +1169,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="162" column="21" lean-forward="false" selection-start-line="162" selection-start-column="21" selection-end-line="162" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1133,7 +1176,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="39" lean-forward="true" selection-start-line="6" selection-start-column="39" selection-end-line="6" selection-end-column="39" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1141,7 +1183,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="16" lean-forward="false" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1152,69 +1193,83 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/controller/connection/ListenCallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controller/connection/ConnectionCallback.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="70">
           <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/controller/connection/ListenCallback.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/styles/CardSkin1.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/scene/control/TextInputControl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="107">
+          <caret line="347" column="24" lean-forward="false" selection-start-line="347" selection-start-column="24" selection-end-line="347" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/controller/connection/Connector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="193" column="5" lean-forward="true" selection-start-line="193" selection-start-column="5" selection-end-line="193" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="148" column="23" lean-forward="true" selection-start-line="148" selection-start-column="23" selection-end-line="148" selection-end-column="23" />
+        <state relative-caret-position="130">
+          <caret line="180" column="5" lean-forward="true" selection-start-line="180" selection-start-column="5" selection-end-line="180" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#initialize#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#updateDisplayName#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#openRoom#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#joinRoom#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#startGame#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#toTheWest#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#toTheNorth#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#toTheEast#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#clickOnCard#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#submitChat#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#exitRoom#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#onListenerOpenFailed#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#onListenerOpenSucceeded#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#onConnectionReceived#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#onConnectToServerSucceeded#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#onConnectToServerFailed#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#onConnectionToAClientLost#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#onConnectionToServerLost#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#onMsgReceived#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#addChatLine#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#setTheme#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#showPopUpMessage#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#resetView#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#setDisableCommand#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#setNodeToGone#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#setNodeToAppear#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#setCardFace#0;class#PlayingRoomController#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/controller/connection/Connector.java">
+    <entry file="file://$PROJECT_DIR$/src/resources/styles/PlayingRoomStyle.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="276" column="31" lean-forward="true" selection-start-line="276" selection-start-column="31" selection-end-line="276" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#Connector#0;class#Connector#0" expanded="false" />
-            <element signature="method#openListener#0;class#Connector#0" expanded="false" />
-            <element signature="method#stopListen#0;class#Connector#0" expanded="false" />
-            <element signature="method#connectTo#0;class#Connector#0" expanded="false" />
-            <element signature="method#close#0;class#Connector#0" expanded="false" />
-            <element signature="method#sendToAll#0;class#Connector#0" expanded="false" />
-            <element signature="method#onConnectionReceived#0;class#Connector#0" expanded="false" />
-            <element signature="method#onMsgReceived#0;class#Connector#0" expanded="false" />
-            <element signature="method#onStreamClosed#0;class#Connector#0" expanded="false" />
-            <element signature="class#Listener#0" expanded="false" />
-            <element signature="method#run#0;class#Listener#0" expanded="false" />
-            <element signature="method#start#0;class#Listener#0" expanded="false" />
-            <element signature="method#stopListen#0;class#Listener#0" expanded="false" />
-            <element signature="method#resumeListen#0;class#Listener#0" expanded="false" />
-            <element signature="method#MessageReceiver#0;class#MessageReceiver#0" expanded="false" />
-            <element signature="method#run#0;class#MessageReceiver#0" expanded="false" />
-            <element signature="method#start#0;class#MessageReceiver#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="187">
+          <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="12" />
+          <folding />
         </state>
       </provider>
     </entry>

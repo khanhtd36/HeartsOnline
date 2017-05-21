@@ -460,7 +460,7 @@
                      </styleClass></ImageView>
                   <AnchorPane fx:id="pnControl" layoutX="996.0" layoutY="13.0" prefHeight="155.0" prefWidth="267.0">
                      <children>
-                        <TextField fx:id="txtConnectionString" focusTraversable="false" layoutX="3.0" layoutY="114.0" prefHeight="34.0" prefWidth="177.0" promptText="Chuỗi kết nối tới phòng" text="192.168.1.2:4444" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="90.0" />
+                        <TextField fx:id="txtConnectionString" focusTraversable="false" layoutX="3.0" layoutY="114.0" prefHeight="34.0" prefWidth="177.0" promptText="Chuỗi kết nối tới Sòng" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="90.0" />
                         <Button fx:id="btnJoinRoom" defaultButton="true" focusTraversable="false" layoutX="182.0" layoutY="113.0" mnemonicParsing="false" onAction="#joinRoom" prefHeight="34.0" prefWidth="88.0" style="-fx-background-color: #6dff96;" styleClass="button-img" text="Vào Sòng" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="0.0" />
                         <Button focusTraversable="false" layoutX="182.0" layoutY="68.0" mnemonicParsing="false" onAction="#updateDisplayName" prefHeight="34.0" prefWidth="88.0" style="-fx-background-color: #6dffe9;" styleClass="button-img" text="Cập nhật Tên" AnchorPane.rightAnchor="0.0" />
                         <TextField fx:id="txtDisplayName" focusTraversable="false" layoutY="68.0" onAction="#updateDisplayName" prefHeight="34.0" prefWidth="177.0" promptText="Tên của Thánh" text="Thánh Bài" AnchorPane.rightAnchor="90.0" />

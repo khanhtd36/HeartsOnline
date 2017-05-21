@@ -2,6 +2,7 @@ package controller;
 
 import controller.connection.ConnectionCallback;
 import controller.connection.Connector;
+import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
@@ -18,6 +19,7 @@ import org.apache.commons.lang3.text.WordUtils;
 
 import java.net.Socket;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class PlayingRoomController implements Initializable, ConnectionCallback {
@@ -30,6 +32,61 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         setTheme("skin1");
         btnExitRoom.disableProperty().bind(btnOpenRoom.disabledProperty().isNotEqualTo(new SimpleBooleanProperty(true)));
         txtNameMe.textProperty().bind(displayName);
+        cardWest.add(cardWest01);
+        cardWest.add(cardWest02);
+        cardWest.add(cardWest03);
+        cardWest.add(cardWest04);
+        cardWest.add(cardWest05);
+        cardWest.add(cardWest06);
+        cardWest.add(cardWest07);
+        cardWest.add(cardWest08);
+        cardWest.add(cardWest09);
+        cardWest.add(cardWest10);
+        cardWest.add(cardWest11);
+        cardWest.add(cardWest12);
+        cardWest.add(cardWest13);
+
+        cardNorth.add(cardNorth01);
+        cardNorth.add(cardNorth02);
+        cardNorth.add(cardNorth03);
+        cardNorth.add(cardNorth04);
+        cardNorth.add(cardNorth05);
+        cardNorth.add(cardNorth06);
+        cardNorth.add(cardNorth07);
+        cardNorth.add(cardNorth08);
+        cardNorth.add(cardNorth09);
+        cardNorth.add(cardNorth10);
+        cardNorth.add(cardNorth11);
+        cardNorth.add(cardNorth12);
+        cardNorth.add(cardNorth13);
+
+        cardEast.add(cardEast01);
+        cardEast.add(cardEast02);
+        cardEast.add(cardEast03);
+        cardEast.add(cardEast04);
+        cardEast.add(cardEast05);
+        cardEast.add(cardEast06);
+        cardEast.add(cardEast07);
+        cardEast.add(cardEast08);
+        cardEast.add(cardEast09);
+        cardEast.add(cardEast10);
+        cardEast.add(cardEast11);
+        cardEast.add(cardEast12);
+        cardEast.add(cardEast13);
+
+        cardMe.add(cardMe01);
+        cardMe.add(cardMe02);
+        cardMe.add(cardMe03);
+        cardMe.add(cardMe04);
+        cardMe.add(cardMe05);
+        cardMe.add(cardMe06);
+        cardMe.add(cardMe07);
+        cardMe.add(cardMe08);
+        cardMe.add(cardMe09);
+        cardMe.add(cardMe10);
+        cardMe.add(cardMe11);
+        cardMe.add(cardMe12);
+        cardMe.add(cardMe13);
     }
 
     //Xử lý Các hành động do người dùng trực tiếp tác động lên view ---------------
@@ -75,11 +132,11 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     public void submitChat() {
         String chatLine = txtChatTextField.getText();
         if (chatLine.length() > 0) {
-            addChatLine(chatLine);
+            addChatLine("Bạn: " + chatLine);
             txtChatTextField.setText("");
 
             //TEST : Sau này cần chuyển về chuẩn class Message, loại thông điệp là chat
-            connector.sendToAll(displayName + ": " + chatLine);
+            connector.sendMessageToAll(displayName + ": " + chatLine);
         }
     }
 
@@ -106,53 +163,47 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
     //Xử lý các Xử kiện ở các thread khác gửi qua ----------------------------------
 
-    public synchronized void onListenerOpenFailed() {
+    public void onListenerOpenFailed() {
         setDisableCommand(false);
         addChatLine("-- Mở sòng không được.");
     }
 
-    public synchronized void onListenerOpenSucceeded(String connectionString) {
+    public void onListenerOpenSucceeded(String connectionString) {
         inRoom = true;
         txtConnectionString.setText(connectionString);
         addChatLine("-- Mở sòng Thành công, Gửi bạn bè Chuỗi kết nối phía trên để vào Sòng.");
     }
 
-    public synchronized void onConnectionReceived(Socket socketToClient) {
+    public void onConnectionReceived(Socket socketToClient) {
         //TODO: Có người kết nối tới, Xem đã đủ người chơi chưa, hay game đã bắt đầu chưa, Nếu chưa thì Tạo player Và mở MessageReceiver ở connector tới người đó, Nếu rồi thì gửi thông báo cho người đó, rồi đóng kết nối.
         addChatLine("-- Một người chơi đã kết nối");
         connector.stopListen();
-        try {
-            socketToClient.getOutputStream().write(123);
-        }
-        catch (Exception e) {
-
-        }
     }
 
-    public synchronized void onConnectToServerSucceeded(Socket socketToServer) {
+    public void onConnectToServerSucceeded(Socket socketToServer) {
         addChatLine("-- Kết nối Thành công. Chờ Thông tin từ Chủ phòng");
         //TODO: Set lại view theo kiểu khách, không phải chủ phòng (Không có nút bắt đầu game)
     }
 
-    public synchronized void onConnectToServerFailed() {
+    public void onConnectToServerFailed() {
         addChatLine("-- Kết nối Không thành công!");
         connector.close();
         setDisableCommand(false);
     }
 
-    public synchronized void onConnectionToAClientLost(Socket socketToClient) {
+    public void onConnectionToAClientLost(Socket socketToClient) {
         if(inRoom) addChatLine("-- Một người chơi đã thoát");
         //TODO: Chuyển Player tại vị trí của người đó thành BOT, Đóng kết nối với người đó, Thông báo tới những Player khác.
     }
 
-    public synchronized void onConnectionToServerLost(Socket socketToServer) {
+    public void onConnectionToServerLost(Socket socketToServer) {
         inRoom = false;
         addChatLine("-- Mất kết nối với Chủ phòng. Game kết thúc!");
         connector.close();
-        //TODO: reset game, reset view
+        exitRoom();
     }
 
-    public synchronized void onMsgReceived(Object msg) {
+    public void onMsgReceived(Object msg) {
         //TEST : Sau này cần xử lý, nếu là Message kiểu chat thì mới lấy dòng chat ra rồi add lên ChatBox
         addChatLine(msg.toString());
         //TODO: Xử lý khi nhận Thông điệp
@@ -164,19 +215,21 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
     //view controller API -----------------------------------------------------------
 
-    public synchronized void addChatLine(String message) {
-        lstChatView.getItems().add(WordUtils.wrap(message, 45));
-        lstChatView.scrollTo(lstChatView.getItems().size() - 1);
+    public void addChatLine(String message) {
+        Platform.runLater(()->{
+            lstChatView.getItems().add(WordUtils.wrap(message, 45));
+            lstChatView.scrollTo(lstChatView.getItems().size() - 1);
+        });
     }
 
     public void setTheme(String themeName) {
         themeName = themeName.toLowerCase();
         switch (themeName) {
             case "skin1":
-                rootSceneNode.getStylesheets().set(1, "styles/CardSkin1.css");
+                Platform.runLater(()->rootSceneNode.getStylesheets().set(1, "styles/CardSkin1.css"));
                 break;
             case "skin2":
-                rootSceneNode.getStylesheets().set(1, "styles/CardSkin2.css");
+                Platform.runLater(()->rootSceneNode.getStylesheets().set(1, "styles/CardSkin2.css"));
                 break;
         }
     }
@@ -185,27 +238,54 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     private void resetView() {
-
+        setNodeToAppear(btnStart);
+        setNodeToGone(leftArrow, rightArrow, upArrow);
+        for(ImageView card : cardWest) {
+            setNodeToAppear(card);
+            setCardFace(card, "card-back");
+        }
+        for(ImageView card : cardNorth) {
+            setNodeToAppear(card);
+            setCardFace(card, "card-back");
+        }
+        for(ImageView card : cardEast) {
+            setNodeToAppear(card);
+            setCardFace(card, "card-back");
+        }
+        for(ImageView card : cardMe) {
+            setNodeToAppear(card);
+            setCardFace(card, "card-back");
+        }
     }
 
     private void setDisableCommand(boolean b) {
-        btnOpenRoom.setDisable(b);
-        txtConnectionString.setEditable(!b);
-        btnJoinRoom.setDisable(b);
+        Platform.runLater(()->{
+            btnOpenRoom.setDisable(b);
+            txtConnectionString.setEditable(!b);
+            btnJoinRoom.setDisable(b);
+        });
     }
 
-    private void setNodeToGone(Node card) {
-        card.getStyleClass().set(2, "invisible-img");
-        card.setMouseTransparent(true);
+    private void setNodeToGone(Node... nodes) {
+        for(Node node: nodes) {
+            Platform.runLater(()->{
+                node.getStyleClass().set(2, "invisible-img");
+                node.setMouseTransparent(true);
+            });
+        }
     }
 
-    private void setNodeToAppear(Node card) {
-        card.getStyleClass().remove(2);
-        card.setMouseTransparent(false);
+    private void setNodeToAppear(Node... nodes) {
+        for(Node node : nodes) {
+            Platform.runLater(()->{
+                node.getStyleClass().set(2, "visible-img");
+                node.setMouseTransparent(false);
+            });
+        }
     }
 
     private void setCardFace(Node node, String cardName) {
-        node.getStyleClass().set(1, cardName);
+        Platform.runLater(()-> node.getStyleClass().set(1, cardName));
     }
 
     //End View Controller API -------------------------------------------------------
@@ -226,6 +306,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     public TextField txtChatTextField;
     public TextField txtDisplayName, txtConnectionString;
     public Button btnOpenRoom, btnJoinRoom, btnExitRoom;
+    private ArrayList<ImageView> cardWest = new ArrayList<>();
+    private ArrayList<ImageView> cardNorth = new ArrayList<>();
+    private ArrayList<ImageView> cardEast = new ArrayList<>();
+    private ArrayList<ImageView> cardMe = new ArrayList<>();
 
     //End các control trên view cần can thiệp ---------------------------------------
 }
