@@ -1,5 +1,6 @@
 package model.player;
 
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import model.card.Card;
 import model.card.CardType;
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player {
-    public StringProperty nameProperty;
+    public StringProperty nameProperty = new SimpleStringProperty("Thánh Bài");
     private Position position;
     private int id;
     private int accumulatedPoint = 0;

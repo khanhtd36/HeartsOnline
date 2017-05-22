@@ -163,16 +163,15 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
     }
 
-    public void toTheWest() {
+    public void toTheLeft() {
 
     }
 
-    public void toTheNorth() {
+    public void toFront() {
 
     }
 
-
-    public void toTheEast() {
+    public void toTheRight() {
 
     }
 
@@ -187,7 +186,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
             txtChatTextField.setText("");
 
             //TEST : Sau này cần chuyển về chuẩn class message, loại thông điệp là chat
-            connector.sendMessageToAll(new Message(MessageType.CHAT, new ChatMsgContent(players[0].nameProperty.get() + ":" + chatLine)));
+            connector.sendMessageToAll(new Message(MessageType.CHAT, new ChatMsgContent(players[0].nameProperty.get() + ": " + chatLine)));
         }
     }
 
@@ -263,6 +262,9 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
             case CHAT:
                 String chatLine = ((ChatMsgContent)message.getContent()).getChatLine();
                 addChatLine(chatLine);
+                if(host) connector.sendMessageToAllExcept(msg, fromSocket);
+                break;
+            case UPDATE_NAME:
 
                 break;
 
