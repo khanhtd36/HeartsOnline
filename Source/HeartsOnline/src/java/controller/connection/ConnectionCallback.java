@@ -14,5 +14,5 @@ public interface ConnectionCallback {
     void onConnectionToAClientLost(Socket socketToClient);
     void onConnectionToServerLost(Socket socketToServer);
 
-    void onMsgReceived(Object msg);
+    void onMsgReceived(Object msg, Socket fromSocket);
 }

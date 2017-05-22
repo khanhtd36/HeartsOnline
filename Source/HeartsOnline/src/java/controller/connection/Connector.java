@@ -14,9 +14,10 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
     private Listener listenerThread = null;
     private ServerSocket listener = null;
     private ArrayList<Socket> clients = new ArrayList<>();
+    private Socket socketToServer = null;
     private Map<Socket, MessageReceiver> messageReceiver = new HashMap<>();
     private Map<Socket, ObjectOutputStream> outputStreams = new HashMap<>();
-    private Socket socketToServer = null;
+
 
     private ConnectionCallback connectionCallback;
 
@@ -111,22 +112,59 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
         this.connectionCallback = callback;
     }
 
-    public void sendMessageTo(Object msg, Socket socket) {
+    public void sendMessageTo(Object msg, Socket... sockets) {
         //TEST
         System.out.println("Connector - sendMessageTo A Specific Person");
-        try {
-            outputStreams.get(socket).writeObject(msg);
-        } catch (Exception e) {
-            //TEST
-            System.out.println("Connector.sendMessageTo - catch exception while writing msg to output stream");
-            if (socket != socketToServer) {
+        for(Socket socket : sockets) {
+            try {
+                outputStreams.get(socket).writeObject(msg);
+            } catch (Exception e) {
                 //TEST
-                System.out.println("Connector.sendMessageTo - calling lost connection to client callback");
-                connectionCallback.onConnectionToAClientLost(socket);
-            } else {
-                //TEST
-                System.out.println("Connector.sendMessageTo - calling lost connection to server callback");
-                connectionCallback.onConnectionToServerLost(socket);
+                System.out.println("Connector.sendMessageTo - catch exception while writing msg to output stream");
+                if (socket != socketToServer) {
+                    //TEST
+                    System.out.println("Connector.sendMessageTo - calling lost connection to client callback");
+                    connectionCallback.onConnectionToAClientLost(socket);
+                } else {
+                    //TEST
+                    System.out.println("Connector.sendMessageTo - calling lost connection to server callback");
+                    connectionCallback.onConnectionToServerLost(socket);
+                }
+            }
+        }
+    }
+
+    public void sendMessageToAllExcept(Object msg, Socket socket) {
+        //TEST
+        System.out.println("Connector - sendMessageToAllExcept called");
+        if(socketToServer != null) {
+            if(socketToServer != socket) {
+                try {
+                    //TEST
+                    System.out.println("Connector - sendMessageToAllExcept - send to Server");
+                    outputStreams.get(socketToServer).writeObject(msg);
+                } catch (Exception e) {
+                    //TEST
+                    System.out.println("Connector - sendMessageToAll - send to server catch an exception");
+                    System.out.println("Connector - calling onConnectionToServerLost callback");
+                    connectionCallback.onConnectionToServerLost(socketToServer);
+                }
+            }
+        }
+        else {
+            for (Socket client : clients) {
+                if(!client.equals(socket)) {
+                    try {
+                        //TEST
+                        System.out.println("Connector.sendMessageToAllExcept - send to a Client");
+                        outputStreams.get(client).writeObject(msg);
+                    } catch (Exception e) {
+                        //TEST
+                        System.out.println("Connector.sendMessageToAllExcept - send to Client catch an exception");
+                        System.out.println("Connector - calling onConnectionToAClientLost callback");
+                        connectionCallback.onConnectionToAClientLost(client);
+                    }
+                }
             }
         }
     }
@@ -193,11 +231,11 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
         }
     }
 
-    public void onMsgReceived(Object msg) {
+    public void onMsgReceived(Object msg, Socket fromSocket) {
         //TEST
         System.out.println("Connector - onMsgReceived called");
         System.out.println("Connector - calling onMsgReceived callback");
-        connectionCallback.onMsgReceived(msg);
+        connectionCallback.onMsgReceived(msg, fromSocket);
     }
 
     public void onStreamClosed(Socket socket) {
@@ -318,7 +356,7 @@ class MessageReceiver extends Thread {
                 Object msg = inputStream.readObject();
                 //TEST
                 System.out.println("MessageReceiver - message received, calling callback");
-                Thread callBackThread = new Thread(()-> msgCallback.onMsgReceived(msg));
+                Thread callBackThread = new Thread(()-> msgCallback.onMsgReceived(msg, socket));
                 callBackThread.start();
             } catch (Exception e) {
                 //TEST

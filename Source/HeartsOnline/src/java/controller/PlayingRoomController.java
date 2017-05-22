@@ -226,10 +226,11 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         addChatLine("-- Mở sòng Thành công, Gửi bạn bè Chuỗi kết nối phía trên để vào Sòng.");
     }
 
-    public void onConnectionReceived(Socket socketToClient) {
+    public synchronized void onConnectionReceived(Socket socketToClient) {
         //TODO: Có người kết nối tới, Xem đã đủ người chơi chưa, hay game đã bắt đầu chưa, Nếu chưa thì Tạo player Và mở MessageReceiver ở connector tới người đó, Nếu rồi thì gửi thông báo cho người đó, rồi đóng kết nối.
         addChatLine("-- Một người chơi đã kết nối");
-        connector.stopListen();
+
+
     }
 
     public void onConnectToServerSucceeded(Socket socketToServer) {
@@ -255,7 +256,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         exitRoom();
     }
 
-    public void onMsgReceived(Object msg) {
+    public void onMsgReceived(Object msg, Socket fromSocket) {
         //TODO: Xử lý khi nhận Thông điệp
         Message message = (Message)msg;
         switch (message.getType()) {
