@@ -2,10 +2,12 @@ package controller;
 
 import controller.connection.ConnectionCallback;
 import controller.connection.Connector;
+import controller.message.ChatMsgContent;
+import controller.message.Message;
+import controller.message.MessageType;
+import controller.message.UpdateNameMsgContent;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -15,6 +17,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import model.HeartGame;
+import model.player.Player;
+import model.player.Position;
 import org.apache.commons.lang3.text.WordUtils;
 
 import java.net.Socket;
@@ -24,14 +28,18 @@ import java.util.ResourceBundle;
 
 public class PlayingRoomController implements Initializable, ConnectionCallback {
     private HeartGame gameModel = new HeartGame();
+    private Player[] players = new Player[4];
+
     private Connector connector = new Connector(this);
-    private StringProperty displayName = new SimpleStringProperty("Thánh Bài");
+
+    private boolean host = false; //Có là chủ phòng hay không
     private boolean inRoom = false;
 
     public void initialize(URL location, ResourceBundle resources) {
         setTheme("skin1");
         btnExitRoom.disableProperty().bind(btnOpenRoom.disabledProperty().isNotEqualTo(new SimpleBooleanProperty(true)));
-        txtNameMe.textProperty().bind(displayName);
+        players[0] = new Player(Position.SOUTH, "Thánh Bài");
+        txtNameMe.textProperty().bind(players[0].nameProperty);
         cardWest.add(cardWest01);
         cardWest.add(cardWest02);
         cardWest.add(cardWest03);
@@ -87,19 +95,62 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         cardMe.add(cardMe11);
         cardMe.add(cardMe12);
         cardMe.add(cardMe13);
+
+        btnStart.getStyleClass().set(0, "button-img");
+        btnStart.getStyleClass().set(1, "start");
+        btnStart.getStyleClass().set(2, "visible-img");
+
+        leftArrow.getStyleClass().set(0, "button-img");
+        leftArrow.getStyleClass().set(1, "left-arrow");
+        leftArrow.getStyleClass().set(2, "invisible-img");
+
+        upArrow.getStyleClass().set(0, "button-img");
+        upArrow.getStyleClass().set(1, "up-arrow");
+        upArrow.getStyleClass().set(2, "invisible-img");
+
+        rightArrow.getStyleClass().set(0, "button-img");
+        rightArrow.getStyleClass().set(1, "right-arrow");
+        rightArrow.getStyleClass().set(2, "invisible-img");
+
+
+        for(ImageView card : cardMe) {
+            card.getStyleClass().set(0, "my-card");
+            card.getStyleClass().set(1, "card-back");
+            card.getStyleClass().set(2, "visible-img");
+            card.getStyleClass().set(3, "unchosen-card");
+        }
+
+        for(ImageView card : cardWest) {
+            card.getStyleClass().set(0, "others-card");
+            card.getStyleClass().set(1, "card-back");
+            card.getStyleClass().set(2, "visible-img");
+        }
+        for(ImageView card : cardNorth) {
+            card.getStyleClass().set(0, "others-card");
+            card.getStyleClass().set(1, "card-back");
+            card.getStyleClass().set(2, "visible-img");
+        }
+        for(ImageView card : cardEast) {
+            card.getStyleClass().set(0, "others-card");
+            card.getStyleClass().set(1, "card-back");
+            card.getStyleClass().set(2, "visible-img");
+        }
     }
 
     //Xử lý Các hành động do người dùng trực tiếp tác động lên view ---------------
 
     public void updateDisplayName() {
-        displayName.set(txtDisplayName.getText());
+        String newName = txtDisplayName.getText();
+        players[0].nameProperty.set(newName);
         txtChatTextField.requestFocus();
-        //To Do: Gửi tên mới tới các người chơi còn lại
+        //TODO: Gửi tên mới tới các người chơi còn lại
+        connector.sendMessageToAll(new Message(MessageType.UPDATE_NAME, new UpdateNameMsgContent(players[0].getId(), newName)));
     }
 
     public void openRoom() {
         setDisableCommand(true);
         connector.openListener();
+        host = true;
     }
 
     public void joinRoom() {
@@ -135,12 +186,13 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
             addChatLine("Bạn: " + chatLine);
             txtChatTextField.setText("");
 
-            //TEST : Sau này cần chuyển về chuẩn class Message, loại thông điệp là chat
-            connector.sendMessageToAll(displayName + ": " + chatLine);
+            //TEST : Sau này cần chuyển về chuẩn class message, loại thông điệp là chat
+            connector.sendMessageToAll(new Message(MessageType.CHAT, new ChatMsgContent(players[0].nameProperty.get() + ":" + chatLine)));
         }
     }
 
     public void exitRoom() {
+        host = false;
         inRoom = false;
         connector.close();
         addChatLine("-- Bạn đã rời Sòng.");
@@ -204,9 +256,16 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     public void onMsgReceived(Object msg) {
-        //TEST : Sau này cần xử lý, nếu là Message kiểu chat thì mới lấy dòng chat ra rồi add lên ChatBox
-        addChatLine(msg.toString());
         //TODO: Xử lý khi nhận Thông điệp
+        Message message = (Message)msg;
+        switch (message.getType()) {
+            case CHAT:
+                String chatLine = ((ChatMsgContent)message.getContent()).getChatLine();
+                addChatLine(chatLine);
+
+                break;
+
+        }
     }
 
     //End Xử lý các Xử kiện ở các thread khác gửi qua ------------------------------
@@ -286,6 +345,23 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
     private void setCardFace(Node node, String cardName) {
         Platform.runLater(()-> node.getStyleClass().set(1, cardName));
+    }
+
+    public void setDisplayName(String name, Position position) {
+        switch (position) {
+            case EAST:
+                Platform.runLater(()->txtNameEast.setText(name));
+                break;
+            case NORTH:
+                Platform.runLater(()->txtNameNorth.setText(name));
+                break;
+            case WEST:
+                Platform.runLater(()->txtNameWest.setText(name));
+                break;
+            case SOUTH:
+                Platform.runLater(()->txtNameMe.setText(name));
+                break;
+        }
     }
 
     //End View Controller API -------------------------------------------------------

@@ -58,11 +58,11 @@
     visibility: visible;
 }
 
-.unchoosen-card{
+.unchosen-card{
     -fx-translate-y: 0;
 }
 
-.choosen-card{
+.chosen-card{
     -fx-translate-y: -20;
 }
 

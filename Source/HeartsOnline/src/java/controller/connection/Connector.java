@@ -336,7 +336,7 @@ class MessageReceiver extends Thread {
     public synchronized void start() {
         //TEST
         System.out.println("MessageReceiver.start");
-        thread = new Thread(this, "Message Receiver");
+        thread = new Thread(this, "message Receiver");
         thread.start();
     }
 }

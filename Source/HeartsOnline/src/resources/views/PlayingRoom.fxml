@@ -299,7 +299,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="four-of-clubs" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe02" fitHeight="120.0" layoutX="118.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -307,7 +307,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="nine-of-clubs" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe03" fitHeight="120.0" layoutX="186.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -315,7 +315,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="ten-of-clubs" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe04" fitHeight="120.0" layoutX="252.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -323,7 +323,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="three-of-diamonds" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe05" fitHeight="120.0" layoutX="322.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -331,7 +331,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="six-of-diamonds" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe06" fitHeight="120.0" layoutX="391.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -339,7 +339,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="seven-of-diamonds" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe07" fitHeight="120.0" layoutX="463.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -347,7 +347,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="ten-of-diamonds" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe08" fitHeight="120.0" layoutX="532.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -355,7 +355,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="two-of-spades" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe09" fitHeight="120.0" layoutX="601.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -363,7 +363,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="queen-of-spades" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe10" fitHeight="120.0" layoutX="673.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -371,7 +371,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="ace-of-spades" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe11" fitHeight="120.0" layoutX="741.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -379,7 +379,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="seven-of-hearts" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe12" fitHeight="120.0" layoutX="809.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -387,7 +387,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="eight-of-hearts" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardMe13" fitHeight="120.0" layoutX="878.0" layoutY="479.0" onMouseClicked="#clickOnCard" pickOnBounds="true" preserveRatio="true">
@@ -395,7 +395,7 @@
                         <String fx:value="my-card" />
                         <String fx:value="king-of-hearts" />
                         <String fx:value="visible-img" />
-                        <String fx:value="unchoosen-card" />
+                        <String fx:value="unchosen-card" />
                      </styleClass>
                   </ImageView>
                   <ImageView fx:id="cardTrickWest" fitHeight="120.0" layoutX="362.0" layoutY="253.0" pickOnBounds="true" preserveRatio="true">
