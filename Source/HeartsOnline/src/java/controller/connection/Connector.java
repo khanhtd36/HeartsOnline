@@ -104,6 +104,22 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
         }
     }
 
+    public void shutdownSocketTo(Socket socket) {
+        try {
+            outputStreams.get(socket).close();
+            socket.close();
+        }
+        catch (Exception e) {
+
+        }
+        finally {
+            if(socket.equals(socketToServer)) socketToServer = null;
+            outputStreams.remove(socket);
+            messageReceiver.remove(socket);
+            clients.remove(socket);
+        }
+    }
+
     public String getConnectionString() {
         return connectionString;
     }

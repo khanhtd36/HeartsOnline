@@ -2,10 +2,7 @@ package controller;
 
 import controller.connection.ConnectionCallback;
 import controller.connection.Connector;
-import controller.message.ChatMsgContent;
-import controller.message.Message;
-import controller.message.MessageType;
-import controller.message.UpdateNameMsgContent;
+import controller.message.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.Initializable;
@@ -24,11 +21,14 @@ import org.apache.commons.lang3.text.WordUtils;
 import java.net.Socket;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 public class PlayingRoomController implements Initializable, ConnectionCallback {
     private HeartGame gameModel = new HeartGame();
     private Player[] players = new Player[4];
+    private Map<Position, Socket> playersSockets = new HashMap<>();
 
     private Connector connector = new Connector(this);
 
@@ -39,7 +39,15 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         setTheme("skin1");
         btnExitRoom.disableProperty().bind(btnOpenRoom.disabledProperty().isNotEqualTo(new SimpleBooleanProperty(true)));
         players[0] = new Player(Position.SOUTH, "Thánh Bài");
+        players[1] = new Player(Position.WEST);
+        players[2] = new Player(Position.NORTH);
+        players[3] = new Player(Position.EAST);
+
         txtNameMe.textProperty().bind(players[0].nameProperty);
+        txtNameWest.textProperty().bind(players[1].nameProperty);
+        txtNameNorth.textProperty().bind(players[2].nameProperty);
+        txtNameEast.textProperty().bind(players[3].nameProperty);
+
         cardWest.add(cardWest01);
         cardWest.add(cardWest02);
         cardWest.add(cardWest03);
@@ -96,44 +104,44 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         cardMe.add(cardMe12);
         cardMe.add(cardMe13);
 
-        btnStart.getStyleClass().set(0, "button-img");
-        btnStart.getStyleClass().set(1, "start");
-        btnStart.getStyleClass().set(2, "visible-img");
+        btnStart.getStyleClass().set(1, "button-img");
+        btnStart.getStyleClass().set(2, "start");
+        btnStart.getStyleClass().set(3, "visible-img");
 
-        leftArrow.getStyleClass().set(0, "button-img");
-        leftArrow.getStyleClass().set(1, "left-arrow");
-        leftArrow.getStyleClass().set(2, "invisible-img");
+        leftArrow.getStyleClass().set(1, "button-img");
+        leftArrow.getStyleClass().set(2, "left-arrow");
+        leftArrow.getStyleClass().set(3, "invisible-img");
 
-        upArrow.getStyleClass().set(0, "button-img");
-        upArrow.getStyleClass().set(1, "up-arrow");
-        upArrow.getStyleClass().set(2, "invisible-img");
+        upArrow.getStyleClass().set(1, "button-img");
+        upArrow.getStyleClass().set(2, "up-arrow");
+        upArrow.getStyleClass().set(3, "invisible-img");
 
-        rightArrow.getStyleClass().set(0, "button-img");
-        rightArrow.getStyleClass().set(1, "right-arrow");
-        rightArrow.getStyleClass().set(2, "invisible-img");
+        rightArrow.getStyleClass().set(1, "button-img");
+        rightArrow.getStyleClass().set(2, "right-arrow");
+        rightArrow.getStyleClass().set(3, "invisible-img");
 
 
         for(ImageView card : cardMe) {
-            card.getStyleClass().set(0, "my-card");
-            card.getStyleClass().set(1, "card-back");
-            card.getStyleClass().set(2, "visible-img");
-            card.getStyleClass().set(3, "unchosen-card");
+            card.getStyleClass().set(1, "my-card");
+            card.getStyleClass().set(2, "card-back");
+            card.getStyleClass().set(3, "visible-img");
+            card.getStyleClass().set(4, "unchosen-card");
         }
 
         for(ImageView card : cardWest) {
-            card.getStyleClass().set(0, "others-card");
-            card.getStyleClass().set(1, "card-back");
-            card.getStyleClass().set(2, "visible-img");
+            card.getStyleClass().set(1, "others-card");
+            card.getStyleClass().set(2, "card-back");
+            card.getStyleClass().set(3, "visible-img");
         }
         for(ImageView card : cardNorth) {
-            card.getStyleClass().set(0, "others-card");
-            card.getStyleClass().set(1, "card-back");
-            card.getStyleClass().set(2, "visible-img");
+            card.getStyleClass().set(1, "others-card");
+            card.getStyleClass().set(2, "card-back");
+            card.getStyleClass().set(3, "visible-img");
         }
         for(ImageView card : cardEast) {
-            card.getStyleClass().set(0, "others-card");
-            card.getStyleClass().set(1, "card-back");
-            card.getStyleClass().set(2, "visible-img");
+            card.getStyleClass().set(1, "others-card");
+            card.getStyleClass().set(2, "card-back");
+            card.getStyleClass().set(3, "visible-img");
         }
     }
 
@@ -143,8 +151,8 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         String newName = txtDisplayName.getText();
         players[0].nameProperty.set(newName);
         txtChatTextField.requestFocus();
-        //TODO: Gửi tên mới tới các người chơi còn lại
-        connector.sendMessageToAll(new Message(MessageType.UPDATE_NAME, new UpdateNameMsgContent(players[0].getId(), newName)));
+
+        connector.sendMessageToAll(new Message(MessageType.UPDATE_NAME, new UpdateNameMsgContent(players[0].getPosition(), newName)));
     }
 
     public void openRoom() {
@@ -226,15 +234,25 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     public synchronized void onConnectionReceived(Socket socketToClient) {
-        //TODO: Có người kết nối tới, Xem đã đủ người chơi chưa, hay game đã bắt đầu chưa, Nếu chưa thì Tạo player Và mở MessageReceiver ở connector tới người đó, Nếu rồi thì gửi thông báo cho người đó, rồi đóng kết nối.
         addChatLine("-- Một người chơi đã kết nối");
-
-
+        Position availablePosition = availablePosition();
+        if(availablePosition != null) {
+            playersSockets.put(availablePosition, socketToClient);
+            getPlayerAt(availablePosition).setBot(false);
+            if(availablePosition() == null) {
+                connector.stopListen();
+            }
+        }
+        else {
+            connector.shutdownSocketTo(socketToClient);
+        }
     }
 
     public void onConnectToServerSucceeded(Socket socketToServer) {
         addChatLine("-- Kết nối Thành công. Chờ Thông tin từ Chủ phòng");
-        //TODO: Set lại view theo kiểu khách, không phải chủ phòng (Không có nút bắt đầu game)
+        setNodeToGone(btnStart);
+        playersSockets.put(Position.SOUTH, socketToServer);
+        connector.sendMessageTo(new Message(MessageType.JOIN_REQUEST, new JoinRequestMsgContent(players[0].nameProperty.get())), socketToServer);
     }
 
     public void onConnectToServerFailed() {
@@ -245,7 +263,13 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
     public void onConnectionToAClientLost(Socket socketToClient) {
         if(inRoom) addChatLine("-- Một người chơi đã thoát");
-        //TODO: Chuyển Player tại vị trí của người đó thành BOT, Đóng kết nối với người đó, Thông báo tới những Player khác.
+
+        Position position = getPositionBySocket(socketToClient);
+        getPlayerAt(position).reset();
+        playersSockets.remove(position);
+        connector.shutdownSocketTo(socketToClient);
+
+        connector.sendMessageToAll(new Message(MessageType.A_PLAYER_EXIT, new APlayerExitMsgContent(position)));
     }
 
     public void onConnectionToServerLost(Socket socketToServer) {
@@ -260,18 +284,104 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         Message message = (Message)msg;
         switch (message.getType()) {
             case CHAT:
-                String chatLine = ((ChatMsgContent)message.getContent()).getChatLine();
-                addChatLine(chatLine);
-                if(host) connector.sendMessageToAllExcept(msg, fromSocket);
+                onChat(msg, fromSocket);
                 break;
-            case UPDATE_NAME:
 
+            case UPDATE_NAME:
+                onUpdateName(msg, fromSocket);
+                break;
+
+            case JOIN_REQUEST:
+                onJoinRequest(msg, fromSocket);
+                break;
+
+            case JOIN_ACCEPT:
+                onJoinAccept(msg, fromSocket);
+                break;
+
+            case NEW_PLAYER_JOIN:
+                onNewPlayerJoin(msg, fromSocket);
                 break;
 
         }
     }
 
-    //End Xử lý các Xử kiện ở các thread khác gửi qua ------------------------------
+    //End Xử lý các Xử kiện ở các thread khác gửi qua -------------------------------
+
+    private void onChat(Object msg, Socket fromSocket) {
+        String chatLine = ((ChatMsgContent)((Message)msg).getContent()).getChatLine();
+        addChatLine(chatLine);
+        if(host) connector.sendMessageToAllExcept(msg, fromSocket);
+    }
+
+    private void onUpdateName(Object msg, Socket fromSocket) {
+        Position positionOfPlayer;
+        if(host) {
+            positionOfPlayer = getPositionBySocket(fromSocket);
+        }
+        else {
+            positionOfPlayer = ((UpdateNameMsgContent)((Message)msg).getContent()).getPosition();
+        }
+        String oldName = getPlayerAt(positionOfPlayer).nameProperty.get();
+        String newNameOfPlayer = ((UpdateNameMsgContent)((Message) msg).getContent()).getName();
+
+        setDisplayName(newNameOfPlayer, positionOfPlayer);
+
+        if(host) {
+            ((UpdateNameMsgContent)((Message) msg).getContent()).setPosition(positionOfPlayer);
+            connector.sendMessageToAllExcept(msg, fromSocket);
+        }
+
+        addChatLine("-- " + oldName + " đã đổi danh tánh thành " + newNameOfPlayer);
+    }
+
+    private void onJoinRequest(Object msg, Socket fromSocket) {
+        String name = ((JoinRequestMsgContent)((Message) msg).getContent()).getName();
+        Position position = getPositionBySocket(fromSocket);
+        Player[] otherPlayers = new Player[3];
+        int index = 0;
+        for(Player player : players) {
+            if(!player.getPosition().equals(position)) {
+                otherPlayers[index] = player;
+                index++;
+            }
+        }
+
+        connector.sendMessageTo(new Message(MessageType.JOIN_ACCEPT, new JoinAcceptMsgContent(position, otherPlayers)));
+        connector.sendMessageToAllExcept(new Message(MessageType.NEW_PLAYER_JOIN, new NewPlayerJoinMsgContent(position, name)), fromSocket);
+
+        addChatLine("-- " + name + " ngồi ở ghế " + position.getName());
+    }
+
+    private void onJoinAccept(Object msg, Socket fromSocket) {
+        Position myPosition = ((JoinAcceptMsgContent)((Message) msg).getContent()).getMyPosition();
+        players[0].setPosition(myPosition);
+        Player[] otherPlayers = ((JoinAcceptMsgContent)((Message) msg).getContent()).getOtherPlayers();
+        for(Player player : otherPlayers) {
+            setPlayer(myPosition, player);
+        }
+
+        addChatLine("-- Bạn đã tham gia Sòng.");
+    }
+
+    private void onNewPlayerJoin(Object msg, Socket fromSocket) {
+        Position position = ((NewPlayerJoinMsgContent)((Message)msg).getContent()).getPosition();
+        String name = ((NewPlayerJoinMsgContent)((Message)msg).getContent()).getName();
+        for(Player player : players) {
+            if(player.getPosition().equals(position)) {
+                player.nameProperty.set(name);
+                break;
+            }
+        }
+
+        addChatLine("-- " + name + " vừa vào Sòng.");
+    }
+
+    //Xử lý Message -----------------------------------------------------------------
+
+
+
+    //End Xử lý Message -------------------------------------------------------------
 
 
 
@@ -331,7 +441,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     private void setNodeToGone(Node... nodes) {
         for(Node node: nodes) {
             Platform.runLater(()->{
-                node.getStyleClass().set(2, "invisible-img");
+                node.getStyleClass().set(3, "invisible-img");
                 node.setMouseTransparent(true);
             });
         }
@@ -340,31 +450,62 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     private void setNodeToAppear(Node... nodes) {
         for(Node node : nodes) {
             Platform.runLater(()->{
-                node.getStyleClass().set(2, "visible-img");
+                node.getStyleClass().set(3, "visible-img");
                 node.setMouseTransparent(false);
             });
         }
     }
 
     private void setCardFace(Node node, String cardName) {
-        Platform.runLater(()-> node.getStyleClass().set(1, cardName));
+        Platform.runLater(()-> node.getStyleClass().set(2, cardName));
     }
 
     public void setDisplayName(String name, Position position) {
-        switch (position) {
-            case EAST:
-                Platform.runLater(()->txtNameEast.setText(name));
+        for(Player player : players) {
+            if(player.getPosition().equals(position)) {
+                player.nameProperty.set(name);
                 break;
-            case NORTH:
-                Platform.runLater(()->txtNameNorth.setText(name));
-                break;
-            case WEST:
-                Platform.runLater(()->txtNameWest.setText(name));
-                break;
-            case SOUTH:
-                Platform.runLater(()->txtNameMe.setText(name));
-                break;
+            }
         }
+    }
+
+    private Position availablePosition() {
+        Position result = null;
+        for(Player player : players) {
+            if(player.isBot()) {
+                result = player.getPosition();
+                break;
+            }
+        }
+        return result;
+    }
+
+    private Position getPositionBySocket(Socket socket) {
+        Position position = null;
+        for(Position position1 : Position.values()) {
+            if(playersSockets.get(position1).equals(socket)) {
+                position = position1;
+                break;
+            }
+        }
+        return position;
+    }
+
+    private void setPlayer(Position myPositon, Player player) {
+        int dP = player.getPosition().getOrder() - myPositon.getOrder();
+        if(dP < 0) dP += 4;
+        players[dP] = player;
+    }
+
+    private Player getPlayerAt(Position position) {
+        Player result = null;
+        for(Player player : players) {
+            if(player.getPosition().equals(position)) {
+                result = player;
+                break;
+            }
+        }
+        return result;
     }
 
     //End View Controller API -------------------------------------------------------

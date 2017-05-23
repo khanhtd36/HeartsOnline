@@ -5,13 +5,13 @@ import javafx.beans.property.StringProperty;
 import model.card.Card;
 import model.card.CardType;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Player {
-    public StringProperty nameProperty = new SimpleStringProperty("Thánh Bài");
+public class Player implements Serializable {
+    public StringProperty nameProperty = new SimpleStringProperty("BOT");
     private Position position;
-    private int id;
     private int accumulatedPoint = 0;
     private boolean bot = false;
 
@@ -36,11 +36,25 @@ public class Player {
     List<Card> cards = new ArrayList<>();
     List<Card> eatenCards = new ArrayList<>();
 
-    public Player(){}
+    public Player(){
+        bot = true;
+    }
+
+    public Player(Position position) {
+        this.position = position;
+        this.bot = true;
+    }
 
     public Player(Position position, String name) {
         this.position = position;
         nameProperty.set(name);
+        this.bot = false;
+    }
+
+    public Player(Player oldPlayer, boolean bot) {
+        this.position = oldPlayer.getPosition();
+        this.accumulatedPoint = oldPlayer.getAccumulatedPoint();
+        this.bot = bot;
     }
 
     public void sortCards() {
@@ -66,6 +80,14 @@ public class Player {
         return cards.get(0);
     }
 
+    public void reset() {
+        nameProperty.set("BOT");
+        bot = true;
+        accumulatedPoint = 0;
+        cards.clear();
+        eatenCards.clear();
+    }
+
 
 
     public boolean hasCardType(CardType type) {
@@ -88,14 +110,6 @@ public class Player {
         return position;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public int getCurrentHandPoint() {
         int result = 0;
         for(Card card : eatenCards) {
@@ -104,8 +118,15 @@ public class Player {
         return result;
     }
 
+    public int getAccumulatedPoint() {
+        return accumulatedPoint;
+    }
+
     public boolean isBot() {
         return bot;
     }
 
+    public void setBot(boolean bot) {
+        this.bot = bot;
+    }
 }
