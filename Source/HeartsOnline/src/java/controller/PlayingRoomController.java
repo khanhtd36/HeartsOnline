@@ -5,6 +5,7 @@ import controller.connection.Connector;
 import controller.message.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -14,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import model.HeartGame;
+import model.card.CardName;
 import model.player.Player;
 import model.player.Position;
 import org.apache.commons.lang3.text.WordUtils;
@@ -28,12 +30,12 @@ import java.util.ResourceBundle;
 public class PlayingRoomController implements Initializable, ConnectionCallback {
     private HeartGame gameModel = new HeartGame();
     private Player[] players = new Player[4];
-    private Map<Position, Socket> playersSockets = new HashMap<>();
+    private boolean host = true; //Có là chủ phòng hay không
+    private boolean inRoom = false;
 
     private Connector connector = new Connector(this);
+    private Map<Position, Socket> playersSockets = new HashMap<>();
 
-    private boolean host = false; //Có là chủ phòng hay không
-    private boolean inRoom = false;
 
     public void initialize(URL location, ResourceBundle resources) {
         setTheme("skin1");
@@ -47,6 +49,8 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         txtNameWest.textProperty().bind(players[1].nameProperty);
         txtNameNorth.textProperty().bind(players[2].nameProperty);
         txtNameEast.textProperty().bind(players[3].nameProperty);
+
+        txtCurRoundPoint.textProperty().bind(new SimpleStringProperty("Điểm ván hiện tại: ").concat(players[0].curHandPoint));
 
         cardWest.add(cardWest01);
         cardWest.add(cardWest02);
@@ -103,6 +107,11 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         cardMe.add(cardMe11);
         cardMe.add(cardMe12);
         cardMe.add(cardMe13);
+
+        cardDesks.add(cardMe);
+        cardDesks.add(cardWest);
+        cardDesks.add(cardNorth);
+        cardDesks.add(cardEast);
 
         btnStart.getStyleClass().set(1, "button-img");
         btnStart.getStyleClass().set(2, "start");
@@ -168,7 +177,17 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     public void startGame() {
+        try {
+            setDisableCommand(true);
+            connector.stopListen();
+        }
+        catch (Exception e) {
 
+        }
+        gameModel.init();
+
+        CardName[] cardNames = {CardName.TWO_OF_CLUBS, CardName.FOUR_OF_CLUBS, CardName.JACK_OF_CLUBS, CardName.FIVE_OF_DIAMONDS, CardName.JACK_OF_DIAMONDS, CardName.KING_OF_DIAMONDS, CardName.SIX_OF_SPADES, CardName.EIGHT_OF_SPADES, CardName.QUEEN_OF_SPADES, CardName.ACE_OF_SPADES, CardName.FIVE_OF_HEARTS, CardName.EIGHT_OF_HEARTS, CardName.KING_OF_HEARTS};
+        distributeCard(cardNames);
     }
 
     public void toTheLeft() {
@@ -228,6 +247,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     public void onListenerOpenSucceeded(String connectionString) {
+        host = true;
         inRoom = true;
         txtConnectionString.setText(connectionString);
         addChatLine("-- Mở sòng Thành công, Gửi bạn bè Chuỗi kết nối phía trên để vào Sòng.");
@@ -249,6 +269,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     public void onConnectToServerSucceeded(Socket socketToServer) {
+        host = false;
         addChatLine("-- Kết nối Thành công. Chờ Thông tin từ Chủ phòng");
         setNodeToGone(btnStart);
         playersSockets.put(Position.SOUTH, socketToServer);
@@ -307,6 +328,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     //End Xử lý các Xử kiện ở các thread khác gửi qua -------------------------------
+
+
+
+    //Xử lý Message -----------------------------------------------------------------
 
     private void onChat(Object msg, Socket fromSocket) {
         String chatLine = ((ChatMsgContent)((Message)msg).getContent()).getChatLine();
@@ -377,10 +402,6 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         addChatLine("-- " + name + " vừa vào Sòng.");
     }
 
-    //Xử lý Message -----------------------------------------------------------------
-
-
-
     //End Xử lý Message -------------------------------------------------------------
 
 
@@ -404,9 +425,6 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
                 Platform.runLater(()->rootSceneNode.getStylesheets().set(1, "styles/CardSkin2.css"));
                 break;
         }
-    }
-
-    public void showPopUpMessage(String message) {
     }
 
     private void resetView() {
@@ -508,6 +526,98 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         return result;
     }
 
+    public void westPlayCard(int trick, CardName card) {
+        setNodeToGone(cardWest.get(12 - trick));
+        setCardFace(cardTrickWest, card.getCssClassName());
+        setNodeToAppear(cardTrickWest);
+    }
+
+    public void northPlayCard(int trick, CardName card) {
+        setNodeToGone(cardNorth.get(12 - trick));
+        setCardFace(cardTrickNorth, card.getCssClassName());
+        setNodeToAppear(cardTrickNorth);
+    }
+
+    public void eastPlayCard(int trick, CardName card) {
+        setNodeToGone(cardEast.get(12 - trick));
+        setCardFace(cardTrickEast, card.getCssClassName());
+        setNodeToAppear(cardTrickEast);
+    }
+
+    public void mePlayCard(int trick, CardName card) {
+        setNodeToGone(cardMe.get(12 - trick));
+        setCardFace(cardTrickMe, card.getCssClassName());
+        setNodeToAppear(cardTrickMe);
+    }
+
+    public void collectCard() {
+        Thread thread = new Thread(()->{
+            try {
+                Thread.sleep(2000);
+                setNodeToGone(cardTrickWest, cardTrickNorth, cardTrickEast, cardTrickMe);
+            }
+            catch (Exception e) {
+
+            }
+        });
+
+        thread.start();
+    }
+
+    public void distributeCard(CardName[] cards) {
+        Thread thread = new Thread(()-> {
+            for(ArrayList<ImageView> cardDesk : cardDesks) {
+                for(Node card : cardDesk) {
+                    setNodeToGone(card);
+                }
+            }
+
+            for(int i = 0; i < 13; i++) {
+                try {
+                    setCardFace(cardWest.get(i), CardName.UNKNOWN.getCssClassName());
+                    setNodeToAppear(cardWest.get(i));
+                    Thread.sleep(3);
+
+                    setCardFace(cardNorth.get(i), CardName.UNKNOWN.getCssClassName());
+                    setNodeToAppear(cardNorth.get(i));
+                    Thread.sleep(3);
+
+                    setCardFace(cardEast.get(i), CardName.UNKNOWN.getCssClassName());
+                    setNodeToAppear(cardEast.get(i));
+                    Thread.sleep(3);
+
+                    setCardFace(cardMe.get(i), cards[i].getCssClassName());
+                    setNodeToAppear(cardMe.get(i));
+                    Thread.sleep(3);
+                }
+                catch (Exception e) {
+                    continue;
+                }
+            }
+        });
+        thread.start();
+    }
+
+    public void setExchangeCardButton(int trick) {
+        trick %= 3;
+        switch (trick) {
+            case 0:
+                setNodeToAppear(leftArrow);
+                setNodeToGone(upArrow, rightArrow);
+                break;
+
+            case 1:
+                setNodeToAppear(rightArrow);
+                setNodeToGone(leftArrow, upArrow);
+                break;
+
+            case 2:
+                setNodeToAppear(upArrow);
+                setNodeToGone(leftArrow, rightArrow);
+                break;
+        }
+    }
+
     //End View Controller API -------------------------------------------------------
 
 
@@ -530,6 +640,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     private ArrayList<ImageView> cardNorth = new ArrayList<>();
     private ArrayList<ImageView> cardEast = new ArrayList<>();
     private ArrayList<ImageView> cardMe = new ArrayList<>();
+    private ArrayList<ArrayList<ImageView>> cardDesks = new ArrayList<>();
 
     //End các control trên view cần can thiệp ---------------------------------------
 }

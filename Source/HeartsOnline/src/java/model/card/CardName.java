@@ -64,13 +64,16 @@ public enum CardName {
     ACE_OF_SPADES(CardType.SPADES, 12, 0, "ace-of-spades"),
     ACE_OF_CLUBS(CardType.CLUBS, 12, 0, "ace-of-clubs"),
     ACE_OF_DIAMONDS(CardType.DIAMONDS, 12, 0, "ace-of-diamonds"),
-    ACE_OF_HEARTS(CardType.HEARTS, 12, 1, "ace-of-hearts");
+    ACE_OF_HEARTS(CardType.HEARTS, 12, 1, "ace-of-hearts"),
 
-    private int value;
-    private int point;
-    private String cssClassName;
-    private CardType cardType;
+    UNKNOWN;
 
+    private int value = 0;
+    private int point = 0;
+    private String cssClassName = "card-back";
+    private CardType cardType = null;
+
+    CardName(){}
     CardName(CardType cardType, int value, int point, String cssClassName) {
         this.value = value;
         this.point = point;

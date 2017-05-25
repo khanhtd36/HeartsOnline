@@ -14,24 +14,7 @@ public class Player implements Serializable {
     private Position position;
     private int accumulatedPoint = 0;
     private boolean bot = false;
-
-    private static ArrayList<Integer> usedIds = new ArrayList<>();
-    public static int generateId() {
-        int validId = 0;
-        while(usedIds.contains(validId)) {
-            validId++;
-        }
-        return validId;
-    }
-    public static void resetUsedIds(int... idsReserved) {
-        usedIds.clear();
-        for(int id : idsReserved) {
-            usedIds.add(id);
-        }
-    }
-    public static void useId(int id) {
-        usedIds.add(id);
-    }
+    public StringProperty curHandPoint = new SimpleStringProperty("0");
 
     List<Card> cards = new ArrayList<>();
     List<Card> eatenCards = new ArrayList<>();
