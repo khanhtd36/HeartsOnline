@@ -62,6 +62,8 @@ public class HeartGame {
             indexList.set(i, indexList.get(indexToExchange));
             indexList.set(indexToExchange, tmp);
         }
+
+
     }
 
     public List<CardName> getCardDeskOf(Position position) {

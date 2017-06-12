@@ -28,6 +28,31 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class PlayingRoomController implements Initializable, ConnectionCallback {
+
+    //Các control trên view cần can thiệp -------------------------------------------
+
+    public AnchorPane rootSceneNode;
+    public Text txtCurRoundPoint;
+    public ImageView cardWest01, cardWest02, cardWest03, cardWest04, cardWest05, cardWest06, cardWest07, cardWest08, cardWest09, cardWest10, cardWest11, cardWest12, cardWest13;
+    public ImageView cardNorth01, cardNorth02, cardNorth03, cardNorth04, cardNorth05, cardNorth06, cardNorth07, cardNorth08, cardNorth09, cardNorth10, cardNorth11, cardNorth12, cardNorth13;
+    public ImageView cardEast01, cardEast02, cardEast03, cardEast04, cardEast05, cardEast06, cardEast07, cardEast08, cardEast09, cardEast10, cardEast11, cardEast12, cardEast13;
+    public ImageView cardMe01, cardMe02, cardMe03, cardMe04, cardMe05, cardMe06, cardMe07, cardMe08, cardMe09, cardMe10, cardMe11, cardMe12, cardMe13;
+    public ImageView cardTrickWest, cardTrickNorth, cardTrickEast, cardTrickMe;
+    public ImageView btnStart, leftArrow, rightArrow, upArrow;
+    public Text txtNameMe, txtNameWest, txtNameNorth, txtNameEast;
+    public ListView lstChatView;
+    public TextField txtChatTextField;
+    public TextField txtDisplayName, txtConnectionString;
+    public Button btnOpenRoom, btnJoinRoom, btnExitRoom;
+    private ArrayList<ImageView> cardWest = new ArrayList<>();
+    private ArrayList<ImageView> cardNorth = new ArrayList<>();
+    private ArrayList<ImageView> cardEast = new ArrayList<>();
+    private ArrayList<ImageView> cardMe = new ArrayList<>();
+    private ArrayList<ArrayList<ImageView>> cardDesks = new ArrayList<>();
+
+    //End các control trên view cần can thiệp ---------------------------------------
+
+
     private HeartGame gameModel = new HeartGame();
     private Player[] players = new Player[4];
     private boolean host = true; //Có là chủ phòng hay không
@@ -179,6 +204,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     public void startGame() {
         try {
             setDisableCommand(true);
+            setNodeToGone(btnStart);
             connector.stopListen();
         }
         catch (Exception e) {
@@ -619,28 +645,4 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     //End View Controller API -------------------------------------------------------
-
-
-    //Các control trên view cần can thiệp -------------------------------------------
-
-    public AnchorPane rootSceneNode;
-    public Text txtCurRoundPoint;
-    public ImageView cardWest01, cardWest02, cardWest03, cardWest04, cardWest05, cardWest06, cardWest07, cardWest08, cardWest09, cardWest10, cardWest11, cardWest12, cardWest13;
-    public ImageView cardNorth01, cardNorth02, cardNorth03, cardNorth04, cardNorth05, cardNorth06, cardNorth07, cardNorth08, cardNorth09, cardNorth10, cardNorth11, cardNorth12, cardNorth13;
-    public ImageView cardEast01, cardEast02, cardEast03, cardEast04, cardEast05, cardEast06, cardEast07, cardEast08, cardEast09, cardEast10, cardEast11, cardEast12, cardEast13;
-    public ImageView cardMe01, cardMe02, cardMe03, cardMe04, cardMe05, cardMe06, cardMe07, cardMe08, cardMe09, cardMe10, cardMe11, cardMe12, cardMe13;
-    public ImageView cardTrickWest, cardTrickNorth, cardTrickEast, cardTrickMe;
-    public ImageView btnStart, leftArrow, rightArrow, upArrow;
-    public Text txtNameMe, txtNameWest, txtNameNorth, txtNameEast;
-    public ListView lstChatView;
-    public TextField txtChatTextField;
-    public TextField txtDisplayName, txtConnectionString;
-    public Button btnOpenRoom, btnJoinRoom, btnExitRoom;
-    private ArrayList<ImageView> cardWest = new ArrayList<>();
-    private ArrayList<ImageView> cardNorth = new ArrayList<>();
-    private ArrayList<ImageView> cardEast = new ArrayList<>();
-    private ArrayList<ImageView> cardMe = new ArrayList<>();
-    private ArrayList<ArrayList<ImageView>> cardDesks = new ArrayList<>();
-
-    //End các control trên view cần can thiệp ---------------------------------------
 }
