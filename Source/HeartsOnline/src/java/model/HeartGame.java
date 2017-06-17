@@ -116,7 +116,7 @@ public class HeartGame implements Serializable {
         players.get(0).setCards(cardDesks.get(Position.SOUTH));
         players.get(1).setCards(cardDesks.get(Position.WEST));
         players.get(2).setCards(cardDesks.get(Position.NORTH));
-        players.get(3).setCards(cardDesks.get(Position.WEST));
+        players.get(3).setCards(cardDesks.get(Position.EAST));
 
         for (Player player : players) {
             player.sortCards();

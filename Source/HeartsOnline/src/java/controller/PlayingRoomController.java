@@ -6,6 +6,7 @@ import controller.message.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -60,8 +61,6 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     public void initialize(URL location, ResourceBundle resources) {
         setTheme("skin1");
         btnExitRoom.disableProperty().bind(btnOpenRoom.disabledProperty().isNotEqualTo(new SimpleBooleanProperty(true)));
-
-        bindTextName();
 
         txtCurRoundPoint.textProperty().bind(new SimpleStringProperty("Điểm ván hiện tại: ").concat(gameModel.getPlayer(Position.SOUTH).curHandPoint));
 
@@ -216,8 +215,8 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
     }
 
-    public void clickOnCard() {
-
+    public void clickOnCard(ActionEvent e) {
+        String CardId = ((ImageView)e.getSource()).getId();
     }
 
     public void submitChat() {
@@ -268,6 +267,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         if (availablePosition != null) {
             addChatLine("-- Một người chơi đã kết nối");
             socketPositionMap.put(socketToClient, availablePosition);
+            gameModel.getPlayer(availablePosition).setBot(false);
 
             ArrayList<Player> otherPlayers = ((ArrayList<Player>) gameModel.getPlayers().clone());
             otherPlayers.remove(gameModel.getPlayer(availablePosition));
@@ -375,6 +375,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         Position position = getPositionBySocket(fromSocket);
         if (position != null) {
             connector.sendMessageToAllExcept(new Message(MessageType.NEW_PLAYER_JOIN, new NewPlayerJoinMsgContent(position, name)), fromSocket);
+            gameModel.setPlayerName(position, name);
 
             addChatLine("-- " + name + " ngồi ở ghế " + position.getName());
         }
@@ -383,6 +384,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     private void onJoinAccept(Object msg, Socket fromSocket) {
         Position myPosition = ((JoinAcceptMsgContent) ((Message) msg).getContent()).getMyPosition();
         gameModel.setMyPosition(myPosition);
+        gameModel.getPlayers().get(0).setPosition(myPosition);
         Player[] otherPlayers = ((JoinAcceptMsgContent) ((Message) msg).getContent()).getOtherPlayers();
         for (Player player : otherPlayers) {
             setPlayer(myPosition, player);
@@ -580,20 +582,6 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
                 setNodeToGone(leftArrow, upArrow, rightArrow);
                 break;
         }
-    }
-
-    public void bindTextName() {
-        txtNameMe.textProperty().bind(new SimpleStringProperty("").concat(gameModel.getPlayer(Position.SOUTH).name));
-        txtNameWest.textProperty().bind(new SimpleStringProperty("").concat(gameModel.getPlayer(Position.WEST).name));
-        txtNameNorth.textProperty().bind(new SimpleStringProperty("").concat(gameModel.getPlayer(Position.NORTH).name));
-        txtNameEast.textProperty().bind(new SimpleStringProperty("").concat(gameModel.getPlayer(Position.EAST).name));
-    }
-
-    public void unBindTextName() {
-        txtNameMe.textProperty().unbind();
-        txtNameWest.textProperty().unbind();
-        txtNameNorth.textProperty().unbind();
-        txtNameEast.textProperty().unbind();
     }
 
     //End View Controller API -------------------------------------------------------
