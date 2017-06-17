@@ -1,6 +1,8 @@
 package model.card;
 
-public enum CardName {
+import java.io.Serializable;
+
+public enum CardName implements Serializable {
     TWO_OF_SPADES(CardType.SPADES, 0, 0, "two-of-spades"),
     TWO_OF_CLUBS(CardType.CLUBS, 0, 0, "two-of-clubs"),
     TWO_OF_DIAMONDS(CardType.DIAMONDS, 0, 0, "two-of-diamonds"),

@@ -4,12 +4,13 @@ import model.player.Player;
 import model.player.Position;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class JoinAcceptMsgContent implements Serializable {
     private Position myPosition;
     private Player[] otherPlayers = new Player[3];
 
-    public JoinAcceptMsgContent(Position myPosition, Player... otherPlayers) {
+    public JoinAcceptMsgContent(Position myPosition, List<Player> otherPlayers) {
         this.myPosition = myPosition;
         int index = 0;
         for(Player player : otherPlayers) {

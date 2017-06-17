@@ -1,6 +1,8 @@
 package model.card;
 
-public enum CardType {
+import java.io.Serializable;
+
+public enum CardType implements Serializable {
     SPADES(2),
     CLUBS(0),
     DIAMONDS(1),

@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import model.HeartGame;
+import model.card.Card;
 import model.card.CardName;
 import model.player.Player;
 import model.player.Position;
@@ -22,10 +23,7 @@ import org.apache.commons.lang3.text.WordUtils;
 
 import java.net.Socket;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class PlayingRoomController implements Initializable, ConnectionCallback {
 
@@ -54,28 +52,18 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
 
     private HeartGame gameModel = new HeartGame();
-    private Player[] players = new Player[4];
     private boolean host = true; //Có là chủ phòng hay không
-    private boolean inRoom = false;
+    private Map<Socket, Position> socketPositionMap = new HashMap<>();
 
     private Connector connector = new Connector(this);
-    private Map<Position, Socket> playersSockets = new HashMap<>();
-
 
     public void initialize(URL location, ResourceBundle resources) {
         setTheme("skin1");
         btnExitRoom.disableProperty().bind(btnOpenRoom.disabledProperty().isNotEqualTo(new SimpleBooleanProperty(true)));
-        players[0] = new Player(Position.SOUTH, "Thánh Bài");
-        players[1] = new Player(Position.WEST);
-        players[2] = new Player(Position.NORTH);
-        players[3] = new Player(Position.EAST);
 
-        txtNameMe.textProperty().bind(players[0].nameProperty);
-        txtNameWest.textProperty().bind(players[1].nameProperty);
-        txtNameNorth.textProperty().bind(players[2].nameProperty);
-        txtNameEast.textProperty().bind(players[3].nameProperty);
+        bindTextName();
 
-        txtCurRoundPoint.textProperty().bind(new SimpleStringProperty("Điểm ván hiện tại: ").concat(players[0].curHandPoint));
+        txtCurRoundPoint.textProperty().bind(new SimpleStringProperty("Điểm ván hiện tại: ").concat(gameModel.getPlayer(Position.SOUTH).curHandPoint));
 
         cardWest.add(cardWest01);
         cardWest.add(cardWest02);
@@ -155,24 +143,24 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         rightArrow.getStyleClass().set(3, "invisible-img");
 
 
-        for(ImageView card : cardMe) {
+        for (ImageView card : cardMe) {
             card.getStyleClass().set(1, "my-card");
             card.getStyleClass().set(2, "card-back");
             card.getStyleClass().set(3, "visible-img");
             card.getStyleClass().set(4, "unchosen-card");
         }
 
-        for(ImageView card : cardWest) {
+        for (ImageView card : cardWest) {
             card.getStyleClass().set(1, "others-card");
             card.getStyleClass().set(2, "card-back");
             card.getStyleClass().set(3, "visible-img");
         }
-        for(ImageView card : cardNorth) {
+        for (ImageView card : cardNorth) {
             card.getStyleClass().set(1, "others-card");
             card.getStyleClass().set(2, "card-back");
             card.getStyleClass().set(3, "visible-img");
         }
-        for(ImageView card : cardEast) {
+        for (ImageView card : cardEast) {
             card.getStyleClass().set(1, "others-card");
             card.getStyleClass().set(2, "card-back");
             card.getStyleClass().set(3, "visible-img");
@@ -183,10 +171,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
     public void updateDisplayName() {
         String newName = txtDisplayName.getText();
-        players[0].nameProperty.set(newName);
+        gameModel.setPlayerName(gameModel.getMyPosition(), newName);
         txtChatTextField.requestFocus();
 
-        connector.sendMessageToAll(new Message(MessageType.UPDATE_NAME, new UpdateNameMsgContent(players[0].getPosition(), newName)));
+        connector.sendMessageToAll(new Message(MessageType.UPDATE_NAME, new UpdateNameMsgContent(gameModel.getMyPosition(), newName)));
     }
 
     public void openRoom() {
@@ -206,13 +194,13 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
             setDisableCommand(true);
             setNodeToGone(btnStart);
             connector.stopListen();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
 
         }
         gameModel.init();
 
-        CardName[] cardNames = {CardName.TWO_OF_CLUBS, CardName.FOUR_OF_CLUBS, CardName.JACK_OF_CLUBS, CardName.FIVE_OF_DIAMONDS, CardName.JACK_OF_DIAMONDS, CardName.KING_OF_DIAMONDS, CardName.SIX_OF_SPADES, CardName.EIGHT_OF_SPADES, CardName.QUEEN_OF_SPADES, CardName.ACE_OF_SPADES, CardName.FIVE_OF_HEARTS, CardName.EIGHT_OF_HEARTS, CardName.KING_OF_HEARTS};
+        gameModel.generateCard();
+        List<Card> cardNames = gameModel.getCardDeskOf(gameModel.getMyPosition());
         distributeCard(cardNames);
     }
 
@@ -238,17 +226,15 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
             addChatLine("Bạn: " + chatLine);
             txtChatTextField.setText("");
 
-            //TEST : Sau này cần chuyển về chuẩn class message, loại thông điệp là chat
-            connector.sendMessageToAll(new Message(MessageType.CHAT, new ChatMsgContent(players[0].nameProperty.get() + ": " + chatLine)));
+            connector.sendMessageToAll(new Message(MessageType.CHAT, new ChatMsgContent(gameModel.getName(gameModel.getMyPosition()) + ": " + chatLine)));
         }
     }
 
     public void exitRoom() {
         host = false;
-        inRoom = false;
         connector.close();
         addChatLine("-- Bạn đã rời Sòng.");
-        gameModel.reset();
+        gameModel.resetAll();
         resetView();
         setDisableCommand(false);
     }
@@ -264,7 +250,6 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     //End Xử lý Các hành động do người dùng trực tiếp tác động lên view ------------
 
 
-
     //Xử lý các Xử kiện ở các thread khác gửi qua ----------------------------------
 
     public void onListenerOpenFailed() {
@@ -274,23 +259,24 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
     public void onListenerOpenSucceeded(String connectionString) {
         host = true;
-        inRoom = true;
         txtConnectionString.setText(connectionString);
         addChatLine("-- Mở sòng Thành công, Gửi bạn bè Chuỗi kết nối phía trên để vào Sòng.");
     }
 
     public synchronized void onConnectionReceived(Socket socketToClient) {
-        addChatLine("-- Một người chơi đã kết nối");
-        Position availablePosition = availablePosition();
-        if(availablePosition != null) {
-            playersSockets.put(availablePosition, socketToClient);
-            getPlayerAt(availablePosition).setBot(false);
-            if(availablePosition() == null) {
-                connector.stopListen();
-            }
-        }
-        else {
-            connector.shutdownSocketTo(socketToClient);
+        Position availablePosition = gameModel.getAvailablePosition();
+        if (availablePosition != null) {
+            addChatLine("-- Một người chơi đã kết nối");
+            socketPositionMap.put(socketToClient, availablePosition);
+
+            ArrayList<Player> otherPlayers = ((ArrayList<Player>) gameModel.getPlayers().clone());
+            otherPlayers.remove(gameModel.getPlayer(availablePosition));
+
+            Message msg = new Message(MessageType.JOIN_ACCEPT, new JoinAcceptMsgContent(availablePosition, otherPlayers));
+
+            connector.sendMessageTo(msg, socketToClient);
+        } else {
+            connector.shutdownConnectionTo(socketToClient);
         }
     }
 
@@ -298,8 +284,9 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         host = false;
         addChatLine("-- Kết nối Thành công. Chờ Thông tin từ Chủ phòng");
         setNodeToGone(btnStart);
-        playersSockets.put(Position.SOUTH, socketToServer);
-        connector.sendMessageTo(new Message(MessageType.JOIN_REQUEST, new JoinRequestMsgContent(players[0].nameProperty.get())), socketToServer);
+
+        String name = txtNameMe.getText();
+        connector.sendMessageTo(new Message(MessageType.JOIN_REQUEST, new JoinRequestMsgContent(name)), socketToServer);
     }
 
     public void onConnectToServerFailed() {
@@ -309,18 +296,17 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     public void onConnectionToAClientLost(Socket socketToClient) {
-        if(inRoom) addChatLine("-- Một người chơi đã thoát");
+        addChatLine("-- Một người chơi đã thoát");
 
         Position position = getPositionBySocket(socketToClient);
-        getPlayerAt(position).reset();
-        playersSockets.remove(position);
-        connector.shutdownSocketTo(socketToClient);
+        gameModel.getPlayer(position).reset();
+        socketPositionMap.remove(position);
+        connector.shutdownConnectionTo(socketToClient);
 
         connector.sendMessageToAll(new Message(MessageType.A_PLAYER_EXIT, new APlayerExitMsgContent(position)));
     }
 
     public void onConnectionToServerLost(Socket socketToServer) {
-        inRoom = false;
         addChatLine("-- Mất kết nối với Chủ phòng. Game kết thúc!");
         connector.close();
         exitRoom();
@@ -328,7 +314,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
     public void onMsgReceived(Object msg, Socket fromSocket) {
         //TODO: Xử lý khi nhận Thông điệp
-        Message message = (Message)msg;
+        Message message = (Message) msg;
         switch (message.getType()) {
             case CHAT:
                 onChat(msg, fromSocket);
@@ -356,30 +342,28 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     //End Xử lý các Xử kiện ở các thread khác gửi qua -------------------------------
 
 
-
     //Xử lý Message -----------------------------------------------------------------
 
     private void onChat(Object msg, Socket fromSocket) {
-        String chatLine = ((ChatMsgContent)((Message)msg).getContent()).getChatLine();
+        String chatLine = ((ChatMsgContent) ((Message) msg).getContent()).getChatLine();
         addChatLine(chatLine);
-        if(host) connector.sendMessageToAllExcept(msg, fromSocket);
+        if (host) connector.sendMessageToAllExcept(msg, fromSocket);
     }
 
     private void onUpdateName(Object msg, Socket fromSocket) {
         Position positionOfPlayer;
-        if(host) {
+        if (host) {
             positionOfPlayer = getPositionBySocket(fromSocket);
+        } else {
+            positionOfPlayer = ((UpdateNameMsgContent) ((Message) msg).getContent()).getPosition();
         }
-        else {
-            positionOfPlayer = ((UpdateNameMsgContent)((Message)msg).getContent()).getPosition();
-        }
-        String oldName = getPlayerAt(positionOfPlayer).nameProperty.get();
-        String newNameOfPlayer = ((UpdateNameMsgContent)((Message) msg).getContent()).getName();
+        String oldName = gameModel.getPlayer(positionOfPlayer).getName();
+        String newNameOfPlayer = ((UpdateNameMsgContent) ((Message) msg).getContent()).getName();
 
         setDisplayName(newNameOfPlayer, positionOfPlayer);
 
-        if(host) {
-            ((UpdateNameMsgContent)((Message) msg).getContent()).setPosition(positionOfPlayer);
+        if (host) {
+            ((UpdateNameMsgContent) ((Message) msg).getContent()).setPosition(positionOfPlayer);
             connector.sendMessageToAllExcept(msg, fromSocket);
         }
 
@@ -387,28 +371,20 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     private void onJoinRequest(Object msg, Socket fromSocket) {
-        String name = ((JoinRequestMsgContent)((Message) msg).getContent()).getName();
+        String name = ((JoinRequestMsgContent) ((Message) msg).getContent()).getName();
         Position position = getPositionBySocket(fromSocket);
-        Player[] otherPlayers = new Player[3];
-        int index = 0;
-        for(Player player : players) {
-            if(!player.getPosition().equals(position)) {
-                otherPlayers[index] = player;
-                index++;
-            }
+        if (position != null) {
+            connector.sendMessageToAllExcept(new Message(MessageType.NEW_PLAYER_JOIN, new NewPlayerJoinMsgContent(position, name)), fromSocket);
+
+            addChatLine("-- " + name + " ngồi ở ghế " + position.getName());
         }
-
-        connector.sendMessageTo(new Message(MessageType.JOIN_ACCEPT, new JoinAcceptMsgContent(position, otherPlayers)));
-        connector.sendMessageToAllExcept(new Message(MessageType.NEW_PLAYER_JOIN, new NewPlayerJoinMsgContent(position, name)), fromSocket);
-
-        addChatLine("-- " + name + " ngồi ở ghế " + position.getName());
     }
 
     private void onJoinAccept(Object msg, Socket fromSocket) {
-        Position myPosition = ((JoinAcceptMsgContent)((Message) msg).getContent()).getMyPosition();
-        players[0].setPosition(myPosition);
-        Player[] otherPlayers = ((JoinAcceptMsgContent)((Message) msg).getContent()).getOtherPlayers();
-        for(Player player : otherPlayers) {
+        Position myPosition = ((JoinAcceptMsgContent) ((Message) msg).getContent()).getMyPosition();
+        gameModel.setMyPosition(myPosition);
+        Player[] otherPlayers = ((JoinAcceptMsgContent) ((Message) msg).getContent()).getOtherPlayers();
+        for (Player player : otherPlayers) {
             setPlayer(myPosition, player);
         }
 
@@ -416,14 +392,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     private void onNewPlayerJoin(Object msg, Socket fromSocket) {
-        Position position = ((NewPlayerJoinMsgContent)((Message)msg).getContent()).getPosition();
-        String name = ((NewPlayerJoinMsgContent)((Message)msg).getContent()).getName();
-        for(Player player : players) {
-            if(player.getPosition().equals(position)) {
-                player.nameProperty.set(name);
-                break;
-            }
-        }
+        Position position = ((NewPlayerJoinMsgContent) ((Message) msg).getContent()).getPosition();
+        String name = ((NewPlayerJoinMsgContent) ((Message) msg).getContent()).getName();
+
+        gameModel.getPlayer(position).setName(name);
 
         addChatLine("-- " + name + " vừa vào Sòng.");
     }
@@ -431,11 +403,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     //End Xử lý Message -------------------------------------------------------------
 
 
-
     //view controller API -----------------------------------------------------------
 
     public void addChatLine(String message) {
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
             lstChatView.getItems().add(WordUtils.wrap(message, 45));
             lstChatView.scrollTo(lstChatView.getItems().size() - 1);
         });
@@ -445,10 +416,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         themeName = themeName.toLowerCase();
         switch (themeName) {
             case "skin1":
-                Platform.runLater(()->rootSceneNode.getStylesheets().set(1, "styles/CardSkin1.css"));
+                Platform.runLater(() -> rootSceneNode.getStylesheets().set(1, "styles/CardSkin1.css"));
                 break;
             case "skin2":
-                Platform.runLater(()->rootSceneNode.getStylesheets().set(1, "styles/CardSkin2.css"));
+                Platform.runLater(() -> rootSceneNode.getStylesheets().set(1, "styles/CardSkin2.css"));
                 break;
         }
     }
@@ -456,26 +427,26 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     private void resetView() {
         setNodeToAppear(btnStart);
         setNodeToGone(leftArrow, rightArrow, upArrow);
-        for(ImageView card : cardWest) {
+        for (ImageView card : cardWest) {
             setNodeToAppear(card);
             setCardFace(card, "card-back");
         }
-        for(ImageView card : cardNorth) {
+        for (ImageView card : cardNorth) {
             setNodeToAppear(card);
             setCardFace(card, "card-back");
         }
-        for(ImageView card : cardEast) {
+        for (ImageView card : cardEast) {
             setNodeToAppear(card);
             setCardFace(card, "card-back");
         }
-        for(ImageView card : cardMe) {
+        for (ImageView card : cardMe) {
             setNodeToAppear(card);
             setCardFace(card, "card-back");
         }
     }
 
     private void setDisableCommand(boolean b) {
-        Platform.runLater(()->{
+        Platform.runLater(() -> {
             btnOpenRoom.setDisable(b);
             txtConnectionString.setEditable(!b);
             btnJoinRoom.setDisable(b);
@@ -483,8 +454,8 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     private void setNodeToGone(Node... nodes) {
-        for(Node node: nodes) {
-            Platform.runLater(()->{
+        for (Node node : nodes) {
+            Platform.runLater(() -> {
                 node.getStyleClass().set(3, "invisible-img");
                 node.setMouseTransparent(true);
             });
@@ -492,8 +463,8 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     private void setNodeToAppear(Node... nodes) {
-        for(Node node : nodes) {
-            Platform.runLater(()->{
+        for (Node node : nodes) {
+            Platform.runLater(() -> {
                 node.getStyleClass().set(3, "visible-img");
                 node.setMouseTransparent(false);
             });
@@ -501,55 +472,21 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     private void setCardFace(Node node, String cardName) {
-        Platform.runLater(()-> node.getStyleClass().set(2, cardName));
+        Platform.runLater(() -> node.getStyleClass().set(2, cardName));
     }
 
     public void setDisplayName(String name, Position position) {
-        for(Player player : players) {
-            if(player.getPosition().equals(position)) {
-                player.nameProperty.set(name);
-                break;
-            }
-        }
-    }
-
-    private Position availablePosition() {
-        Position result = null;
-        for(Player player : players) {
-            if(player.isBot()) {
-                result = player.getPosition();
-                break;
-            }
-        }
-        return result;
+        gameModel.getPlayer(position).setName(name);
     }
 
     private Position getPositionBySocket(Socket socket) {
-        Position position = null;
-        for(Position position1 : Position.values()) {
-            if(playersSockets.get(position1).equals(socket)) {
-                position = position1;
-                break;
-            }
-        }
-        return position;
+        return socketPositionMap.get(socket);
     }
 
     private void setPlayer(Position myPositon, Player player) {
         int dP = player.getPosition().getOrder() - myPositon.getOrder();
-        if(dP < 0) dP += 4;
-        players[dP] = player;
-    }
-
-    private Player getPlayerAt(Position position) {
-        Player result = null;
-        for(Player player : players) {
-            if(player.getPosition().equals(position)) {
-                result = player;
-                break;
-            }
-        }
-        return result;
+        if (dP < 0) dP += 4;
+        gameModel.getPlayers().set(dP, player);
     }
 
     public void westPlayCard(int trick, CardName card) {
@@ -577,28 +514,26 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     public void collectCard() {
-        Thread thread = new Thread(()->{
+        Thread thread = new Thread (() -> {
             try {
                 Thread.sleep(2000);
                 setNodeToGone(cardTrickWest, cardTrickNorth, cardTrickEast, cardTrickMe);
-            }
-            catch (Exception e) {
+            } catch (Exception e) {
 
             }
         });
-
         thread.start();
     }
 
-    public void distributeCard(CardName[] cards) {
-        Thread thread = new Thread(()-> {
-            for(ArrayList<ImageView> cardDesk : cardDesks) {
-                for(Node card : cardDesk) {
+    public void distributeCard(List<Card> cards) {
+        Thread thread = new Thread(() -> {
+            for (ArrayList<ImageView> cardDesk : cardDesks) {
+                for (Node card : cardDesk) {
                     setNodeToGone(card);
                 }
             }
 
-            for(int i = 0; i < 13; i++) {
+            for (int i = 0; i < 13; i++) {
                 try {
                     setCardFace(cardWest.get(i), CardName.UNKNOWN.getCssClassName());
                     setNodeToAppear(cardWest.get(i));
@@ -612,11 +547,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
                     setNodeToAppear(cardEast.get(i));
                     Thread.sleep(3);
 
-                    setCardFace(cardMe.get(i), cards[i].getCssClassName());
+                    setCardFace(cardMe.get(i), cards.get(i).getCssClassName());
                     setNodeToAppear(cardMe.get(i));
                     Thread.sleep(3);
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     continue;
                 }
             }
@@ -624,9 +558,9 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         thread.start();
     }
 
-    public void setExchangeCardButton(int trick) {
-        trick %= 3;
-        switch (trick) {
+    public void setExchangeCardButton(int hand) {
+        hand %= 4;
+        switch (hand) {
             case 0:
                 setNodeToAppear(leftArrow);
                 setNodeToGone(upArrow, rightArrow);
@@ -641,7 +575,25 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
                 setNodeToAppear(upArrow);
                 setNodeToGone(leftArrow, rightArrow);
                 break;
+
+            case 3:
+                setNodeToGone(leftArrow, upArrow, rightArrow);
+                break;
         }
+    }
+
+    public void bindTextName() {
+        txtNameMe.textProperty().bind(new SimpleStringProperty("").concat(gameModel.getPlayer(Position.SOUTH).name));
+        txtNameWest.textProperty().bind(new SimpleStringProperty("").concat(gameModel.getPlayer(Position.WEST).name));
+        txtNameNorth.textProperty().bind(new SimpleStringProperty("").concat(gameModel.getPlayer(Position.NORTH).name));
+        txtNameEast.textProperty().bind(new SimpleStringProperty("").concat(gameModel.getPlayer(Position.EAST).name));
+    }
+
+    public void unBindTextName() {
+        txtNameMe.textProperty().unbind();
+        txtNameWest.textProperty().unbind();
+        txtNameNorth.textProperty().unbind();
+        txtNameEast.textProperty().unbind();
     }
 
     //End View Controller API -------------------------------------------------------

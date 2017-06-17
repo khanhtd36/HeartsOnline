@@ -1,6 +1,8 @@
 package model.player;
 
-public enum Position {
+import java.io.Serializable;
+
+public enum Position implements Serializable {
     SOUTH(0, "Nam"),
     WEST(1, "Tây"),
     NORTH(2, "Bắc"),
