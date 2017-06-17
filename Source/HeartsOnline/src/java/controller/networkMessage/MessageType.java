@@ -1,4 +1,4 @@
-package controller.message;
+package controller.networkMessage;
 
 import java.io.Serializable;
 
@@ -9,4 +9,5 @@ public enum MessageType implements Serializable {
     A_PLAYER_EXIT,
     CHAT,
     UPDATE_NAME,
+    RECEIVE_CARD_DESK,
 }

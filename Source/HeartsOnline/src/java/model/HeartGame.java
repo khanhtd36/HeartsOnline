@@ -16,6 +16,8 @@ public class HeartGame implements Serializable {
 
     private int hand = 0;
     private int trick = 0;
+    private boolean heartBroken = false;
+    private GameState gameState = GameState.NEW;
 
     private ArrayList<Player> players = new ArrayList<>();
     private Map<Position, List<Card>> cardDesks = new HashMap<>();
@@ -65,6 +67,10 @@ public class HeartGame implements Serializable {
         eatenCards.clear();
         exchangeCards.clear();
         trickCards.clear();
+
+        players.get(1).resetAll();
+        players.get(2).resetAll();
+        players.get(3).resetAll();
     }
 
     public void resetHand() {
@@ -78,35 +84,35 @@ public class HeartGame implements Serializable {
         cardDesks.get(Position.EAST).clear();
 
         List<Integer> indexList = new ArrayList<>(52);
-        for(int i = 0; i < 52; i++) {
+        for (int i = 0; i < 52; i++) {
             indexList.add(i);
         }
-        for(int i = 0; i < 51; i++) {
-            int indexToExchange = (int)(Math.random()*(51 - i) + i + 1);
+        for (int i = 0; i < 51; i++) {
+            int indexToExchange = (int) (Math.random() * (51 - i) + i + 1);
             int tmp = indexList.get(i);
             indexList.set(i, indexList.get(indexToExchange));
             indexList.set(indexToExchange, tmp);
         }
 
-        for(int i = 0; i < 13; i++) {
+        for (int i = 0; i < 13; i++) {
             int indexOfCardName = indexList.get(i);
             CardName cardName = CardName.values()[indexOfCardName];
             Card card = new Card(cardName);
             cardDesks.get(Position.SOUTH).add(card);
         }
-        for(int i = 13; i < 26; i++) {
+        for (int i = 13; i < 26; i++) {
             int indexOfCardName = indexList.get(i);
             CardName cardName = CardName.values()[indexOfCardName];
             Card card = new Card(cardName);
             cardDesks.get(Position.WEST).add(card);
         }
-        for(int i = 26; i < 39; i++) {
+        for (int i = 26; i < 39; i++) {
             int indexOfCardName = indexList.get(i);
             CardName cardName = CardName.values()[indexOfCardName];
             Card card = new Card(cardName);
             cardDesks.get(Position.NORTH).add(card);
         }
-        for(int i = 39; i < 52; i++) {
+        for (int i = 39; i < 52; i++) {
             int indexOfCardName = indexList.get(i);
             CardName cardName = CardName.values()[indexOfCardName];
             Card card = new Card(cardName);
@@ -129,8 +135,8 @@ public class HeartGame implements Serializable {
     }
 
     public void setPlayerName(Position position, String name) {
-        for(Player player : players) {
-            if(player.getPosition().equals(position)) {
+        for (Player player : players) {
+            if (player.getPosition().equals(position)) {
                 player.setName(name);
                 break;
             }
@@ -141,14 +147,18 @@ public class HeartGame implements Serializable {
         return myPosition;
     }
 
+    public void setMyPosition(Position myPosition) {
+        this.myPosition = myPosition;
+    }
+
     public String getName(Position position) {
-        return "Thánh bài";
+        return getPlayer(position).getName();
     }
 
     public synchronized Position getAvailablePosition() {
         Position availablePosition = null;
-        for(Player player : players) {
-            if(player.isBot()) {
+        for (Player player : players) {
+            if (player.isBot()) {
                 availablePosition = player.getPosition();
                 break;
             }
@@ -161,15 +171,55 @@ public class HeartGame implements Serializable {
     }
 
     public Player getPlayer(Position position) {
-        for(Player player : players) {
-            if(player.getPosition().equals(position)) {
+        for (Player player : players) {
+            if (player.getPosition().equals(position)) {
                 return player;
             }
         }
         return null;
     }
 
-    public void setMyPosition(Position myPosition) {
-        this.myPosition = myPosition;
+    public int getHand() {
+        return hand;
+    }
+
+    public void setHand(int hand) {
+        this.hand = hand;
+    }
+
+    public int getTrick() {
+        return trick;
+    }
+
+    public void setTrick(int trick) {
+        this.trick = trick;
+    }
+
+    public boolean isHeartBroken() {
+        return heartBroken;
+    }
+
+    public void setHeartBroken(boolean heartBroken) {
+        this.heartBroken = heartBroken;
+    }
+
+    public GameState getGameState() {
+        return gameState;
+    }
+
+    public void setGameState(GameState gameState) {
+        this.gameState = gameState;
+    }
+
+    public void setCardDesk(List<Card> cardDesk, Position position) {
+        players.get(0).setCards(cardDesks.get(Position.SOUTH));
+        players.get(1).setCards(cardDesks.get(Position.WEST));
+        players.get(2).setCards(cardDesks.get(Position.NORTH));
+        players.get(3).setCards(cardDesks.get(Position.EAST));
+
+        getPlayer(position).getCards().clear();
+        for(Card card : cardDesk) {
+            getPlayer(position).getCards().add(card);
+        }
     }
 }

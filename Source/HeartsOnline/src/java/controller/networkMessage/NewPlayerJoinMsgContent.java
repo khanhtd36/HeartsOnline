@@ -1,14 +1,14 @@
-package controller.message;
+package controller.networkMessage;
 
 import model.player.Position;
 
 import java.io.Serializable;
 
-public class UpdateNameMsgContent implements Serializable {
+public class NewPlayerJoinMsgContent implements Serializable {
     private Position position;
-    private String name;
+    private String name = "UNKNOWN";
 
-    public UpdateNameMsgContent(Position position, String name) {
+    public NewPlayerJoinMsgContent(Position position, String name) {
         this.position = position;
         this.name = name;
     }

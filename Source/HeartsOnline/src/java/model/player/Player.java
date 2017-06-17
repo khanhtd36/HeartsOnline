@@ -12,7 +12,7 @@ public class Player implements Serializable {
     private Position position;
     private int accumulatedPoint = 0;
     private boolean bot = false;
-    public String curHandPoint = "0";
+    public int curHandPoint = 0;
 
     List<Card> cards = new ArrayList<>();
     List<Card> eatenCards = new ArrayList<>();
@@ -61,12 +61,16 @@ public class Player implements Serializable {
         return cards.get(0);
     }
 
-    public void reset() {
+    public void resetToBot() {
+        name = "BOT";
+        bot = true;
+    }
+
+    public void resetAll() {
         name = "BOT";
         bot = true;
         accumulatedPoint = 0;
-        cards.clear();
-        eatenCards.clear();
+        curHandPoint = 0;
     }
 
     public String getName() {
@@ -121,11 +125,11 @@ public class Player implements Serializable {
         this.accumulatedPoint = accumulatedPoint;
     }
 
-    public String getCurHandPoint() {
+    public int getCurHandPoint() {
         return curHandPoint;
     }
 
-    public void setCurHandPoint(String curHandPoint) {
+    public void setCurHandPoint(int curHandPoint) {
         this.curHandPoint = curHandPoint;
     }
 

@@ -36,22 +36,22 @@
             </MenuBar>
             <Pane prefHeight="492.0" prefWidth="814.0" style="-fx-background-color: green;" VBox.vgrow="ALWAYS">
                <children>
-                  <Text fx:id="txtNameWest" fill="WHITE" layoutX="37.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tây">
+                  <Text fx:id="txtNameWest" fill="WHITE" layoutX="37.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtNameNorth" fill="WHITE" layoutX="277.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bắc">
+                  <Text fx:id="txtNameNorth" fill="WHITE" layoutX="277.0" layoutY="24.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtNameEast" fill="WHITE" layoutX="891.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Đông">
+                  <Text fx:id="txtNameEast" fill="WHITE" layoutX="891.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="BOT">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>
                   </Text>
-                  <Text fx:id="txtNameMe" fill="WHITE" layoutX="216.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bạn">
+                  <Text fx:id="txtNameMe" fill="WHITE" layoutX="216.0" layoutY="459.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Thánh Bài">
                      <font>
                         <Font name="System Bold" size="15.0" />
                      </font>

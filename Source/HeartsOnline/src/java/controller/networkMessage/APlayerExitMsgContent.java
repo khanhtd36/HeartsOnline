@@ -1,4 +1,4 @@
-package controller.message;
+package controller.networkMessage;
 
 import model.player.Position;
 
