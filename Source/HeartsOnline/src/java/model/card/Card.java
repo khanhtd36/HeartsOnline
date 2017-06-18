@@ -3,14 +3,27 @@ package model.card;
 import java.io.Serializable;
 
 public class Card implements Serializable {
-    CardName cardName;
+    CardName cardName = CardName.UNKNOWN;
 
     public Card(CardName cardName) {
         this.cardName = cardName;
     }
 
+    public Card(String styleClass) {
+        for(CardName cardName1 : CardName.values()) {
+            if(cardName1.getCssClassName().equals(styleClass)) {
+                cardName = cardName1;
+                break;
+            }
+        }
+    }
+
     public void setCardName(CardName cardName) {
         this.cardName = cardName;
+    }
+
+    public CardName getCardName() {
+        return cardName;
     }
 
     public int getValue() {

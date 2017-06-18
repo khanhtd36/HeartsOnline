@@ -23,6 +23,7 @@ public class GameLoopThread extends Thread {
 
     @Override
     public void run() {
+        super.run();
         if(controller.isHost()) {
             startGameLoopInHost();
         }
@@ -36,7 +37,7 @@ public class GameLoopThread extends Thread {
 //        while (true) {
             //Sốc bài
             gameModel.generateCard();
-            List<Card> cardNames = gameModel.getCardDeskOf(gameModel.getMyPosition());
+            List<Card> cardNames = gameModel.getCardDesk(gameModel.getMyPosition());
             //Phát bài trên view của mình
             controller.distributeCard(cardNames);
 
@@ -44,7 +45,7 @@ public class GameLoopThread extends Thread {
             for (int i = 1; i < 4; i++) {
                 if (!gameModel.getPlayers().get(i).isBot()) {
                     Position position = Position.values()[i];
-                    Message msg = new Message(MessageType.RECEIVE_CARD_DESK, new CardDeskMsgContent(gameModel.getCardDeskOf(position)));
+                    Message msg = new Message(MessageType.RECEIVE_CARD_DESK, new CardDeskMsgContent(gameModel.getCardDesk(position)));
                     controller.getConnector().sendMessageTo(msg, controller.getSocketByPosition(position));
                 }
             }
@@ -52,14 +53,14 @@ public class GameLoopThread extends Thread {
             //Kiểm tra hand thứ mấy để đổi bài cho nhau
             controller.setExchangeCardButton(gameModel.getHand());
             gameModel.setGameState(GameState.EXCHANGING);
-            synchronized (msgFromController) {
-                try {
-                    msgFromController.wait();
-                }
-                catch (Exception e) {
 
-                }
-            }
+//            synchronized (msgFromController) {
+//                try {
+//                    msgFromController.wait();
+//                }
+//                catch (Exception e) {
+//                }
+//            }
 
             //End Game Loop
 

@@ -10,4 +10,5 @@ public enum GameState implements Serializable {
     WEST_GO,
     NORTH_GO,
     EAST_GO,
+    SHOWING_RESULT,
 }

@@ -113,13 +113,15 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
 
     public void sendMessageTo(Object msg, Socket... sockets) {
         for (Socket socket : sockets) {
-            try {
-                outputStreams.get(socket).writeObject(msg);
-            } catch (Exception e) {
-                if (listener != null) {
-                    connectionCallback.onConnectionToAClientLost(socket);
-                } else {
-                    connectionCallback.onConnectionToServerLost(socket);
+            if (socket != null) {
+                try {
+                    outputStreams.get(socket).writeObject(msg);
+                } catch (Exception e) {
+                    if (listener != null) {
+                        connectionCallback.onConnectionToAClientLost(socket);
+                    } else {
+                        connectionCallback.onConnectionToServerLost(socket);
+                    }
                 }
             }
         }
@@ -128,7 +130,7 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
     public void sendMessageToAllExcept(Object msg, Socket socket) {
         for (Socket socketToSend : sockets) {
             try {
-                if (!socketToSend.equals(socket)) {
+                if (!socketToSend.equals(socket) && socket != null) {
                     outputStreams.get(socketToSend).writeObject(msg);
                 }
             } catch (Exception e) {
@@ -140,7 +142,9 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
     public void sendMessageToAll(Object msg) {
         for (Socket socketToSend : sockets) {
             try {
-                outputStreams.get(socketToSend).writeObject(msg);
+                if (socketToSend != null) {
+                    outputStreams.get(socketToSend).writeObject(msg);
+                }
             } catch (Exception e) {
                 continue;
             }

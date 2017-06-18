@@ -426,21 +426,21 @@
                         <String fx:value="invisible-img" />
                      </styleClass>
                   </ImageView>
-                  <ImageView fx:id="leftArrow" fitHeight="68.0" layoutX="204.0" layoutY="364.0" onMouseClicked="#toTheLeft" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="leftArrow" fitHeight="68.0" layoutX="204.0" layoutY="364.0" onMouseClicked="#exchangeCards" pickOnBounds="true" preserveRatio="true">
                      <styleClass>
                         <String fx:value="button-img" />
                         <String fx:value="left-arrow" />
                         <String fx:value="invisible-img" />
                      </styleClass>
                   </ImageView>
-                  <ImageView fx:id="rightArrow" fitHeight="68.0" layoutX="741.0" layoutY="364.0" onMouseClicked="#toTheRight" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="rightArrow" fitHeight="68.0" layoutX="741.0" layoutY="364.0" onMouseClicked="#exchangeCards" pickOnBounds="true" preserveRatio="true">
                      <styleClass>
                         <String fx:value="button-img" />
                         <String fx:value="right-arrow" />
                         <String fx:value="invisible-img" />
                      </styleClass>
                   </ImageView>
-                  <ImageView fx:id="upArrow" fitWidth="68.0" layoutX="482.0" layoutY="335.0" onMouseClicked="#toFront" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="upArrow" fitWidth="68.0" layoutX="482.0" layoutY="335.0" onMouseClicked="#exchangeCards" pickOnBounds="true" preserveRatio="true">
                      <styleClass>
                         <String fx:value="button-img" />
                         <String fx:value="up-arrow" />

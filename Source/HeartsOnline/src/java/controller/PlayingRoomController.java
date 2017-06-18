@@ -6,15 +6,16 @@ import controller.networkMessage.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleStringProperty;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
+import model.GameState;
 import model.HeartGame;
 import model.card.Card;
 import model.card.CardName;
@@ -190,13 +191,13 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         connector.connectTo(connectionString);
     }
 
-    public void startGame() {
+    public synchronized void startGame() {
+        host = true;
         try {
             setDisableCommand(true);
             setNodeToGone(btnStart);
             connector.stopListen();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
         }
 
         gameModel.init();
@@ -205,30 +206,91 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         gameLoopThread.start();
     }
 
-    public void toTheLeft() {
+    public synchronized void exchangeCards() {
+        List<Card> exchangeCards = gameModel.getExchangeCards(gameModel.getMyPosition());
+        if (exchangeCards.size() == 3) {
+            gameModel.setGameState(GameState.OTHER_EXCHANGING);
+            setNodeToGone(leftArrow, upArrow, rightArrow);
+            for (Card card : exchangeCards) {
+                //TODO: sửa lại cái remove card méo hoạt động đúng
+                gameModel.getPlayer(gameModel.getMyPosition()).removeACardInCardDesk(card);
+            }
 
+            Message msg = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(exchangeCards));
+            if (host) {
+                Position destPosition = gameModel.destPositionOfExchange(gameModel.getMyPosition());
+                if (!gameModel.getPlayer(destPosition).isBot()) {
+                    Socket destSocket = getSocketByPosition(destPosition);
+                    connector.sendMessageTo(msg, destSocket);
+                }
+            } else {
+                connector.sendMessageToAll(msg);
+            }
 
-        synchronized (msgToGameLoopThread) {
-            msgToGameLoopThread.notify();
+            refreshMyCardDesk();
+
+            //TODO: - Xem xét việc notify cho thằng gameLoop để chạy bước tiếp theo
+//            msgToGameLoopThread.setMsg("OK");
+//            synchronized (msgToGameLoopThread) {
+//                msgToGameLoopThread.notify();
+//            }
+        } else {
+            addChatLine("-- chọn đủ 3 lá bài đi cha.");
         }
     }
 
-    public void toFront() {
-
-        synchronized (msgToGameLoopThread) {
-            msgToGameLoopThread.notify();
+    public synchronized void clickOnCard(MouseEvent e) {
+        if (gameModel.getGameState().equals(GameState.NEW)) {
+            addChatLine("-- bắt đầu game đi rồi chơi cha nội");
+            return;
         }
-    }
 
-    public void toTheRight() {
-
-        synchronized (msgToGameLoopThread) {
-            msgToGameLoopThread.notify();
+        if (gameModel.getGameState().equals(GameState.OTHER_EXCHANGING)) {
+            addChatLine("-- chờ tí đi cha, nóng quá.");
+            return;
         }
-    }
 
-    public void clickOnCard(ActionEvent e) {
-        String CardId = ((ImageView) e.getSource()).getId();
+        Position myPosition = gameModel.getMyPosition();
+        if ((gameModel.getGameState().equals(GameState.SOUNTH_GO) && !myPosition.equals(Position.SOUTH))
+                || (gameModel.getGameState().equals(GameState.WEST_GO) && !myPosition.equals(Position.WEST))
+                || (gameModel.getGameState().equals(GameState.NORTH_GO) && !myPosition.equals(Position.NORTH))
+                || (gameModel.getGameState().equals(GameState.EAST_GO) && !myPosition.equals(Position.EAST))) {
+            addChatLine("-- chưa tới lượt đâu cha, chờ xíu đi");
+            return;
+        }
+
+        if (gameModel.getGameState().equals(GameState.SHOWING_RESULT)) {
+            return;
+        }
+
+        ImageView cardView = ((ImageView) e.getSource());
+
+        //Đang chuyển bài cho nhau
+        Card chosenCard = getCardByView(cardView);
+        if (gameModel.getGameState().equals(GameState.EXCHANGING)) {
+            if (isSelected(cardView)) {
+                setCardChosen(false, cardView);
+                //TODO: chỉnh lại cái remove chosenCard méo hoạt động đúng
+                gameModel.getPlayer(myPosition).removeACardInExchangeCards(chosenCard);
+                return;
+            }
+
+            if (gameModel.getExchangeCards(myPosition).size() >= 3) {
+                addChatLine("-- chọn đủ 3 lá rồi cha.");
+                return;
+            }
+
+            setCardChosen(true, cardView);
+            gameModel.getExchangeCards(myPosition).add(chosenCard);
+            return;
+        }
+
+        mePlayCard(gameModel.getTrick(), chosenCard);
+        gameModel.getPlayer(myPosition).playACard(chosenCard);
+        Message msg = new Message(MessageType.PLAY_CARD, new PlayACardMsgContent(myPosition, chosenCard));
+        connector.sendMessageToAll(msg);
+
+        //TODO: notify gameLoop nếu cần
     }
 
     public void submitChat() {
@@ -242,7 +304,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     }
 
     public void exitRoom() {
-        host = false;
+        host = true;
         connector.close();
         addChatLine("-- Bạn đã rời Sòng.");
         gameModel.resetAll();
@@ -312,7 +374,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         addChatLine("-- Một người chơi đã thoát");
 
         Position position = getPositionBySocket(socketToClient);
-        gameModel.getPlayer(position).resetToBot();
+        gameModel.getPlayer(position).changeToBot();
         refreshPlayersDisplayName();
         socketPositionMap.remove(position);
         connector.shutdownConnectionTo(socketToClient);
@@ -356,6 +418,14 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
             case RECEIVE_CARD_DESK:
                 onReceiveCardDesk(msg, fromSocket);
+                break;
+
+            case EXCHANGE_CARD:
+                onReceiveExchangeCards(msg, fromSocket);
+                break;
+
+            case HEART_BROKEN:
+                onHeartBroken(msg, fromSocket);
                 break;
         }
     }
@@ -429,16 +499,30 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
     private void onAPlayerExit(Object msg, Socket fromSocket) {
         Position position = ((APlayerExitMsgContent) ((Message) msg).getContent()).getPosition();
         String name = gameModel.getName(position);
-        gameModel.getPlayer(position).resetToBot();
+        gameModel.getPlayer(position).changeToBot();
         refreshPlayersDisplayName();
 
         addChatLine("-- " + name + " vừa thoát");
     }
 
     private void onReceiveCardDesk(Object msg, Socket fromSocket) {
-        List<Card> cardDesk = ((CardDeskMsgContent)((Message)msg).getContent()).getCardDesk();
+        List<Card> cardDesk = ((CardDeskMsgContent) ((Message) msg).getContent()).getCardDesk();
         gameModel.setCardDesk(cardDesk, gameModel.getMyPosition());
-        distributeCard(gameModel.getCardDeskOf(gameModel.getMyPosition()));
+        distributeCard(gameModel.getCardDesk(gameModel.getMyPosition()));
+
+        //TODO: liên lạc với GameLoopThread, chỉnh gameModel các kiểu.
+    }
+
+    private void onReceiveExchangeCards(Object msg, Socket fromSocket) {
+        if (host) {
+            //TODO: - chỉnh dữ liệu gameModel cho hợp. - Nếu người nhận không phải mình thì gửi qua cho thằng nhận.
+        } else {
+            //TODO: - chỉnh dữ liệu gameModel cho hợp. - Hiển thị lại bài của mình
+        }
+    }
+
+    private void onHeartBroken(Object msg, Socket fromSocket) {
+        addChatLine("-- Trái tim Tan vỡ :3");
     }
 
     //End Xử lý Message -------------------------------------------------------------
@@ -483,6 +567,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         for (ImageView card : cardMe) {
             setNodeToAppear(card);
             setCardFace(card, "card-back");
+            setCardChosen(false, card);
         }
     }
 
@@ -527,7 +612,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
     public Socket getSocketByPosition(Position position) {
         for (Socket socket : socketPositionMap.keySet()) {
-            if(socketPositionMap.get(socket).equals(position)) {
+            if (socketPositionMap.get(socket).equals(position)) {
                 return socket;
             }
         }
@@ -569,25 +654,25 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         Platform.runLater(() -> txtNameEast.setText(gameModel.getPlayers().get(3).getName()));
     }
 
-    public void westPlayCard(int trick, CardName card) {
+    public void westPlayCard(int trick, Card card) {
         setNodeToGone(cardWest.get(12 - trick));
         setCardFace(cardTrickWest, card.getCssClassName());
         setNodeToAppear(cardTrickWest);
     }
 
-    public void northPlayCard(int trick, CardName card) {
+    public void northPlayCard(int trick, Card card) {
         setNodeToGone(cardNorth.get(12 - trick));
         setCardFace(cardTrickNorth, card.getCssClassName());
         setNodeToAppear(cardTrickNorth);
     }
 
-    public void eastPlayCard(int trick, CardName card) {
+    public void eastPlayCard(int trick, Card card) {
         setNodeToGone(cardEast.get(12 - trick));
         setCardFace(cardTrickEast, card.getCssClassName());
         setNodeToAppear(cardTrickEast);
     }
 
-    public void mePlayCard(int trick, CardName card) {
+    public void mePlayCard(int trick, Card card) {
         setNodeToGone(cardMe.get(12 - trick));
         setCardFace(cardTrickMe, card.getCssClassName());
         setNodeToAppear(cardTrickMe);
@@ -638,6 +723,27 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         thread.start();
     }
 
+    public void refreshMyCardDesk() {
+        List<Card> cards = gameModel.getCardDesk(gameModel.getMyPosition());
+        Thread thread = new Thread(() -> {
+            for (Node card : cardMe) {
+                setCardChosen(false, card);
+                setNodeToGone(card);
+            }
+
+            for (int i = 0; i < cards.size(); i++) {
+                try {
+                    setCardFace(cardMe.get(i), cards.get(i).getCssClassName());
+                    setNodeToAppear(cardMe.get(i));
+                    Thread.sleep(3);
+                } catch (Exception e) {
+                    continue;
+                }
+            }
+        });
+        thread.start();
+    }
+
     public void setExchangeCardButton(int hand) {
         hand %= 4;
         switch (hand) {
@@ -668,6 +774,35 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
     public boolean isHost() {
         return host;
+    }
+
+    private boolean isSelected(Node card) {
+        return card.getStyleClass().get(4).equals("chosen-card");
+    }
+
+    private Card getCardByView(Node cardView) {
+        return new Card(cardView.getStyleClass().get(2));
+    }
+
+    private int getCardIndexByView(Node cardView) {
+        int clickedCardIndex = -1;
+        for (int i = 0; i < 13; i++) {
+            if (cardMe.get(i).equals(cardView)) {
+                clickedCardIndex = i;
+                break;
+            }
+        }
+
+        return clickedCardIndex;
+    }
+
+    private void setCardChosen(boolean b, Node... cards) {
+        String styleClass = "chosen-card";
+        if (!b) styleClass = "unchosen-card";
+
+        for (Node card : cards) {
+            card.getStyleClass().set(4, styleClass);
+        }
     }
 
     //End View Controller API -------------------------------------------------------

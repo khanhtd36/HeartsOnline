@@ -66,6 +66,10 @@
     -fx-translate-y: -20;
 }
 
+.chosen-card:hover{
+    -fx-translate-y: -20;
+}
+
 /*End các lá bài -----------------------------------*/
 
 

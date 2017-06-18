@@ -10,4 +10,7 @@ public enum MessageType implements Serializable {
     CHAT,
     UPDATE_NAME,
     RECEIVE_CARD_DESK,
+    EXCHANGE_CARD,
+    HEART_BROKEN,
+    PLAY_CARD,
 }

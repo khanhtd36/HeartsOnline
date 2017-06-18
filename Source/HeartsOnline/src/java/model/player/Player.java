@@ -1,6 +1,7 @@
 package model.player;
 
 import model.card.Card;
+import model.card.CardName;
 import model.card.CardType;
 
 import java.io.Serializable;
@@ -16,6 +17,8 @@ public class Player implements Serializable {
 
     List<Card> cards = new ArrayList<>();
     List<Card> eatenCards = new ArrayList<>();
+    Card trickCard = new Card(CardName.UNKNOWN);
+    List<Card> exchangeCards = new ArrayList<>();
 
     public Player(){
         bot = true;
@@ -61,7 +64,12 @@ public class Player implements Serializable {
         return cards.get(0);
     }
 
-    public void resetToBot() {
+    public void playACard(Card card) {
+        cards.remove(card);
+        trickCard = card;
+    }
+
+    public void changeToBot() {
         name = "BOT";
         bot = true;
     }
@@ -71,7 +79,61 @@ public class Player implements Serializable {
         bot = true;
         accumulatedPoint = 0;
         curHandPoint = 0;
+        cards.clear();
+        eatenCards.clear();
+        trickCard = new Card(CardName.UNKNOWN);
+        exchangeCards.clear();
     }
+
+    public void resetAllExceptPersonalInfo() {
+        accumulatedPoint = 0;
+        curHandPoint = 0;
+        cards.clear();
+        eatenCards.clear();
+        trickCard = new Card(CardName.UNKNOWN);
+        exchangeCards.clear();
+    }
+
+    public void resetHand() {
+        curHandPoint = 0;
+        cards.clear();
+        eatenCards.clear();
+        trickCard = new Card(CardName.UNKNOWN);
+        exchangeCards.clear();
+    }
+
+    public void clearCardDesks() {
+        cards.clear();
+    }
+
+    public void removeACardInCardDesk(Card card) {
+        for (int i = 0; i < cards.size(); i++) {
+            if (cards.get(i).getCardName().equals(card.getCardName())) {
+                cards.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void removeACardInEatenCards(Card card) {
+        for (int i = 0; i < eatenCards.size(); i++) {
+            if (eatenCards.get(i).getCardName().equals(card.getCardName())) {
+                eatenCards.remove(i);
+                break;
+            }
+        }
+    }
+
+    public void removeACardInExchangeCards(Card card) {
+        for (int i = 0; i < exchangeCards.size(); i++) {
+            if (exchangeCards.get(i).getCardName().equals(card.getCardName())) {
+                exchangeCards.remove(i);
+                break;
+            }
+        }
+    }
+
+    //Getter và setter -----------------------------------------------
 
     public String getName() {
         return name;
@@ -144,4 +206,22 @@ public class Player implements Serializable {
     public void setEatenCards(List<Card> eatenCards) {
         this.eatenCards = eatenCards;
     }
+
+    public Card getTrickCard() {
+        return trickCard;
+    }
+
+    public void setTrickCard(Card trickCard) {
+        this.trickCard = trickCard;
+    }
+
+    public List<Card> getExchangeCards() {
+        return exchangeCards;
+    }
+
+    public void setExchangeCards(List<Card> exchangeCards) {
+        this.exchangeCards = exchangeCards;
+    }
+
+    //End Getter và setter -------------------------------------------
 }
