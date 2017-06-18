@@ -2,6 +2,7 @@ package model;
 
 import model.card.Card;
 import model.card.CardName;
+import model.card.CardType;
 import model.player.Player;
 import model.player.Position;
 
@@ -12,6 +13,7 @@ import java.util.List;
 public class HeartGame implements Serializable {
     private Position myPosition = Position.SOUTH;
 
+    private Position positionToGo = Position.SOUTH;
     private int hand = 0;
     private int trick = 0;
     private boolean heartBroken = false;
@@ -32,17 +34,6 @@ public class HeartGame implements Serializable {
         gameState = GameState.NEW;
         hand = 0;
         trick = 0;
-
-        players.clear();
-        players.add(new Player(Position.SOUTH, "Thánh Bài"));
-        players.add(new Player(Position.WEST));
-        players.add(new Player(Position.NORTH));
-        players.add(new Player(Position.EAST));
-
-        players.get(0).resetAllExceptPersonalInfo();
-        players.get(1).resetAll();
-        players.get(2).resetAll();
-        players.get(3).resetAll();
     }
 
     public void resetAll() {
@@ -122,17 +113,17 @@ public class HeartGame implements Serializable {
         switch (dP) {
             case 0:
                 dP = sourcePosition.getOrder() + 1;
-                if(dP >= 4) dP -= 4;
+                if (dP >= 4) dP -= 4;
                 break;
 
             case 1:
                 dP = sourcePosition.getOrder() + 3;
-                if(dP >=4) dP -= 4;
+                if (dP >= 4) dP -= 4;
                 break;
 
             case 2:
                 dP = sourcePosition.getOrder() + 2;
-                if(dP >=4) dP -= 4;
+                if (dP >= 4) dP -= 4;
                 break;
 
             case 3:
@@ -167,6 +158,58 @@ public class HeartGame implements Serializable {
         getPlayer(position).setExchangeCards(cards);
     }
 
+    public void next() {
+        if (isOver()) {
+            gameState = GameState.SHOWING_RESULT;
+            return;
+        }
+
+        increaseTrick();
+        if (trick == 0) increaseHand();
+
+        if ((trick % 4) == 0) {
+            setTurn();
+        }
+
+
+    }
+
+    private void setTurn() {
+        if (trick == 0) {
+            for (Player player : players) {
+                if (player.getCards().get(0).getCardName().equals(CardName.TWO_OF_CLUBS)) {
+                    positionToGo = player.getPosition();
+                    break;
+                }
+            }
+        } else {
+            CardType cardTypeOfTrick = getPlayer(positionToGo).getTrickCard().getCardType();
+            Position positionToGoNext = positionToGo;
+
+            for (Player player : players) {
+                if (player.getTrickCard().getCardType().equals(cardTypeOfTrick)) {
+                    if (player.getTrickCard().getCardTypeOrder() > getPlayer(positionToGoNext).getTrickCard().getCardTypeOrder()) {
+                        positionToGoNext = player.getPosition();
+                    }
+                }
+            }
+
+            positionToGo = positionToGoNext;
+        }
+    }
+
+    private boolean isOver() {
+        boolean result = false;
+
+        for(Player player : players) {
+            if (player.getAccumulatedPoint() >= 100) {
+                result = true;
+                break;
+            }
+        }
+
+        return result;
+    }
 
 
     //Getter và setter ----------------------------------------------
@@ -207,6 +250,10 @@ public class HeartGame implements Serializable {
         return players;
     }
 
+    public void setPlayers(ArrayList<Player> players) {
+        this.players = players;
+    }
+
     public Player getPlayer(Position position) {
         for (Player player : players) {
             if (player.getPosition().equals(position)) {
@@ -238,7 +285,7 @@ public class HeartGame implements Serializable {
 
     public void increaseTrick() {
         trick++;
-        if(trick >= 13) trick = 0;
+        if (trick >= 13) trick = 0;
     }
 
     public boolean isHeartBroken() {
@@ -257,9 +304,8 @@ public class HeartGame implements Serializable {
         this.gameState = gameState;
     }
 
-
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
+    public Position getPositionToGo() {
+        return positionToGo;
     }
 
     //End Getter và setter ------------------------------------------

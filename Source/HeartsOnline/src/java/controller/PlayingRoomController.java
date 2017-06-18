@@ -251,10 +251,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
         }
 
         Position myPosition = gameModel.getMyPosition();
-        if ((gameModel.getGameState().equals(GameState.SOUNTH_GO) && !myPosition.equals(Position.SOUTH))
-                || (gameModel.getGameState().equals(GameState.WEST_GO) && !myPosition.equals(Position.WEST))
-                || (gameModel.getGameState().equals(GameState.NORTH_GO) && !myPosition.equals(Position.NORTH))
-                || (gameModel.getGameState().equals(GameState.EAST_GO) && !myPosition.equals(Position.EAST))) {
+        if ((gameModel.getGameState().equals(GameState.PLAYING) && !myPosition.equals(gameModel.getPositionToGo()))) {
             addChatLine("-- chưa tới lượt đâu cha, chờ xíu đi");
             return;
         }
@@ -287,6 +284,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback 
 
         mePlayCard(gameModel.getTrick(), chosenCard);
         gameModel.getPlayer(myPosition).playACard(chosenCard);
+        gameModel.next();
         Message msg = new Message(MessageType.PLAY_CARD, new PlayACardMsgContent(myPosition, chosenCard));
         connector.sendMessageToAll(msg);
 

@@ -2,10 +2,11 @@ package controller.networkMessage;
 
 import model.card.Card;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CardDeskMsgContent {
+public class CardDeskMsgContent implements Serializable {
     List<Card> cardDesk = new ArrayList<>();
 
     public CardDeskMsgContent(List<Card> cardDesk) {
