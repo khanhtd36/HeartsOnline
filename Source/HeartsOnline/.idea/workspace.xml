@@ -7,8 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../../Release/HeartsOnline.jar" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../Release/HeartsOnline.jar" afterPath="$PROJECT_DIR$/../../Release/HeartsOnline.jar" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/MainLauncher.java" afterPath="$PROJECT_DIR$/src/java/MainLauncher.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,17 +62,21 @@
     <ui_properties converted="true" />
     <breakpoint_rules converted="true" />
   </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
+  </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PlayingRoomController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayingRoomController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="360" column="0" lean-forward="false" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
+            <state relative-caret-position="151">
+              <caret line="375" column="5" lean-forward="false" selection-start-line="375" selection-start-column="5" selection-end-line="375" selection-end-column="5" />
               <folding>
                 <element signature="method#initialize#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#setStageAndSetupListens#0;class#PlayingRoomController#0" expanded="false" />
@@ -171,8 +176,8 @@
       <file leaf-file-name="HeartGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="270" column="30" lean-forward="false" selection-start-line="270" selection-start-column="30" selection-end-line="270" selection-end-column="30" />
+            <state relative-caret-position="222">
+              <caret line="266" column="35" lean-forward="false" selection-start-line="266" selection-start-column="35" selection-end-line="266" selection-end-column="35" />
               <folding>
                 <element signature="method#HeartGame#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#init#0;class#HeartGame#0" expanded="false" />
@@ -189,6 +194,7 @@
                 <element signature="method#receiveExchangeCards#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#eatCards#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#positionToEat#0;class#HeartGame#0" expanded="false" />
+                <element signature="method#calcResultPoints#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#winner#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#canIPlay#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#exchangeDone#0;class#HeartGame#0" expanded="false" />
@@ -202,6 +208,16 @@
                 <element signature="method#detectHeartBroken#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#setStartPositionOfTrick#0;class#HeartGame#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainLauncher.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/java/MainLauncher.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -322,7 +338,6 @@
         <option value="$PROJECT_DIR$/src/java/controller/networkMessage/PlayACardMsgContent.java" />
         <option value="$PROJECT_DIR$/src/java/model/card/Card.java" />
         <option value="$PROJECT_DIR$/src/java/controller/networkMessage/CardDeskMsgContent.java" />
-        <option value="$PROJECT_DIR$/src/java/MainLauncher.java" />
         <option value="$PROJECT_DIR$/src/java/controller/connection/Connector.java" />
         <option value="$PROJECT_DIR$/src/java/model/GameState.java" />
         <option value="$PROJECT_DIR$/src/java/model/player/Position.java" />
@@ -334,6 +349,7 @@
         <option value="$PROJECT_DIR$/src/java/model/player/Player.java" />
         <option value="$PROJECT_DIR$/src/java/model/HeartGame.java" />
         <option value="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" />
+        <option value="$PROJECT_DIR$/src/java/MainLauncher.java" />
       </list>
     </option>
   </component>
@@ -396,6 +412,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="resources" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -487,7 +529,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Confirmation" />
     <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/BaiTap/Java/DoAn/1412204-1412207-1412243/Source/HeartsOnline/src/java/model/GameModelCallback.java" />
-    <property name="ChangesBrowser.SHOW_FLATTEN" value="false" />
+    <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -995,7 +1037,7 @@
       <workItem from="1497699524007" duration="14194000" />
       <workItem from="1497774441569" duration="24858000" />
       <workItem from="1497837911194" duration="34902000" />
-      <workItem from="1497877729560" duration="14778000" />
+      <workItem from="1497877729560" duration="16095000" />
     </task>
     <task id="LOCAL-00001" summary="Connector gan hoan thien">
       <created>1495386782593</created>
@@ -1130,11 +1172,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497892856269</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="cập nhật file jar">
+      <created>1497893048662</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1497893048662</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301030000" />
+    <option name="totallyTimeSpent" value="302347000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1147,6 +1196,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1155,15 +1205,15 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3279743" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17473525" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17473525" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1216,7 +1266,8 @@
     <MESSAGE value="phiên bản playable :))" />
     <MESSAGE value="project chuẩn, sửa lại vài bug nữa xong" />
     <MESSAGE value="đã test mẫu mực chơi với máy -&gt; ngon lành cành đào&#10;còn test mọi trường hợp chơi với người nữa là xong." />
-    <option name="LAST_COMMIT_MESSAGE" value="đã test mẫu mực chơi với máy -&gt; ngon lành cành đào&#10;còn test mọi trường hợp chơi với người nữa là xong." />
+    <MESSAGE value="cập nhật file jar" />
+    <option name="LAST_COMMIT_MESSAGE" value="cập nhật file jar" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1483,14 +1534,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controller/GameLoopThread.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/MainLauncher.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="57" lean-forward="true" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/model/card/CardType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1552,42 +1595,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="270" column="30" lean-forward="false" selection-start-line="270" selection-start-column="30" selection-end-line="270" selection-end-column="30" />
-          <folding>
-            <element signature="method#HeartGame#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#init#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#resetAll#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#resetAllExceptPersonalInfo#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#resetHand#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#generateCard#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#destPositionOfExchange#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#calcTurn#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#isOver#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#getCardsOnBoard#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#selectACard#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#exchangeCards#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#receiveExchangeCards#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#eatCards#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#positionToEat#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#winner#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#canIPlay#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#exchangeDone#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#next#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#startTurn#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#detectBotGo#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#setPlayerName#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#getAvailablePosition#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#getPlayer#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#increaseTrick#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#detectHeartBroken#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#setStartPositionOfTrick#0;class#HeartGame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/model/player/Player.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
@@ -1619,8 +1626,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="360" column="0" lean-forward="false" selection-start-line="360" selection-start-column="0" selection-end-line="360" selection-end-column="0" />
+        <state relative-caret-position="151">
+          <caret line="375" column="5" lean-forward="false" selection-start-line="375" selection-start-column="5" selection-end-line="375" selection-end-column="5" />
           <folding>
             <element signature="method#initialize#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#setStageAndSetupListens#0;class#PlayingRoomController#0" expanded="false" />
@@ -1682,6 +1689,51 @@
             <element signature="method#modelPositionToViewPosition#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#startHand#0;class#PlayingRoomController#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="266" column="35" lean-forward="false" selection-start-line="266" selection-start-column="35" selection-end-line="266" selection-end-column="35" />
+          <folding>
+            <element signature="method#HeartGame#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#init#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#resetAll#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#resetAllExceptPersonalInfo#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#resetHand#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#generateCard#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#destPositionOfExchange#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#calcTurn#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#isOver#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#getCardsOnBoard#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#selectACard#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#exchangeCards#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#receiveExchangeCards#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#eatCards#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#positionToEat#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#calcResultPoints#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#winner#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#canIPlay#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#exchangeDone#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#next#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#startTurn#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#detectBotGo#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#setPlayerName#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#getAvailablePosition#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#getPlayer#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#increaseTrick#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#detectHeartBroken#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#setStartPositionOfTrick#0;class#HeartGame#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/MainLauncher.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
