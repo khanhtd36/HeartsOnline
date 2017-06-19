@@ -13,4 +13,5 @@ public enum MessageType implements Serializable {
     EXCHANGE_CARD,
     HEART_BROKEN,
     PLAY_CARD,
+    TURN,
 }

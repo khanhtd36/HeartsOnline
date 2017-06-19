@@ -21,4 +21,12 @@ public enum Position implements Serializable {
     public String getName() {
         return name;
     }
+
+    public Position next() {
+        int order = this.order;
+        order++;
+        if (order >= 4) order -= 4;
+
+        return Position.values()[order];
+    }
 }

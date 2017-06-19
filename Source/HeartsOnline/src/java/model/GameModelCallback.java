@@ -1,6 +1,9 @@
 package model;
 
+import model.player.Position;
+
 public interface GameModelCallback {
-    void onCalcResultPointsDone();
-    void onCurHandPointChanged();
+    void onTrickDone(Position positionToEat);
+    void onHandDone();
+    void onMyCurHandPointChanged();
 }

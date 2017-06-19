@@ -54,9 +54,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
     //End các control trên view cần can thiệp ---------------------------------------
 
-    private ThreadMessage msgToGameLoopThread = new ThreadMessage("");
-    private HeartGame gameModel = new HeartGame();
-    private GameLoopThread gameLoopThread = null;
+    private HeartGame gameModel = new HeartGame(this);
     private boolean host = true; //Có là chủ phòng hay không
     private Map<Socket, Position> socketPositionMap = new HashMap<>();
 
@@ -148,7 +146,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
             card.getStyleClass().set(1, "my-card");
             card.getStyleClass().set(2, "card-back");
             card.getStyleClass().set(3, "visible-img");
-            card.getStyleClass().set(4, "unchosen-card");
+            card.getStyleClass().set(4, "unselected-card");
         }
 
         for (ImageView card : cardWest) {
@@ -206,17 +204,13 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         }
 
         gameModel.init();
-
-        //TODO: xét lại nên để gameLoop hay chỉ cần gameModel.next là được
-
-        gameLoopThread = new GameLoopThread(gameModel, this, msgToGameLoopThread);
-        gameLoopThread.start();
+        startHand();
     }
 
     public synchronized void exchangeCards() {
         List<Card> exchangeCards = gameModel.getExchangeCards(gameModel.getMyPosition());
         if (exchangeCards.size() == 3) {
-            gameModel.setGameState(GameState.OTHER_EXCHANGING);
+            gameModel.setGameState(GameState.WAITING);
             setNodeToGone(leftArrow, upArrow, rightArrow);
 
             Position srcPosition = gameModel.getMyPosition();
@@ -224,23 +218,23 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
             gameModel.exchangeCards(srcPosition, destPosition);
 
-            Message msg = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(exchangeCards));
+            Message exchangeCardsMsg = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(exchangeCards));
             if (host) {
                 if (!gameModel.getPlayer(destPosition).isBot()) {
                     Socket destSocket = getSocketByPosition(destPosition);
-                    connector.sendMessageTo(msg, destSocket);
+                    connector.sendMessageTo(exchangeCardsMsg, destSocket);
                 }
             } else {
-                connector.sendMessageToAll(msg);
+                connector.sendMessageToAll(exchangeCardsMsg);
             }
 
             refreshMyCardDesk();
 
-            //TODO: - notify gameLoop "Tôi đã trao đổi bài"
-//            msgToGameLoopThread.setMsg("me exchange done");
-//            synchronized (msgToGameLoopThread) {
-//                msgToGameLoopThread.notify();
-//            }
+            if (gameModel.exchangeDone()) {
+                gameModel.startTurn();
+                Message startTurnMsg = new Message(MessageType.TURN, new StartTurnMsgContent(gameModel.getPositionToGo()));
+                connector.sendMessageToAll(startTurnMsg);
+            }
         } else {
             addChatLine("-- chọn đủ 3 lá bài đi cha.");
         }
@@ -248,18 +242,18 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
     public synchronized void clickOnCard(MouseEvent e) {
         if (gameModel.getGameState().equals(GameState.NEW)) {
-            addChatLine("-- bắt đầu game đi rồi chơi cha nội");
+//            addChatLine("-- bắt đầu game đi rồi chơi cha nội");
             return;
         }
 
-        if (gameModel.getGameState().equals(GameState.OTHER_EXCHANGING) || gameModel.getGameState().equals(GameState.WAITING)) {
-            addChatLine("-- chờ xíu đi cha, nóng quá.");
+        if (gameModel.getGameState().equals(GameState.WAITING)) {
+//            addChatLine("-- chờ xíu đi cha, nóng quá.");
             return;
         }
 
         Position myPosition = gameModel.getMyPosition();
         if ((gameModel.getGameState().equals(GameState.PLAYING) && !myPosition.equals(gameModel.getPositionToGo()))) {
-            addChatLine("-- chưa tới lượt đâu cha, chờ xíu đi");
+//            addChatLine("-- chưa tới lượt đâu cha, chờ xíu đi");
             return;
         }
 
@@ -274,21 +268,22 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         if (gameModel.getGameState().equals(GameState.EXCHANGING)) {
             if (isSelected(cardView)) {
                 setCardChosen(false, cardView);
-                gameModel.unchoseACard(chosenCard);
+                gameModel.unselectACard(chosenCard);
                 return;
             }
 
             if (gameModel.getExchangeCards(myPosition).size() >= 3) {
-                addChatLine("-- đủ 3 lá rồi cha, chọn chọn quài");
+//                addChatLine("-- đủ 3 lá rồi cha, chọn chọn quài");
                 return;
             }
 
             setCardChosen(true, cardView);
-            gameModel.choseACard(chosenCard);
+            gameModel.selectACard(chosenCard);
             return;
         }
 
         //Đang trong ván, đúng lượt đi
+        gameModel.setGameState(GameState.WAITING);
         if (gameModel.canIPlay(chosenCard)) {
             mePlayCard(gameModel.getTrick(), chosenCard);
             gameModel.playACard(myPosition, chosenCard);
@@ -439,23 +434,55 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
             case HEART_BROKEN:
                 onHeartBroken(msg, fromSocket);
                 break;
+
+            case TURN:
+                onTurnReceived(msg, fromSocket);
+                break;
+
+            case PLAY_CARD:
+                onAPlayerPlayACard(msg, fromSocket);
+                break;
         }
     }
 
-    public void onCalcResultPointsDone() {
-        addChatLine("--------- Tổng kết ván: --------");
-        addChatLine(gameModel.getName(Position.SOUTH) + ": " + gameModel.getPlayer(Position.SOUTH).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.SOUTH).getAccumulatedPoint());
-        addChatLine(gameModel.getName(Position.WEST) + ": " + gameModel.getPlayer(Position.WEST).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.WEST).getAccumulatedPoint());
-        addChatLine(gameModel.getName(Position.NORTH) + ": " + gameModel.getPlayer(Position.NORTH).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.NORTH).getAccumulatedPoint());
-        addChatLine(gameModel.getName(Position.EAST) + ": " + gameModel.getPlayer(Position.EAST).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.EAST).getAccumulatedPoint());
-
-        if(gameModel.isOver()) {
-            addChatLine("-- đề mề Trùm hôm nay là: " + gameModel.winner().getName());
-        }
-        addChatLine("--------- Tổng kết ván: --------");
+    public void onTrickDone(Position positionToEat) {
+        gameModel.eatCards(positionToEat);
+        gameModel.increaseTrick();
+        collectCard();
     }
 
-    public void onCurHandPointChanged() {
+    public void onHandDone() {
+        Thread thread = new Thread(()-> {
+            gameModel.calcResultPoints();
+            addChatLine("--------- Tổng kết: --------");
+            addChatLine(gameModel.getName(Position.SOUTH) + ": " + gameModel.getPlayer(Position.SOUTH).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.SOUTH).getAccumulatedPoint());
+            addChatLine(gameModel.getName(Position.WEST) + ": " + gameModel.getPlayer(Position.WEST).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.WEST).getAccumulatedPoint());
+            addChatLine(gameModel.getName(Position.NORTH) + ": " + gameModel.getPlayer(Position.NORTH).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.NORTH).getAccumulatedPoint());
+            addChatLine(gameModel.getName(Position.EAST) + ": " + gameModel.getPlayer(Position.EAST).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.EAST).getAccumulatedPoint());
+
+            if (gameModel.isOver()) {
+                addChatLine("-- đề mề Trùm hôm nay là: " + gameModel.winner().getName());
+                gameModel.resetAllExceptPersonalInfo();
+            }
+            else {
+                gameModel.resetHand();
+                gameModel.increaseHand();
+            }
+            addChatLine("--------- Tổng kết: --------");
+
+            if (host) {
+                try {
+                    Thread.sleep(5000);
+                    setNodeToAppear(btnStart);
+                } catch (Exception e) {
+
+                }
+            }
+        });
+        thread.start();
+    }
+
+    public void onMyCurHandPointChanged() {
         Platform.runLater(() -> txtCurRoundPoint.setText("Điểm ván hiện tại: " + gameModel.getPlayer(gameModel.getMyPosition()).getCurHandPoint()));
     }
 
@@ -539,7 +566,12 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         gameModel.setCardDesk(cardDesk, gameModel.getMyPosition());
         distributeCard(gameModel.getCardDesk(gameModel.getMyPosition()));
 
-        //TODO: notify gameLoop "Tôi vừa nhận CardDesk"
+        if ((gameModel.getHand() + 1) % 4 == 0) {
+            gameModel.setGameState(GameState.WAITING);
+        }
+        else {
+            gameModel.setGameState(GameState.EXCHANGING);
+        }
     }
 
     private void onReceiveExchangeCards(Object msg, Socket fromSocket) {
@@ -557,17 +589,40 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
                 connector.sendMessageTo(msgToDest, destSocket);
             }
 
-            //TODO: - notify GameLoop "Có thêm 1 thằng vừa trao đổi bài"
+            if (gameModel.exchangeDone()) {
+                gameModel.startTurn();
+                Message startTurnMsg = new Message(MessageType.TURN, new StartTurnMsgContent(gameModel.getPositionToGo()));
+                connector.sendMessageToAll(startTurnMsg);
+            }
         } else {
             gameModel.receiveExchangeCards(receivedCards);
             refreshMyCardDesk();
-
-            //TODO: - notify GameLoop "Tôi vừa nhận exchangeCards"
         }
     }
 
     private void onHeartBroken(Object msg, Socket fromSocket) {
+        gameModel.setHeartBroken(true);
         addChatLine("-- Trái tim Tan vỡ :3");
+    }
+
+    private void onTurnReceived(Object msg, Socket fromSocket) {
+        Position positionToGo = ((StartTurnMsgContent)((Message)msg).getContent()).getPosition();
+        gameModel.setPositionToGo(positionToGo);
+        gameModel.setGameState(GameState.PLAYING);
+    }
+
+    private void onAPlayerPlayACard(Object msg, Socket fromSocket) {
+        Position position = ((PlayACardMsgContent)((Message)msg).getContent()).getPosition();
+        Card card = ((PlayACardMsgContent)((Message)msg).getContent()).getCard();
+
+        gameModel.playACard(position, card);
+        playACard(gameModel.getTrick(), card, modelPositionToViewPosition(position));
+
+        if (host) {
+            connector.sendMessageToAllExcept(msg, fromSocket);
+        }
+
+        gameModel.next(host);
     }
 
     //End Xử lý Message -------------------------------------------------------------
@@ -723,6 +778,26 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         setNodeToAppear(cardTrickMe);
     }
 
+    public void playACard(int trick, Card card, Position positionInView) {
+        switch (positionInView) {
+            case SOUTH:
+                mePlayCard(trick, card);
+                break;
+
+            case WEST:
+                westPlayCard(trick, card);
+                break;
+
+            case NORTH:
+                northPlayCard(trick, card);
+                break;
+
+            case EAST:
+                eastPlayCard(trick, card);
+                break;
+        }
+    }
+
     public void collectCard() {
         Thread thread = new Thread(() -> {
             try {
@@ -857,7 +932,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     }
 
     private boolean isSelected(Node card) {
-        return card.getStyleClass().get(4).equals("chosen-card");
+        return card.getStyleClass().get(4).equals("selected-card");
     }
 
     private Card getCardByView(Node cardView) {
@@ -877,12 +952,57 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     }
 
     private void setCardChosen(boolean b, Node... cards) {
-        String styleClass = "chosen-card";
-        if (!b) styleClass = "unchosen-card";
+        String styleClass = "selected-card";
+        if (!b) styleClass = "unselected-card";
 
         for (Node card : cards) {
             card.getStyleClass().set(4, styleClass);
         }
+    }
+
+    private Position modelPositionToViewPosition(Position modelPosition) {
+        Position myPosition = gameModel.getMyPosition();
+        int dP = modelPosition.getOrder() - myPosition.getOrder();
+        if (dP < 0) dP += 4;
+
+        return Position.values()[dP];
+    }
+
+    private void startHand() {
+        Thread thread = new Thread(() -> {
+            gameModel.generateCard();
+            List<Card> cardNames = gameModel.getCardDesk(gameModel.getMyPosition());
+            //Phát bài trên view của mình
+            distributeCard(cardNames);
+
+            //Phát bài cho các client
+            for (int i = 1; i < 4; i++) {
+                if (!gameModel.getPlayers().get(i).isBot()) {
+                    Position position = Position.values()[i];
+                    Message msg = new Message(MessageType.RECEIVE_CARD_DESK, new CardDeskMsgContent(gameModel.getCardDesk(position)));
+                    connector.sendMessageTo(msg, getSocketByPosition(position));
+                }
+            }
+
+            //Kiểm tra hand thứ mấy để đổi bài cho nhau
+            setExchangeCardButton(gameModel.getHand());
+            if ((gameModel.getHand() + 1) % 4 != 0) {
+                gameModel.setGameState(GameState.EXCHANGING);
+                for (Player player : gameModel.getPlayers()) {
+                    if (player.isBot()) {
+                        player.autoExchangeCards();
+                        Message exchangeCardsMsg = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(player.getExchangeCards()));
+                        Position positionToReceive = gameModel.destPositionOfExchange(player.getPosition());
+                        Socket destSocket = getSocketByPosition(positionToReceive);
+                        connector.sendMessageTo(exchangeCardsMsg, destSocket);
+                    }
+                }
+            }
+            else {
+                gameModel.startTurn();
+            }
+        });
+        thread.start();
     }
 
     //End View Controller API -------------------------------------------------------

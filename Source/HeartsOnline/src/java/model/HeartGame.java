@@ -13,6 +13,7 @@ import java.util.List;
 public class HeartGame implements Serializable {
     private Position myPosition = Position.SOUTH;
 
+    private Position startPositionOfTrick = Position.SOUTH;
     private Position positionToGo = Position.SOUTH;
     private int hand = 0;
     private int trick = 0;
@@ -43,7 +44,6 @@ public class HeartGame implements Serializable {
 
     public void init() {
         gameState = GameState.NEW;
-        hand = 0;
         trick = 0;
     }
 
@@ -59,8 +59,22 @@ public class HeartGame implements Serializable {
         players.get(3).resetAll();
     }
 
-    public void resetHand() {
+    public void resetAllExceptPersonalInfo() {
+        gameState = GameState.NEW;
+        heartBroken = false;
+        hand = 0;
         trick = 0;
+
+        players.get(0).resetAllExceptPersonalInfo();
+        players.get(1).resetAllExceptPersonalInfo();
+        players.get(2).resetAllExceptPersonalInfo();
+        players.get(3).resetAllExceptPersonalInfo();
+    }
+
+    public void resetHand() {
+        gameState = GameState.WAITING;
+        trick = 0;
+        heartBroken = false;
 
         players.get(0).resetHand();
         players.get(1).resetHand();
@@ -145,44 +159,53 @@ public class HeartGame implements Serializable {
         return Position.values()[dP];
     }
 
-    public void next() {
-        if (isOver()) {
-            gameState = GameState.SHOWING_RESULT;
-            return;
-        }
-
-        increaseTrick();
-        if (trick == 0) increaseHand();
-
-        if ((trick % 4) == 0) {
-            setTurn();
-        }
-
-
+    public boolean trickDone() {
+        return (positionToGo.next().equals(startPositionOfTrick)
+                &&  getPlayer(positionToGo).getTrickCard().getCardName() != null
+                && !getPlayer(positionToGo).getTrickCard().getCardName().equals(CardName.UNKNOWN));
     }
 
-    private void setTurn() {
-        if (trick == 0) {
-            for (Player player : players) {
-                if (player.getCards().get(0).getCardName().equals(CardName.TWO_OF_CLUBS)) {
-                    positionToGo = player.getPosition();
-                    break;
-                }
-            }
-        } else {
-            CardType cardTypeOfTrick = getPlayer(positionToGo).getTrickCard().getCardType();
-            Position positionToGoNext = positionToGo;
+    public boolean handDone() {
+        return (trick == 12) && trickDone();
+    }
 
-            for (Player player : players) {
-                if (player.getTrickCard().getCardType().equals(cardTypeOfTrick)) {
-                    if (player.getTrickCard().getCardTypeOrder() > getPlayer(positionToGoNext).getTrickCard().getCardTypeOrder()) {
-                        positionToGoNext = player.getPosition();
+    private void calcTurn() {
+        //Đang đi lở dở trong trick
+        if (trickDone()) positionToGo = positionToGo.next();
+
+        //Hoàn thành 1 trick rồi, tới trick tiếp theo
+        else {
+            if (trick == 0) {
+                for (Player player : players) {
+                    if (player.getCardDesk().get(0).getCardName().equals(CardName.TWO_OF_CLUBS)) {
+                        startPositionOfTrick = player.getPosition();
+                        positionToGo = player.getPosition();
+                        break;
                     }
                 }
-            }
+            } else {
+                CardType cardTypeOfTrick = getPlayer(positionToGo.next()).getTrickCard().getCardType();
+                Position positionToGoNext = positionToGo.next();
 
-            positionToGo = positionToGoNext;
+                for (Player player : players) {
+                    if (player.getTrickCard().getCardType().equals(cardTypeOfTrick)) {
+                        if (player.getTrickCard().getCardTypeOrder() > getPlayer(positionToGoNext).getTrickCard().getCardTypeOrder()) {
+                            positionToGoNext = player.getPosition();
+                        }
+                    }
+                }
+
+                positionToGo = positionToGoNext;
+            }
         }
+    }
+
+    private void calcTrick() {
+        if(trickDone()) increaseTrick();
+    }
+
+    private void calcHand() {
+        if (handDone()) increaseHand();
     }
 
     public boolean isOver() {
@@ -200,24 +223,24 @@ public class HeartGame implements Serializable {
 
 
     private CardType getCardTypeOfTrick() {
-        return getPlayer(positionToGo).getTrickCard().getCardType();
+        return getPlayer(startPositionOfTrick).getTrickCard().getCardType();
     }
 
 
-    public void choseACard(Card card) {
+    public void selectACard(Card card) {
         if (getPlayer(myPosition).getExchangeCards().size() < 3) {
             getPlayer(myPosition).getExchangeCards().add(card);
         }
     }
 
-    public void unchoseACard(Card card) {
+    public void unselectACard(Card card) {
         getPlayer(myPosition).removeACardInExchangeCards(card);
     }
 
     public void exchangeCards(Position srcPos, Position destPos) {
         for (Card cardToExchange : getPlayer(srcPos).getExchangeCards()) {
             getPlayer(srcPos).removeACardInCardDesk(cardToExchange);
-            getPlayer(destPos).getCards().add(cardToExchange);
+            getPlayer(destPos).getCardDesk().add(cardToExchange);
         }
     }
 
@@ -229,15 +252,9 @@ public class HeartGame implements Serializable {
         getPlayer(position).playACard(card);
     }
 
-    public Position eatCards() {
-        Position positionToEat = positionToGo;
-
-        CardType cardTypeOfTrick = getCardTypeOfTrick();
+    public void eatCards(Position positionToEat) {
         List<Card> cardsToEat = new ArrayList<>();
         for(Player player : players) {
-            if (player.getTrickCard().getCardType().equals(cardTypeOfTrick) && player.getTrickCard().getValue() > getPlayer(positionToEat).getTrickCard().getValue()) {
-                positionToEat = player.getPosition();
-            }
             if (player.getTrickCard().getPoint() > 0) {
                 cardsToEat.add(player.getTrickCard());
             }
@@ -248,11 +265,22 @@ public class HeartGame implements Serializable {
         }
 
         if (callback != null && positionToEat.equals(myPosition)) {
-            Thread thread = new Thread(() -> callback.onCurHandPointChanged());
+            Thread thread = new Thread(() -> callback.onMyCurHandPointChanged());
             thread.start();
         }
+    }
 
-        return  positionToEat;
+    public Position positionToEat() {
+        Position positionToEat = startPositionOfTrick;
+
+        CardType cardTypeOfTrick = getCardTypeOfTrick();
+        for(Player player : players) {
+            if (player.getTrickCard().getCardType().equals(cardTypeOfTrick) && player.getTrickCard().getValue() > getPlayer(positionToEat).getTrickCard().getValue()) {
+                positionToEat = player.getPosition();
+            }
+        }
+
+        return positionToEat;
     }
 
     public void calcResultPoints() {
@@ -270,14 +298,11 @@ public class HeartGame implements Serializable {
                 if (!player.equals(playerShotTheMoon)) {
                     player.setCurHandPoint(26);
                 }
-
-                player.calcAccumulatedPoint();
             }
         }
 
-        if (callback != null) {
-            Thread thread = new Thread(() -> callback.onCalcResultPointsDone());
-            thread.start();
+        for(Player player : players) {
+            player.calcAccumulatedPoint();
         }
     }
 
@@ -300,14 +325,56 @@ public class HeartGame implements Serializable {
         return result;
     }
 
+    public boolean exchangeDone() {
+        boolean result = true;
+
+        for (Player player : players) {
+            if (player.getExchangeCards().size() < 3) {
+                return false;
+            }
+        }
+
+        return result;
+    }
+
+    //Linh hồn của gameModel
+    public void next(boolean host) {
+        //Dành cho trong ván, mỗi khi có 1 thằng nào đó đi 1 quân bài thì gọi next
+        //Nếu vừa đi xong 1 lá bài, mà vừa xong ván luôn, thì k tính toán gì, chỉ báo lại cho controller
+        if (handDone()) {
+            Thread thread = new Thread(()-> {
+               callback.onHandDone();
+            });
+            thread.start();
+            return;
+        }
+
+        if(trickDone()) {
+            Thread thread = new Thread(()-> {
+                callback.onTrickDone(positionToEat());
+            });
+            thread.start();
+            return;
+        }
+
+        calcTurn();
+        setGameState(GameState.PLAYING);
+    }
+
+    public void startTurn() {
+        //TODO: tính lượt đi, xong setState thành playing
+        calcTurn();
+        setGameState(GameState.PLAYING);
+    }
+
     //Getter và setter ----------------------------------------------
 
     public List<Card> getCardDesk(Position position) {
-        return getPlayer(position).getCards();
+        return getPlayer(position).getCardDesk();
     }
 
     public void setCardDesk(List<Card> cards, Position position) {
-        getPlayer(position).setCards(cards);
+        getPlayer(position).setCardDesk(cards);
     }
 
     public Card getTrickCard(Position position) {
@@ -422,6 +489,26 @@ public class HeartGame implements Serializable {
 
     public Position getPositionToGo() {
         return positionToGo;
+    }
+
+    public void setPositionToGo(Position positionToGo) {
+        this.positionToGo = positionToGo;
+    }
+
+    public GameModelCallback getCallback() {
+        return callback;
+    }
+
+    public void setCallback(GameModelCallback callback) {
+        this.callback = callback;
+    }
+
+    public Position getStartPositionOfTrick() {
+        return startPositionOfTrick;
+    }
+
+    public void setStartPositionOfTrick(Position startPositionOfTrick) {
+        this.startPositionOfTrick = startPositionOfTrick;
     }
 
     //End Getter và setter ------------------------------------------

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player implements Serializable {
-    List<Card> cards = new ArrayList<>();
+    List<Card> cardDesk = new ArrayList<>();
     List<Card> eatenCards = new ArrayList<>();
     Card trickCard = new Card(CardName.UNKNOWN);
     List<Card> exchangeCards = new ArrayList<>();
@@ -42,7 +42,7 @@ public class Player implements Serializable {
     }
 
     public void sortCards() {
-        cards.sort((card1, card2) -> {
+        cardDesk.sort((card1, card2) -> {
             if (card1.getCardTypeOrder() == card2.getCardTypeOrder()) {
                 return Integer.compare(card1.getValue(), card2.getValue());
             } else {
@@ -65,21 +65,19 @@ public class Player implements Serializable {
 
         Card cardToPlay = new Card(CardName.UNKNOWN);
 
-        if (trickNum == 0) {
-            if (cards.get(0).getCardName().equals(CardName.TWO_OF_CLUBS)) {
-                cardToPlay = cards.get(0);
-            }
-            else if (hasCardType(CardType.CLUBS)){
-                for (int i = cards.size(); i >= 0; i--) {
-                    if (cards.get(i).getCardType().equals(CardType.CLUBS)) {
-                        cardToPlay = cards.get(i);
-                        break;
-                    }
+        if (cardDesk.get(0).getCardName().equals(CardName.TWO_OF_CLUBS)) {
+            cardToPlay = cardDesk.get(0);
+        }
+        else if (cardsOnBoard.length > 0) {
+            for (int i = cardDesk.size(); i >= 0; i--) {
+                if (cardDesk.get(i).getCardType().equals(CardType.CLUBS)) {
+                    cardToPlay = cardDesk.get(i);
+                    break;
                 }
             }
-            else {
+        }
+        else {
 
-            }
         }
 
         playACard(cardToPlay);
@@ -92,15 +90,15 @@ public class Player implements Serializable {
         int index1, index2, index3;
         index1 = index2 = index3 = 0;
 
-        for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i).getValue() > index1) {
+        for (int i = 0; i < cardDesk.size(); i++) {
+            if (cardDesk.get(i).getValue() > index1) {
                 index3 = index2;
                 index2 = index1;
                 index1 = i;
-            } else if (cards.get(i).getValue() > index2) {
+            } else if (cardDesk.get(i).getValue() > index2) {
                 index3 = index2;
                 index2 = i;
-            } else if (cards.get(i).getValue() > index3) {
+            } else if (cardDesk.get(i).getValue() > index3) {
                 index3 = i;
             } else if (index2 == index1) {
                 index2 = i;
@@ -109,9 +107,9 @@ public class Player implements Serializable {
             }
         }
 
-        cardsToExchange.add(cards.get(index1));
-        cardsToExchange.add(cards.get(index2));
-        cardsToExchange.add(cards.get(index3));
+        cardsToExchange.add(cardDesk.get(index1));
+        cardsToExchange.add(cardDesk.get(index2));
+        cardsToExchange.add(cardDesk.get(index3));
 
         exchangeCards = cardsToExchange;
     }
@@ -131,7 +129,7 @@ public class Player implements Serializable {
         bot = true;
         accumulatedPoint = 0;
         curHandPoint = 0;
-        cards.clear();
+        cardDesk.clear();
         eatenCards.clear();
         trickCard = new Card(CardName.UNKNOWN);
         exchangeCards.clear();
@@ -141,7 +139,7 @@ public class Player implements Serializable {
     public void resetAllExceptPersonalInfo() {
         accumulatedPoint = 0;
         curHandPoint = 0;
-        cards.clear();
+        cardDesk.clear();
         eatenCards.clear();
         trickCard = new Card(CardName.UNKNOWN);
         exchangeCards.clear();
@@ -150,7 +148,7 @@ public class Player implements Serializable {
 
     public void resetHand() {
         curHandPoint = 0;
-        cards.clear();
+        cardDesk.clear();
         eatenCards.clear();
         trickCard = new Card(CardName.UNKNOWN);
         exchangeCards.clear();
@@ -158,13 +156,13 @@ public class Player implements Serializable {
     }
 
     public void clearCardDesks() {
-        cards.clear();
+        cardDesk.clear();
     }
 
     public void removeACardInCardDesk(Card card) {
-        for (int i = 0; i < cards.size(); i++) {
-            if (cards.get(i).getCardName().equals(card.getCardName())) {
-                cards.remove(i);
+        for (int i = 0; i < cardDesk.size(); i++) {
+            if (cardDesk.get(i).getCardName().equals(card.getCardName())) {
+                cardDesk.remove(i);
                 break;
             }
         }
@@ -190,7 +188,7 @@ public class Player implements Serializable {
 
     public void receiveExchangeCards(List<Card> receivedCards) {
         for (Card card : receivedCards) {
-            cards.add(card);
+            cardDesk.add(card);
         }
         sortCards();
     }
@@ -230,7 +228,7 @@ public class Player implements Serializable {
     }
 
     public boolean hasCardType(CardType type) {
-        for (Card card : cards) {
+        for (Card card : cardDesk) {
             if (card.getCardType().equals(type))
                 return true;
         }
@@ -277,12 +275,12 @@ public class Player implements Serializable {
         this.curHandPoint = curHandPoint;
     }
 
-    public List<Card> getCards() {
-        return cards;
+    public List<Card> getCardDesk() {
+        return cardDesk;
     }
 
-    public void setCards(List<Card> cards) {
-        this.cards = cards;
+    public void setCardDesk(List<Card> cardDesk) {
+        this.cardDesk = cardDesk;
     }
 
     public Card getTrickCard() {
