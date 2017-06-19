@@ -7,10 +7,53 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/compiler.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/description.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/encodings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/gradle.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/uiDesigner.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/KingChessOnline.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/Controller.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/Main.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/bishop_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/bishop_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/board.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/king_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/king_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/knight_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/knight_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/pawn_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/pawn_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/queen_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/queen_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/rook_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/rook_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/start.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/sample.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/views/PlayingRoom.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/java/Controller.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/java/Main.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/java/sample.fxml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/bishop_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/bishop_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/board.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/king_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/king_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/knight_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/knight_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/pawn_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/pawn_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/queen_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/queen_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/rook_black.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/rook_white.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/start.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/views/PlayingRoom.fxml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" afterPath="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/model/HeartGame.java" afterPath="$PROJECT_DIR$/src/java/model/HeartGame.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/model/player/Player.java" afterPath="$PROJECT_DIR$/src/java/model/player/Player.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -168,8 +211,8 @@
       <file leaf-file-name="HeartGame.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="484" column="0" lean-forward="true" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
+            <state relative-caret-position="46">
+              <caret line="470" column="5" lean-forward="true" selection-start-line="470" selection-start-column="5" selection-end-line="470" selection-end-column="5" />
               <folding>
                 <element signature="method#HeartGame#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#init#0;class#HeartGame#0" expanded="false" />
@@ -368,192 +411,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="styles" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resources" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="player" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="out" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="artifacts" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline_jar" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1090,7 +947,7 @@
       <workItem from="1497699524007" duration="14194000" />
       <workItem from="1497774441569" duration="24858000" />
       <workItem from="1497837911194" duration="34902000" />
-      <workItem from="1497877729560" duration="6627000" />
+      <workItem from="1497877729560" duration="6787000" />
     </task>
     <task id="LOCAL-00001" summary="Connector gan hoan thien">
       <created>1495386782593</created>
@@ -1204,11 +1061,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497875062279</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="phiên bản playable :))">
+      <created>1497884390292</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1497884390292</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="292879000" />
+    <option name="totallyTimeSpent" value="293039000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1288,7 +1152,8 @@
     <MESSAGE value="cập nhật: các mảnh nhỏ của gameLoop tiếp tục tiến triển." />
     <MESSAGE value="đã đạt được cấu trúc mẫu mực để hoàn thành game, implement chi tiết hàm nữa là ngọt" />
     <MESSAGE value="code máy chơi và test mọi trường hợp để kiểm tra có bug không nữa là xong" />
-    <option name="LAST_COMMIT_MESSAGE" value="code máy chơi và test mọi trường hợp để kiểm tra có bug không nữa là xong" />
+    <MESSAGE value="phiên bản playable :))" />
+    <option name="LAST_COMMIT_MESSAGE" value="phiên bản playable :))" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1705,8 +1570,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="484" column="0" lean-forward="true" selection-start-line="484" selection-start-column="0" selection-end-line="484" selection-end-column="0" />
+        <state relative-caret-position="46">
+          <caret line="470" column="5" lean-forward="true" selection-start-line="470" selection-start-column="5" selection-end-line="470" selection-end-column="5" />
           <folding>
             <element signature="method#HeartGame#0;class#HeartGame#0" expanded="false" />
             <element signature="method#init#0;class#HeartGame#0" expanded="false" />
