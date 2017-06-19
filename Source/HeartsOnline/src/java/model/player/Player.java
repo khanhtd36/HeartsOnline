@@ -175,8 +175,9 @@ public class Player implements Serializable {
     }
 
     public void playACard(Card card) {
-        removeACardInCardDesk(card);
         trickCard = card;
+        removeACardInCardDesk(card);
+        sortCards();
     }
 
     public void changeToBot() {

@@ -217,6 +217,7 @@ public class HeartGame implements Serializable {
             getPlayer(srcPos).removeACardInCardDesk(cardToExchange);
             getPlayer(destPos).getCardDesk().add(cardToExchange);
         }
+        getPlayer(destPos).sortCards();
     }
 
     public void receiveExchangeCards(List<Card> receivedCards) {
@@ -397,24 +398,8 @@ public class HeartGame implements Serializable {
         getPlayer(position).setCardDesk(cards);
     }
 
-    public Card getTrickCard(Position position) {
-        return getPlayer(position).getTrickCard();
-    }
-
-    public void setTrickCard(Position position, Card card) {
-        getPlayer(position).setTrickCard(card);
-    }
-
     public List<Card> getExchangeCards(Position position) {
         return getPlayer(position).getExchangeCards();
-    }
-
-    public void setExchangeCards(Position position, List<Card> cards) {
-        getPlayer(position).setExchangeCards(cards);
-    }
-
-    public List<Card> getEatenCards(Position position) {
-        return getPlayer(position).getEatenCards();
     }
 
     public void setPlayerName(Position position, String name) {
@@ -451,10 +436,6 @@ public class HeartGame implements Serializable {
 
     public ArrayList<Player> getPlayers() {
         return players;
-    }
-
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
     }
 
     public Player getPlayer(Position position) {
@@ -503,7 +484,7 @@ public class HeartGame implements Serializable {
         }
 
         //Nếu tôi đi lá bài cơ hợp lệ thì tim vỡ. (không dẫn đầu trick, không ở lượt đầu tiên)
-        if(!amILeadTrick(position) && getPlayer(myPosition).hasCardType(getCardTypeOfTrick()) && trick > 0) {
+        if(!amILeadTrick(position) && trick > 0 && !getPlayer(position).hasCardType(getCardTypeOfTrick()) && card.getCardType().equals(CardType.HEARTS)) {
             heartBroken = true;
             if (callback != null) {
                 Thread thread = new Thread (() -> callback.onHeartBroken());

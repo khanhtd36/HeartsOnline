@@ -13,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import model.GameModelCallback;
@@ -283,10 +284,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         }
 
         //Đang trong ván, đúng lượt đi
-        gameModel.setGameState(GameState.WAITING);
         if (gameModel.canIPlay(gameModel.getMyPosition(), chosenCard)) {
-            mePlayCard(gameModel.getTrick(), chosenCard);
+            gameModel.setGameState(GameState.WAITING);
             gameModel.playACard(myPosition, chosenCard);
+            mePlayCard(gameModel.getTrick(), chosenCard);
             Message msg = new Message(MessageType.PLAY_CARD, new PlayACardMsgContent(myPosition, chosenCard));
             connector.sendMessageToAll(msg);
 
@@ -450,6 +451,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     public synchronized void onHandDone() {
         Thread thread = new Thread(() -> {
             gameModel.calcResultPoints();
+            if (gameModel.getPlayer(gameModel.getMyPosition()).doesShootTheMoon()) {
+                onMyCurHandPointChanged();
+            }
+            setNodeToGone(cardTrickMe, cardTrickWest, cardTrickNorth, cardTrickEast);
             showEatenCards();
             addChatLine("--------- Tổng kết: --------");
             addChatLine(gameModel.getName(Position.SOUTH) + ": " + gameModel.getPlayer(Position.SOUTH).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.SOUTH).getAccumulatedPoint());
@@ -468,7 +473,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
             if (host) {
                 try {
-                    Thread.sleep(5000);
+                    Thread.sleep(3500);
                     setNodeToAppear(btnStart);
                 } catch (Exception e) {
 
@@ -480,19 +485,25 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
     public void onMyCurHandPointChanged() {
         Thread thread = new Thread(() -> {
-            for (int i = 0; i < 3; i++) {
-                Platform.runLater(() -> txtCurRoundPoint.setText(""));
+            if (gameModel.getPlayer(gameModel.getMyPosition()).getCurHandPoint() == 0) {
+                txtCurRoundPoint.setText("Đưu Bắn mặt trăng luôn");
+            } else {
+                Platform.runLater(() -> txtCurRoundPoint.setFill(Color.RED));
+                for (int i = 0; i < 6; i++) {
+                    Platform.runLater(() -> txtCurRoundPoint.setText(""));
 
-                try {
-                    Thread.sleep(200);
-                } catch (Exception e) {
-                }
-                Platform.runLater(() -> txtCurRoundPoint.setText("Điểm ván hiện tại: " + gameModel.getPlayer(gameModel.getMyPosition()).getCurHandPoint()));
+                    try {
+                        Thread.sleep(270);
+                    } catch (Exception e) {
+                    }
+                    Platform.runLater(() -> txtCurRoundPoint.setText("Điểm ván hiện tại: " + gameModel.getPlayer(gameModel.getMyPosition()).getCurHandPoint()));
 
-                try {
-                    Thread.sleep(200);
-                } catch (Exception e) {
+                    try {
+                        Thread.sleep(270);
+                    } catch (Exception e) {
+                    }
                 }
+                Platform.runLater(() -> txtCurRoundPoint.setFill(Color.BLACK));
             }
         });
         thread.start();
@@ -598,6 +609,8 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
                 Socket destSocket = getSocketByPosition(destPosition);
                 Message msgToDest = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(receivedCards));
                 connector.sendMessageTo(msgToDest, destSocket);
+            } else {
+                refreshMyCardDesk();
             }
 
             if (gameModel.exchangeDone()) {
@@ -806,9 +819,9 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     }
 
     public synchronized void mePlayCard(int trick, Card card) {
-        setNodeToGone(cardMe.get(12 - trick));
         setCardFace(cardTrickMe, card.getCssClassName());
         setNodeToAppear(cardTrickMe);
+        refreshMyCardDesk();
     }
 
     public synchronized void playACard(int trick, Card card, Position positionInView) {
@@ -848,57 +861,49 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     }
 
     public synchronized void distributeCard(List<Card> cards) {
-        Thread thread = new Thread(() -> {
-            for (ArrayList<ImageView> cardDesk : cardDesks) {
-                for (Node card : cardDesk) {
-                    setNodeToGone(card);
-                }
+        for (ArrayList<ImageView> cardDesk : cardDesks) {
+            for (Node card : cardDesk) {
+                setNodeToGone(card);
             }
+        }
 
-            for (int i = 0; i < 13; i++) {
-                try {
-                    setCardFace(cardWest.get(i), CardName.UNKNOWN.getCssClassName());
-                    setNodeToAppear(cardWest.get(i));
-                    Thread.sleep(3);
+        for (int i = 0; i < 13; i++) {
+            try {
+                setCardFace(cardWest.get(i), CardName.UNKNOWN.getCssClassName());
+                setNodeToAppear(cardWest.get(i));
 
-                    setCardFace(cardNorth.get(i), CardName.UNKNOWN.getCssClassName());
-                    setNodeToAppear(cardNorth.get(i));
-                    Thread.sleep(3);
+                setCardFace(cardNorth.get(i), CardName.UNKNOWN.getCssClassName());
+                setNodeToAppear(cardNorth.get(i));
 
-                    setCardFace(cardEast.get(i), CardName.UNKNOWN.getCssClassName());
-                    setNodeToAppear(cardEast.get(i));
-                    Thread.sleep(3);
+                setCardFace(cardEast.get(i), CardName.UNKNOWN.getCssClassName());
+                setNodeToAppear(cardEast.get(i));
 
-                    setCardFace(cardMe.get(i), cards.get(i).getCssClassName());
-                    setNodeToAppear(cardMe.get(i));
-                    Thread.sleep(3);
-                } catch (Exception e) {
-                    continue;
-                }
+                setCardFace(cardMe.get(i), cards.get(i).getCssClassName());
+                setNodeToAppear(cardMe.get(i));
+            } catch (Exception e) {
+                continue;
             }
-        });
-        thread.start();
+        }
     }
 
     public synchronized void refreshMyCardDesk() {
         List<Card> cards = gameModel.getCardDesk(gameModel.getMyPosition());
-        Thread thread = new Thread(() -> {
-            for (Node card : cardMe) {
-                setCardChosen(false, card);
-                setNodeToGone(card);
-            }
+        for (Node card : cardMe) {
+            setCardChosen(false, card);
+        }
 
-            for (int i = 0; i < cards.size() && i < 13; i++) {
-                try {
-                    setCardFace(cardMe.get(i), cards.get(i).getCssClassName());
-                    setNodeToAppear(cardMe.get(i));
-                    Thread.sleep(3);
-                } catch (Exception e) {
-                    continue;
-                }
+        for (int i = 0; i < cards.size() && i < 13; i++) {
+            try {
+                setCardFace(cardMe.get(i), cards.get(i).getCssClassName());
+                setNodeToAppear(cardMe.get(i));
+            } catch (Exception e) {
+                continue;
             }
-        });
-        thread.start();
+        }
+
+        for (int i = cards.size(); i < 13; i++) {
+            setNodeToGone(cardMe.get(i));
+        }
     }
 
     public synchronized void showEatenCards() {
@@ -914,26 +919,16 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         eatenCards.add(northEatenCards);
         eatenCards.add(eastEatenCards);
 
-        Thread thread = new Thread(() -> {
-            for (ArrayList<ImageView> cardDesk : cardDesks) {
-                for (Node card : cardDesk) {
-                    setNodeToGone(card);
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < eatenCards.get(i).size(); j++) {
+                try {
+                    setCardFace(cardDesks.get(i).get(j), eatenCards.get(i).get(j).getCssClassName());
+                    setNodeToAppear(cardDesks.get(i).get(j));
+                } catch (Exception e) {
+                    continue;
                 }
             }
-
-            for (int i = 0; i < 4; i++) {
-                for (int j = 0; j < eatenCards.get(i).size(); j++) {
-                    try {
-                        setCardFace(cardDesks.get(i).get(j), eatenCards.get(i).get(j).getCssClassName());
-                        setNodeToAppear(cardDesks.get(i).get(j));
-                        Thread.sleep(3);
-                    } catch (Exception e) {
-                        continue;
-                    }
-                }
-            }
-        });
-        thread.start();
+        }
     }
 
     public synchronized void setExchangeCardButton(int hand) {
@@ -969,11 +964,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     }
 
     private void setCardChosen(boolean b, Node... cards) {
-        String styleClass = "selected-card";
-        if (!b) styleClass = "unselected-card";
+        final String styleClass = b ? "selected-card" : "unselected-card";
 
         for (Node card : cards) {
-            card.getStyleClass().set(4, styleClass);
+            Platform.runLater(() -> card.getStyleClass().set(4, styleClass));
         }
     }
 
@@ -987,6 +981,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
     private void startHand() {
         Thread thread = new Thread(() -> {
+            Platform.runLater(() -> txtCurRoundPoint.setText("Điểm ván hiện tại: 0"));
             gameModel.generateCard();
             List<Card> cardNames = gameModel.getCardDesk(gameModel.getMyPosition());
             //Phát bài trên view của mình

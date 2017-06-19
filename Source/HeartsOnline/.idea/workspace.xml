@@ -7,53 +7,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/compiler.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/description.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/encodings.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/gradle.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/misc.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/modules.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/uiDesigner.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/vcs.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/.idea/workspace.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/KingChessOnline.iml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/Controller.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/Main.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/bishop_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/bishop_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/board.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/king_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/king_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/knight_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/knight_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/pawn_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/pawn_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/queen_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/queen_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/rook_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/rook_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/images/start.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/sample.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/out/production/KingChessOnline/views/PlayingRoom.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/java/Controller.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/java/Main.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/java/sample.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/bishop_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/bishop_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/board.jpg" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/king_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/king_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/knight_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/knight_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/pawn_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/pawn_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/queen_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/queen_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/rook_black.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/rook_white.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/images/start.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/../KingChessOnline/src/resources/views/PlayingRoom.fxml" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" afterPath="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/model/HeartGame.java" afterPath="$PROJECT_DIR$/src/java/model/HeartGame.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/model/player/Player.java" afterPath="$PROJECT_DIR$/src/java/model/player/Player.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -112,11 +69,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="PlayingRoomController.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PlayingRoomController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="851" column="44" lean-forward="false" selection-start-line="851" selection-start-column="42" selection-end-line="851" selection-end-column="44" />
+            <state relative-caret-position="49">
+              <caret line="341" column="5" lean-forward="true" selection-start-line="341" selection-start-column="5" selection-end-line="341" selection-end-column="5" />
               <folding>
                 <element signature="method#initialize#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#setStageAndSetupListens#0;class#PlayingRoomController#0" expanded="false" />
@@ -125,6 +82,7 @@
                 <element signature="method#joinRoom#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#startGame#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#exchangeCards#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#clickOnCard#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#submitChat#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#exitRoom#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#onListenerOpenFailed#0;class#PlayingRoomController#0" expanded="false" />
@@ -169,6 +127,7 @@
                 <element signature="method#mePlayCard#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#playACard#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#collectCard#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#distributeCard#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#refreshMyCardDesk#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#showEatenCards#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#setExchangeCardButton#0;class#PlayingRoomController#0" expanded="false" />
@@ -183,16 +142,19 @@
       <file leaf-file-name="Player.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/model/player/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="113">
-              <caret line="191" column="19" lean-forward="false" selection-start-line="191" selection-start-column="19" selection-end-line="191" selection-end-column="19" />
+            <state relative-caret-position="1190">
+              <caret line="343" column="0" lean-forward="true" selection-start-line="343" selection-start-column="0" selection-end-line="343" selection-end-column="0" />
               <folding>
                 <element signature="method#Player#0;class#Player#0" expanded="false" />
                 <element signature="method#Player#1;class#Player#0" expanded="false" />
                 <element signature="method#sortCards#0;class#Player#0" expanded="false" />
                 <element signature="method#eatCards#0;class#Player#0" expanded="false" />
+                <element signature="method#autoPlayACard#0;class#Player#0" expanded="false" />
+                <element signature="method#bestCardToFollow#0;class#Player#0" expanded="false" />
                 <element signature="method#autoExchangeCards#0;class#Player#0" expanded="false" />
                 <element signature="method#playACard#0;class#Player#0" expanded="false" />
                 <element signature="method#changeToBot#0;class#Player#0" expanded="false" />
+                <element signature="method#resetAll#0;class#Player#0" expanded="false" />
                 <element signature="method#resetAllExceptPersonalInfo#0;class#Player#0" expanded="false" />
                 <element signature="method#resetHand#0;class#Player#0" expanded="false" />
                 <element signature="method#removeACardInCardDesk#0;class#Player#0" expanded="false" />
@@ -208,11 +170,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HeartGame.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HeartGame.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="470" column="5" lean-forward="true" selection-start-line="470" selection-start-column="5" selection-end-line="470" selection-end-column="5" />
+            <state relative-caret-position="88">
+              <caret line="270" column="30" lean-forward="false" selection-start-line="270" selection-start-column="30" selection-end-line="270" selection-end-column="30" />
               <folding>
                 <element signature="method#HeartGame#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#init#0;class#HeartGame#0" expanded="false" />
@@ -229,13 +191,15 @@
                 <element signature="method#receiveExchangeCards#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#eatCards#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#positionToEat#0;class#HeartGame#0" expanded="false" />
-                <element signature="method#calcResultPoints#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#winner#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#canIPlay#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#exchangeDone#0;class#HeartGame#0" expanded="false" />
+                <element signature="method#next#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#startTurn#0;class#HeartGame#0" expanded="false" />
+                <element signature="method#detectBotGo#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#setPlayerName#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#getAvailablePosition#0;class#HeartGame#0" expanded="false" />
+                <element signature="method#getPlayer#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#increaseTrick#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#detectHeartBroken#0;class#HeartGame#0" expanded="false" />
                 <element signature="method#setStartPositionOfTrick#0;class#HeartGame#0" expanded="false" />
@@ -282,6 +246,14 @@
       <find>autop</find>
       <find>coll</find>
       <find>cll</find>
+      <find>four-of</find>
+      <find>playAcard</find>
+      <find>detec</find>
+      <find>onMy</find>
+      <find>onHand</find>
+      <find>exchangeC</find>
+      <find>Thread thread =</find>
+      <find>cani</find>
     </findStrings>
   </component>
   <component name="FindManager">
@@ -360,8 +332,8 @@
         <option value="$PROJECT_DIR$/src/resources/styles/PlayingRoomStyle.css" />
         <option value="$PROJECT_DIR$/src/java/controller/GameLoopThread.java" />
         <option value="$PROJECT_DIR$/src/java/model/GameModelCallback.java" />
-        <option value="$PROJECT_DIR$/src/java/model/HeartGame.java" />
         <option value="$PROJECT_DIR$/src/java/model/player/Player.java" />
+        <option value="$PROJECT_DIR$/src/java/model/HeartGame.java" />
         <option value="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" />
       </list>
     </option>
@@ -411,6 +383,82 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -947,7 +995,7 @@
       <workItem from="1497699524007" duration="14194000" />
       <workItem from="1497774441569" duration="24858000" />
       <workItem from="1497837911194" duration="34902000" />
-      <workItem from="1497877729560" duration="6787000" />
+      <workItem from="1497877729560" duration="14598000" />
     </task>
     <task id="LOCAL-00001" summary="Connector gan hoan thien">
       <created>1495386782593</created>
@@ -1068,11 +1116,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497884390292</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="project chuẩn, sửa lại vài bug nữa xong">
+      <created>1497884574063</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1497884574063</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="293039000" />
+    <option name="totallyTimeSpent" value="300850000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1153,25 +1208,20 @@
     <MESSAGE value="đã đạt được cấu trúc mẫu mực để hoàn thành game, implement chi tiết hàm nữa là ngọt" />
     <MESSAGE value="code máy chơi và test mọi trường hợp để kiểm tra có bug không nữa là xong" />
     <MESSAGE value="phiên bản playable :))" />
-    <option name="LAST_COMMIT_MESSAGE" value="phiên bản playable :))" />
+    <MESSAGE value="project chuẩn, sửa lại vài bug nữa xong" />
+    <option name="LAST_COMMIT_MESSAGE" value="project chuẩn, sửa lại vài bug nữa xong" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/java/model/player/Player.java</url>
-          <line>121</line>
+          <line>265</line>
           <properties />
-          <option name="timeStamp" value="91" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/model/player/Player.java</url>
-          <line>99</line>
-          <properties />
-          <option name="timeStamp" value="92" />
+          <option name="timeStamp" value="96" />
         </line-breakpoint>
       </breakpoints>
-      <option name="time" value="93" />
+      <option name="time" value="97" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1184,8 +1234,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/java/META-INF/MANIFEST.MF" />
-    <entry file="file://$PROJECT_DIR$/server/src/java/MainLauncher.java" />
     <entry file="file://$PROJECT_DIR$/server/src/java/controller/ServerMainController.java" />
     <entry file="file://$PROJECT_DIR$/client/src/resources/views/Login.fxml" />
     <entry file="file://$PROJECT_DIR$/client/src/java/controller/LoginController.java" />
@@ -1229,13 +1277,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/styles/CardSkin1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="1" lean-forward="false" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1476,10 +1517,103 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/resources/styles/CardSkin1.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="43" column="16" lean-forward="true" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/util/Collections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="1054" column="0" lean-forward="false" selection-start-line="1054" selection-start-column="0" selection-end-line="1054" selection-end-column="0" />
+          <folding>
+            <element signature="e#44673#44674#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/collections/ObservableListBase.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="131">
+          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
+          <folding>
+            <element signature="e#4007#4008#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="270" column="30" lean-forward="false" selection-start-line="270" selection-start-column="30" selection-end-line="270" selection-end-column="30" />
+          <folding>
+            <element signature="method#HeartGame#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#init#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#resetAll#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#resetAllExceptPersonalInfo#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#resetHand#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#generateCard#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#destPositionOfExchange#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#calcTurn#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#isOver#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#getCardsOnBoard#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#selectACard#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#exchangeCards#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#receiveExchangeCards#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#eatCards#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#positionToEat#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#winner#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#canIPlay#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#exchangeDone#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#next#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#startTurn#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#detectBotGo#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#setPlayerName#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#getAvailablePosition#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#getPlayer#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#increaseTrick#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#detectHeartBroken#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#setStartPositionOfTrick#0;class#HeartGame#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/model/player/Player.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="343" column="0" lean-forward="true" selection-start-line="343" selection-start-column="0" selection-end-line="343" selection-end-column="0" />
+          <folding>
+            <element signature="method#Player#0;class#Player#0" expanded="false" />
+            <element signature="method#Player#1;class#Player#0" expanded="false" />
+            <element signature="method#sortCards#0;class#Player#0" expanded="false" />
+            <element signature="method#eatCards#0;class#Player#0" expanded="false" />
+            <element signature="method#autoPlayACard#0;class#Player#0" expanded="false" />
+            <element signature="method#bestCardToFollow#0;class#Player#0" expanded="false" />
+            <element signature="method#autoExchangeCards#0;class#Player#0" expanded="false" />
+            <element signature="method#playACard#0;class#Player#0" expanded="false" />
+            <element signature="method#changeToBot#0;class#Player#0" expanded="false" />
+            <element signature="method#resetAll#0;class#Player#0" expanded="false" />
+            <element signature="method#resetAllExceptPersonalInfo#0;class#Player#0" expanded="false" />
+            <element signature="method#resetHand#0;class#Player#0" expanded="false" />
+            <element signature="method#removeACardInCardDesk#0;class#Player#0" expanded="false" />
+            <element signature="method#removeACardInExchangeCards#0;class#Player#0" expanded="false" />
+            <element signature="method#receiveExchangeCards#0;class#Player#0" expanded="false" />
+            <element signature="method#calcCurHandPoint#0;class#Player#0" expanded="false" />
+            <element signature="method#calcAccumulatedPoint#0;class#Player#0" expanded="false" />
+            <element signature="method#doesShootTheMoon#0;class#Player#0" expanded="false" />
+            <element signature="method#allAreHearts#0;class#Player#0" expanded="false" />
+            <element signature="method#hasCardType#0;class#Player#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="851" column="44" lean-forward="false" selection-start-line="851" selection-start-column="42" selection-end-line="851" selection-end-column="44" />
+        <state relative-caret-position="49">
+          <caret line="341" column="5" lean-forward="true" selection-start-line="341" selection-start-column="5" selection-end-line="341" selection-end-column="5" />
           <folding>
             <element signature="method#initialize#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#setStageAndSetupListens#0;class#PlayingRoomController#0" expanded="false" />
@@ -1488,6 +1622,7 @@
             <element signature="method#joinRoom#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#startGame#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#exchangeCards#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#clickOnCard#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#submitChat#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#exitRoom#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#onListenerOpenFailed#0;class#PlayingRoomController#0" expanded="false" />
@@ -1532,72 +1667,13 @@
             <element signature="method#mePlayCard#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#playACard#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#collectCard#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#distributeCard#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#refreshMyCardDesk#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#showEatenCards#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#setExchangeCardButton#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#setCardChosen#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#modelPositionToViewPosition#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#startHand#0;class#PlayingRoomController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/model/player/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="113">
-          <caret line="191" column="19" lean-forward="false" selection-start-line="191" selection-start-column="19" selection-end-line="191" selection-end-column="19" />
-          <folding>
-            <element signature="method#Player#0;class#Player#0" expanded="false" />
-            <element signature="method#Player#1;class#Player#0" expanded="false" />
-            <element signature="method#sortCards#0;class#Player#0" expanded="false" />
-            <element signature="method#eatCards#0;class#Player#0" expanded="false" />
-            <element signature="method#autoExchangeCards#0;class#Player#0" expanded="false" />
-            <element signature="method#playACard#0;class#Player#0" expanded="false" />
-            <element signature="method#changeToBot#0;class#Player#0" expanded="false" />
-            <element signature="method#resetAllExceptPersonalInfo#0;class#Player#0" expanded="false" />
-            <element signature="method#resetHand#0;class#Player#0" expanded="false" />
-            <element signature="method#removeACardInCardDesk#0;class#Player#0" expanded="false" />
-            <element signature="method#removeACardInExchangeCards#0;class#Player#0" expanded="false" />
-            <element signature="method#receiveExchangeCards#0;class#Player#0" expanded="false" />
-            <element signature="method#calcCurHandPoint#0;class#Player#0" expanded="false" />
-            <element signature="method#calcAccumulatedPoint#0;class#Player#0" expanded="false" />
-            <element signature="method#doesShootTheMoon#0;class#Player#0" expanded="false" />
-            <element signature="method#allAreHearts#0;class#Player#0" expanded="false" />
-            <element signature="method#hasCardType#0;class#Player#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="470" column="5" lean-forward="true" selection-start-line="470" selection-start-column="5" selection-end-line="470" selection-end-column="5" />
-          <folding>
-            <element signature="method#HeartGame#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#init#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#resetAll#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#resetAllExceptPersonalInfo#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#resetHand#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#generateCard#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#destPositionOfExchange#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#calcTurn#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#isOver#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#getCardsOnBoard#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#selectACard#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#exchangeCards#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#receiveExchangeCards#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#eatCards#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#positionToEat#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#calcResultPoints#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#winner#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#canIPlay#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#exchangeDone#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#startTurn#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#setPlayerName#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#getAvailablePosition#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#increaseTrick#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#detectHeartBroken#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#setStartPositionOfTrick#0;class#HeartGame#0" expanded="false" />
           </folding>
         </state>
       </provider>
