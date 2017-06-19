@@ -18,10 +18,21 @@ public class HeartGame implements Serializable {
     private int trick = 0;
     private boolean heartBroken = false;
     private GameState gameState = GameState.NEW;
+    private GameModelCallback callback = null;
 
     private ArrayList<Player> players = new ArrayList<>();
 
     public HeartGame() {
+        players.clear();
+        players.add(new Player(Position.SOUTH, "Thánh Bài"));
+        players.add(new Player(Position.WEST));
+        players.add(new Player(Position.NORTH));
+        players.add(new Player(Position.EAST));
+    }
+
+    public HeartGame(GameModelCallback callback) {
+        this.callback = callback;
+
         players.clear();
         players.add(new Player(Position.SOUTH, "Thánh Bài"));
         players.add(new Player(Position.WEST));
@@ -55,8 +66,8 @@ public class HeartGame implements Serializable {
         players.get(1).resetHand();
         players.get(2).resetHand();
         players.get(3).resetHand();
-
     }
+
 
     public void generateCard() {
         players.get(0).clearCardDesks();
@@ -134,30 +145,6 @@ public class HeartGame implements Serializable {
         return Position.values()[dP];
     }
 
-    public List<Card> getCardDesk(Position position) {
-        return getPlayer(position).getCards();
-    }
-
-    public void setCardDesk(List<Card> cards, Position position) {
-        getPlayer(position).setCards(cards);
-    }
-
-    public Card getTrickCard(Position position) {
-        return getPlayer(position).getTrickCard();
-    }
-
-    public void setTrickCard(Position position, Card card) {
-        getPlayer(position).setTrickCard(card);
-    }
-
-    public List<Card> getExchangeCards(Position position) {
-        return getPlayer(position).getExchangeCards();
-    }
-
-    public void setExchangeCards(Position position, List<Card> cards) {
-        getPlayer(position).setExchangeCards(cards);
-    }
-
     public void next() {
         if (isOver()) {
             gameState = GameState.SHOWING_RESULT;
@@ -198,7 +185,7 @@ public class HeartGame implements Serializable {
         }
     }
 
-    private boolean isOver() {
+    public boolean isOver() {
         boolean result = false;
 
         for(Player player : players) {
@@ -212,7 +199,136 @@ public class HeartGame implements Serializable {
     }
 
 
+    private CardType getCardTypeOfTrick() {
+        return getPlayer(positionToGo).getTrickCard().getCardType();
+    }
+
+
+    public void choseACard(Card card) {
+        if (getPlayer(myPosition).getExchangeCards().size() < 3) {
+            getPlayer(myPosition).getExchangeCards().add(card);
+        }
+    }
+
+    public void unchoseACard(Card card) {
+        getPlayer(myPosition).removeACardInExchangeCards(card);
+    }
+
+    public void exchangeCards(Position srcPos, Position destPos) {
+        for (Card cardToExchange : getPlayer(srcPos).getExchangeCards()) {
+            getPlayer(srcPos).removeACardInCardDesk(cardToExchange);
+            getPlayer(destPos).getCards().add(cardToExchange);
+        }
+    }
+
+    public void receiveExchangeCards(List<Card> receivedCards) {
+        getPlayer(myPosition).receiveExchangeCards(receivedCards);
+    }
+
+    public void playACard(Position position, Card card) {
+        getPlayer(position).playACard(card);
+    }
+
+    public Position eatCards() {
+        Position positionToEat = positionToGo;
+
+        CardType cardTypeOfTrick = getCardTypeOfTrick();
+        List<Card> cardsToEat = new ArrayList<>();
+        for(Player player : players) {
+            if (player.getTrickCard().getCardType().equals(cardTypeOfTrick) && player.getTrickCard().getValue() > getPlayer(positionToEat).getTrickCard().getValue()) {
+                positionToEat = player.getPosition();
+            }
+            if (player.getTrickCard().getPoint() > 0) {
+                cardsToEat.add(player.getTrickCard());
+            }
+        }
+
+        for (Card cardToEat : cardsToEat) {
+            getPlayer(positionToEat).eatCards(cardToEat);
+        }
+
+        if (callback != null && positionToEat.equals(myPosition)) {
+            Thread thread = new Thread(() -> callback.onCurHandPointChanged());
+            thread.start();
+        }
+
+        return  positionToEat;
+    }
+
+    public void calcResultPoints() {
+        Player playerShotTheMoon = null;
+        for (Player player : players) {
+            player.calcCurHandPoint();
+            if (player.doesShootTheMoon()) {
+                playerShotTheMoon = player;
+                break;
+            }
+        }
+
+        if (playerShotTheMoon != null) {
+            for (Player player : players) {
+                if (!player.equals(playerShotTheMoon)) {
+                    player.setCurHandPoint(26);
+                }
+
+                player.calcAccumulatedPoint();
+            }
+        }
+
+        if (callback != null) {
+            Thread thread = new Thread(() -> callback.onCalcResultPointsDone());
+            thread.start();
+        }
+    }
+
+    public Player winner() {
+        Player winner = players.get(0);
+        for (Player player : players) {
+            if (player.getAccumulatedPoint() < winner.getAccumulatedPoint()) {
+                winner = player;
+            }
+        }
+
+        return winner;
+    }
+
+    public boolean canIPlay(Card card) {
+        boolean result = true;
+        //TODO: kiểm tra xem có được đi lá bài đó không
+
+
+        return result;
+    }
+
     //Getter và setter ----------------------------------------------
+
+    public List<Card> getCardDesk(Position position) {
+        return getPlayer(position).getCards();
+    }
+
+    public void setCardDesk(List<Card> cards, Position position) {
+        getPlayer(position).setCards(cards);
+    }
+
+    public Card getTrickCard(Position position) {
+        return getPlayer(position).getTrickCard();
+    }
+
+    public void setTrickCard(Position position, Card card) {
+        getPlayer(position).setTrickCard(card);
+    }
+
+    public List<Card> getExchangeCards(Position position) {
+        return getPlayer(position).getExchangeCards();
+    }
+
+    public void setExchangeCards(Position position, List<Card> cards) {
+        getPlayer(position).setExchangeCards(cards);
+    }
+
+    public List<Card> getEatenCards(Position position) {
+        return getPlayer(position).getEatenCards();
+    }
 
     public void setPlayerName(Position position, String name) {
         for (Player player : players) {

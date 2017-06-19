@@ -46,24 +46,27 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
     }
 
     public synchronized void connectTo(String connectionString) {
-        try {
-            listener = null;
-            String hostAddress = connectionString.split(":")[0];
-            int port = Integer.parseInt(connectionString.split(":")[1]);
+        Thread thread = new Thread(() -> {
+            try {
+                listener = null;
+                String hostAddress = connectionString.split(":")[0];
+                int port = Integer.parseInt(connectionString.split(":")[1]);
 
-            Socket socket = new Socket(hostAddress, port);
-            sockets.add(socket);
-            outputStreams.put(socket, new ObjectOutputStream(socket.getOutputStream()));
-            MessageReceiver msgReceiver = new MessageReceiver(this, socket);
-            messageReceivers.put(socket, msgReceiver);
-            messageReceivers.get(socket).start();
+                Socket socket = new Socket(hostAddress, port);
+                sockets.add(socket);
+                outputStreams.put(socket, new ObjectOutputStream(socket.getOutputStream()));
+                MessageReceiver msgReceiver = new MessageReceiver(this, socket);
+                messageReceivers.put(socket, msgReceiver);
+                messageReceivers.get(socket).start();
 
-            Thread thread = new Thread(() -> connectionCallback.onConnectToServerSucceeded(socket));
-            thread.start();
-        } catch (Exception e) {
-            Thread thread = new Thread(() -> connectionCallback.onConnectToServerFailed());
-            thread.start();
-        }
+                Thread thread1 = new Thread(() -> connectionCallback.onConnectToServerSucceeded(socket));
+                thread1.start();
+            } catch (Exception e) {
+                Thread thread1 = new Thread(() -> connectionCallback.onConnectToServerFailed());
+                thread1.start();
+            }
+        });
+        thread.start();
     }
 
     public synchronized void close() {
@@ -112,43 +115,52 @@ public class Connector implements ListenCallback, MessageReceiveCallback {
     }
 
     public void sendMessageTo(Object msg, Socket... sockets) {
-        for (Socket socket : sockets) {
-            if (socket != null) {
-                try {
-                    outputStreams.get(socket).writeObject(msg);
-                } catch (Exception e) {
-                    if (listener != null) {
-                        connectionCallback.onConnectionToAClientLost(socket);
-                    } else {
-                        connectionCallback.onConnectionToServerLost(socket);
+        Thread thread = new Thread(() -> {
+            for (Socket socket : sockets) {
+                if (socket != null) {
+                    try {
+                        outputStreams.get(socket).writeObject(msg);
+                    } catch (Exception e) {
+                        if (listener != null) {
+                            connectionCallback.onConnectionToAClientLost(socket);
+                        } else {
+                            connectionCallback.onConnectionToServerLost(socket);
+                        }
                     }
                 }
             }
-        }
+        });
+        thread.start();
     }
 
     public void sendMessageToAllExcept(Object msg, Socket socket) {
-        for (Socket socketToSend : sockets) {
-            try {
-                if (!socketToSend.equals(socket) && socket != null) {
-                    outputStreams.get(socketToSend).writeObject(msg);
+        Thread thread = new Thread(() -> {
+            for (Socket socketToSend : sockets) {
+                try {
+                    if (!socketToSend.equals(socket) && socket != null) {
+                        outputStreams.get(socketToSend).writeObject(msg);
+                    }
+                } catch (Exception e) {
+                    continue;
                 }
-            } catch (Exception e) {
-                continue;
             }
-        }
+        });
+        thread.start();
     }
 
     public void sendMessageToAll(Object msg) {
-        for (Socket socketToSend : sockets) {
-            try {
-                if (socketToSend != null) {
-                    outputStreams.get(socketToSend).writeObject(msg);
+        Thread thread = new Thread(() -> {
+            for (Socket socketToSend : sockets) {
+                try {
+                    if (socketToSend != null) {
+                        outputStreams.get(socketToSend).writeObject(msg);
+                    }
+                } catch (Exception e) {
+                    continue;
                 }
-            } catch (Exception e) {
-                continue;
             }
-        }
+        });
+        thread.start();
     }
 
     //Xử lý sự kiện ở Các Listener -------------------------------------

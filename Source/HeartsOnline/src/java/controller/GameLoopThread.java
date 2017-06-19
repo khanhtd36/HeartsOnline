@@ -33,7 +33,7 @@ public class GameLoopThread extends Thread {
     }
 
     public void startGameLoopInHost() {
-        //TODO: đổi điều kiện vòng lặp lại cho mẫu mực hơn
+        //TODO: đổi điều kiện vòng lặp game lại cho mẫu mực hơn
 //        while (true) {
             //Sốc bài
             gameModel.generateCard();
@@ -52,7 +52,10 @@ public class GameLoopThread extends Thread {
 
             //Kiểm tra hand thứ mấy để đổi bài cho nhau
             controller.setExchangeCardButton(gameModel.getHand());
-            gameModel.setGameState(GameState.EXCHANGING);
+            if((gameModel.getHand() + 1) % 4 != 0) {
+                gameModel.setGameState(GameState.EXCHANGING);
+            }
+
 
 //            synchronized (msgFromController) {
 //                try {

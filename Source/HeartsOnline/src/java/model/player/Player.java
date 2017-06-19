@@ -9,18 +9,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Player implements Serializable {
-    public String name = "BOT";
-    private Position position;
-    private int accumulatedPoint = 0;
-    private boolean bot = false;
-    public int curHandPoint = 0;
-
     List<Card> cards = new ArrayList<>();
     List<Card> eatenCards = new ArrayList<>();
     Card trickCard = new Card(CardName.UNKNOWN);
     List<Card> exchangeCards = new ArrayList<>();
+    private String name = "BOT";
+    private int curHandPoint = 0;
+    private Position position;
+    private int accumulatedPoint = 0;
+    private boolean bot = false;
+    private boolean shotTheMoon = false;
 
-    public Player(){
+    public Player() {
         bot = true;
     }
 
@@ -42,30 +42,82 @@ public class Player implements Serializable {
     }
 
     public void sortCards() {
-        cards.sort((card1, card2)->{
-            if(card1.getCardTypeOrder() == card2.getCardTypeOrder()) {
+        cards.sort((card1, card2) -> {
+            if (card1.getCardTypeOrder() == card2.getCardTypeOrder()) {
                 return Integer.compare(card1.getValue(), card2.getValue());
-            }
-            else {
+            } else {
                 return Integer.compare(card1.getCardTypeOrder(), card2.getCardTypeOrder());
             }
         });
     }
 
     public void eatCards(Card... cards) {
-        for(Card card : cards) {
-            if(card.getPoint() > 0)
+        for (Card card : cards) {
+            if (card.getPoint() > 0) {
                 eatenCards.add(card);
+                curHandPoint += card.getPoint();
+            }
         }
     }
 
     public Card autoPlayACard(int trickNum, CardType trickCardType, Card... cardsOnBoard) {
         //TODO: code máy chơi
-        return cards.get(0);
+
+        Card cardToPlay = new Card(CardName.UNKNOWN);
+
+        if (trickNum == 0) {
+            if (cards.get(0).getCardName().equals(CardName.TWO_OF_CLUBS)) {
+                cardToPlay = cards.get(0);
+            }
+            else if (hasCardType(CardType.CLUBS)){
+                for (int i = cards.size(); i >= 0; i--) {
+                    if (cards.get(i).getCardType().equals(CardType.CLUBS)) {
+                        cardToPlay = cards.get(i);
+                        break;
+                    }
+                }
+            }
+            else {
+
+            }
+        }
+
+        playACard(cardToPlay);
+
+        return cardToPlay;
+    }
+
+    public void autoExchangeCards() {
+        List<Card> cardsToExchange = new ArrayList<>();
+        int index1, index2, index3;
+        index1 = index2 = index3 = 0;
+
+        for (int i = 0; i < cards.size(); i++) {
+            if (cards.get(i).getValue() > index1) {
+                index3 = index2;
+                index2 = index1;
+                index1 = i;
+            } else if (cards.get(i).getValue() > index2) {
+                index3 = index2;
+                index2 = i;
+            } else if (cards.get(i).getValue() > index3) {
+                index3 = i;
+            } else if (index2 == index1) {
+                index2 = i;
+            } else if (index3 == index1) {
+                index3 = i;
+            }
+        }
+
+        cardsToExchange.add(cards.get(index1));
+        cardsToExchange.add(cards.get(index2));
+        cardsToExchange.add(cards.get(index3));
+
+        exchangeCards = cardsToExchange;
     }
 
     public void playACard(Card card) {
-        cards.remove(card);
+        removeACardInCardDesk(card);
         trickCard = card;
     }
 
@@ -83,6 +135,7 @@ public class Player implements Serializable {
         eatenCards.clear();
         trickCard = new Card(CardName.UNKNOWN);
         exchangeCards.clear();
+        shotTheMoon = false;
     }
 
     public void resetAllExceptPersonalInfo() {
@@ -92,6 +145,7 @@ public class Player implements Serializable {
         eatenCards.clear();
         trickCard = new Card(CardName.UNKNOWN);
         exchangeCards.clear();
+        shotTheMoon = false;
     }
 
     public void resetHand() {
@@ -100,6 +154,7 @@ public class Player implements Serializable {
         eatenCards.clear();
         trickCard = new Card(CardName.UNKNOWN);
         exchangeCards.clear();
+        shotTheMoon = false;
     }
 
     public void clearCardDesks() {
@@ -133,6 +188,37 @@ public class Player implements Serializable {
         }
     }
 
+    public void receiveExchangeCards(List<Card> receivedCards) {
+        for (Card card : receivedCards) {
+            cards.add(card);
+        }
+        sortCards();
+    }
+
+    public void calcCurHandPoint() {
+        if (doesShootTheMoon()) {
+            curHandPoint = 0;
+            return;
+        }
+
+        curHandPoint = 0;
+        for (Card eatenCard : eatenCards) {
+            curHandPoint += eatenCard.getPoint();
+        }
+    }
+
+    public void calcAccumulatedPoint() {
+        if (doesShootTheMoon()) {
+            curHandPoint = 0;
+        }
+
+        accumulatedPoint += curHandPoint;
+    }
+
+    public boolean doesShootTheMoon() {
+        return eatenCards.size() == 13;
+    }
+
     //Getter và setter -----------------------------------------------
 
     public String getName() {
@@ -144,8 +230,8 @@ public class Player implements Serializable {
     }
 
     public boolean hasCardType(CardType type) {
-        for(Card card : cards) {
-            if(card.getCardType().equals(type))
+        for (Card card : cards) {
+            if (card.getCardType().equals(type))
                 return true;
         }
         return false;
@@ -155,24 +241,24 @@ public class Player implements Serializable {
         return eatenCards;
     }
 
-    public void setPosition(Position pos) {
-        this.position = pos;
+    public void setEatenCards(List<Card> eatenCards) {
+        this.eatenCards = eatenCards;
     }
 
     public Position getPosition() {
         return position;
     }
 
-    public int getCurrentHandPoint() {
-        int result = 0;
-        for(Card card : eatenCards) {
-            result += card.getPoint();
-        }
-        return result;
+    public void setPosition(Position pos) {
+        this.position = pos;
     }
 
     public int getAccumulatedPoint() {
         return accumulatedPoint;
+    }
+
+    public void setAccumulatedPoint(int accumulatedPoint) {
+        this.accumulatedPoint = accumulatedPoint;
     }
 
     public boolean isBot() {
@@ -181,10 +267,6 @@ public class Player implements Serializable {
 
     public void setBot(boolean bot) {
         this.bot = bot;
-    }
-
-    public void setAccumulatedPoint(int accumulatedPoint) {
-        this.accumulatedPoint = accumulatedPoint;
     }
 
     public int getCurHandPoint() {
@@ -201,10 +283,6 @@ public class Player implements Serializable {
 
     public void setCards(List<Card> cards) {
         this.cards = cards;
-    }
-
-    public void setEatenCards(List<Card> eatenCards) {
-        this.eatenCards = eatenCards;
     }
 
     public Card getTrickCard() {
