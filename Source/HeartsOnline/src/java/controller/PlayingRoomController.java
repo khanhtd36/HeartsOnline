@@ -20,6 +20,7 @@ import model.GameState;
 import model.HeartGame;
 import model.card.Card;
 import model.card.CardName;
+import model.card.CardType;
 import model.player.Player;
 import model.player.Position;
 import org.apache.commons.lang3.text.WordUtils;
@@ -284,17 +285,21 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
         //Đang trong ván, đúng lượt đi
         gameModel.setGameState(GameState.WAITING);
-        if (gameModel.canIPlay(chosenCard)) {
+        if (gameModel.canIPlay(gameModel.getMyPosition(), chosenCard)) {
+            if (!gameModel.isHeartBroken()) {
+                if (chosenCard.getCardType().equals(CardType.HEARTS)) {
+                    onHeartBroken();
+                }
+            }
+
             mePlayCard(gameModel.getTrick(), chosenCard);
             gameModel.playACard(myPosition, chosenCard);
             Message msg = new Message(MessageType.PLAY_CARD, new PlayACardMsgContent(myPosition, chosenCard));
             connector.sendMessageToAll(msg);
 
-            //TODO: notify gameLoop "Tôi vừa đi 1 lá bài"
-//        Thread thread = new Thread(() -> gameModel.next());
-//        thread.start();
-        }
-        else {
+            Thread thread = new Thread(() -> gameModel.next(host));
+            thread.start();
+        } else {
             return;
         }
     }
@@ -316,8 +321,6 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         gameModel.resetAll();
         resetView();
         setDisableCommand(false);
-
-        //TODO: notify gameLoopThread khi thoát phòng
     }
 
     public void chooseSkin1() {
@@ -449,10 +452,13 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         gameModel.eatCards(positionToEat);
         gameModel.increaseTrick();
         collectCard();
+        gameModel.setStartPositionOfTrick(positionToEat);
+        gameModel.setPositionToGo(positionToEat);
+        gameModel.setGameState(GameState.PLAYING);
     }
 
     public void onHandDone() {
-        Thread thread = new Thread(()-> {
+        Thread thread = new Thread(() -> {
             gameModel.calcResultPoints();
             addChatLine("--------- Tổng kết: --------");
             addChatLine(gameModel.getName(Position.SOUTH) + ": " + gameModel.getPlayer(Position.SOUTH).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.SOUTH).getAccumulatedPoint());
@@ -463,8 +469,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
             if (gameModel.isOver()) {
                 addChatLine("-- đề mề Trùm hôm nay là: " + gameModel.winner().getName());
                 gameModel.resetAllExceptPersonalInfo();
-            }
-            else {
+            } else {
                 gameModel.resetHand();
                 gameModel.increaseHand();
             }
@@ -483,7 +488,23 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     }
 
     public void onMyCurHandPointChanged() {
-        Platform.runLater(() -> txtCurRoundPoint.setText("Điểm ván hiện tại: " + gameModel.getPlayer(gameModel.getMyPosition()).getCurHandPoint()));
+        Thread thread = new Thread(() -> {
+            for (int i = 0; i < 3; i++) {
+                Platform.runLater(() -> txtCurRoundPoint.setText(""));
+
+                try {
+                    Thread.sleep(200);
+                } catch (Exception e) {
+                }
+                Platform.runLater(() -> txtCurRoundPoint.setText("Điểm ván hiện tại: " + gameModel.getPlayer(gameModel.getMyPosition()).getCurHandPoint()));
+
+                try {
+                    Thread.sleep(200);
+                } catch (Exception e) {
+                }
+            }
+        });
+        thread.start();
     }
 
     //End Xử lý các Xử kiện ở các thread khác gửi qua -------------------------------
@@ -568,14 +589,13 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
         if ((gameModel.getHand() + 1) % 4 == 0) {
             gameModel.setGameState(GameState.WAITING);
-        }
-        else {
+        } else {
             gameModel.setGameState(GameState.EXCHANGING);
         }
     }
 
     private void onReceiveExchangeCards(Object msg, Socket fromSocket) {
-        List<Card> receivedCards = ((ExchangeCardsMsgContent)((Message)msg).getContent()).getExchangeCards();
+        List<Card> receivedCards = ((ExchangeCardsMsgContent) ((Message) msg).getContent()).getExchangeCards();
         if (host) {
             Position srcPosition = getPositionBySocket(fromSocket);
             Position destPosition = gameModel.destPositionOfExchange(srcPosition);
@@ -606,14 +626,14 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     }
 
     private void onTurnReceived(Object msg, Socket fromSocket) {
-        Position positionToGo = ((StartTurnMsgContent)((Message)msg).getContent()).getPosition();
+        Position positionToGo = ((StartTurnMsgContent) ((Message) msg).getContent()).getPosition();
         gameModel.setPositionToGo(positionToGo);
         gameModel.setGameState(GameState.PLAYING);
     }
 
     private void onAPlayerPlayACard(Object msg, Socket fromSocket) {
-        Position position = ((PlayACardMsgContent)((Message)msg).getContent()).getPosition();
-        Card card = ((PlayACardMsgContent)((Message)msg).getContent()).getCard();
+        Position position = ((PlayACardMsgContent) ((Message) msg).getContent()).getPosition();
+        Card card = ((PlayACardMsgContent) ((Message) msg).getContent()).getCard();
 
         gameModel.playACard(position, card);
         playACard(gameModel.getTrick(), card, modelPositionToViewPosition(position));
@@ -622,7 +642,24 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
             connector.sendMessageToAllExcept(msg, fromSocket);
         }
 
-        gameModel.next(host);
+        Thread thread = new Thread(() -> gameModel.next(host));
+        thread.start();
+    }
+
+    public void onABotPlayedACard(Position position, Card card) {
+        playACard(gameModel.getTrick(), card, position);
+        Message msg = new Message(MessageType.PLAY_CARD, new PlayACardMsgContent(position, card));
+        connector.sendMessageToAll(msg);
+
+        Thread thread = new Thread(() -> gameModel.next(host));
+        thread.start();
+    }
+
+    public void onHeartBroken() {
+        gameModel.setHeartBroken(true);
+        addChatLine("-- Trái tim Tan vỡ :3");
+        Message msg = new Message(MessageType.HEART_BROKEN, "");
+        connector.sendMessageToAll(msg);
     }
 
     //End Xử lý Message -------------------------------------------------------------
@@ -991,14 +1028,18 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
                 for (Player player : gameModel.getPlayers()) {
                     if (player.isBot()) {
                         player.autoExchangeCards();
-                        Message exchangeCardsMsg = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(player.getExchangeCards()));
                         Position positionToReceive = gameModel.destPositionOfExchange(player.getPosition());
+                        gameModel.exchangeCards(player.getPosition(), positionToReceive);
+                        if (positionToReceive.equals(Position.SOUTH)) {
+                            refreshMyCardDesk();
+                        }
+
+                        Message exchangeCardsMsg = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(player.getExchangeCards()));
                         Socket destSocket = getSocketByPosition(positionToReceive);
                         connector.sendMessageTo(exchangeCardsMsg, destSocket);
                     }
                 }
-            }
-            else {
+            } else {
                 gameModel.startTurn();
             }
         });

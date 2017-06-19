@@ -23,14 +23,6 @@ public class HeartGame implements Serializable {
 
     private ArrayList<Player> players = new ArrayList<>();
 
-    public HeartGame() {
-        players.clear();
-        players.add(new Player(Position.SOUTH, "Thánh Bài"));
-        players.add(new Player(Position.WEST));
-        players.add(new Player(Position.NORTH));
-        players.add(new Player(Position.EAST));
-    }
-
     public HeartGame(GameModelCallback callback) {
         this.callback = callback;
 
@@ -160,58 +152,31 @@ public class HeartGame implements Serializable {
     }
 
     public boolean trickDone() {
-        return (positionToGo.next().equals(startPositionOfTrick)
-                &&  getPlayer(positionToGo).getTrickCard().getCardName() != null
-                && !getPlayer(positionToGo).getTrickCard().getCardName().equals(CardName.UNKNOWN));
+        return positionToGo.next().equals(startPositionOfTrick);
     }
 
     public boolean handDone() {
         return (trick == 12) && trickDone();
     }
 
-    private void calcTurn() {
-        //Đang đi lở dở trong trick
-        if (trickDone()) positionToGo = positionToGo.next();
-
-        //Hoàn thành 1 trick rồi, tới trick tiếp theo
-        else {
-            if (trick == 0) {
-                for (Player player : players) {
-                    if (player.getCardDesk().get(0).getCardName().equals(CardName.TWO_OF_CLUBS)) {
-                        startPositionOfTrick = player.getPosition();
-                        positionToGo = player.getPosition();
-                        break;
-                    }
+    public void calcTurn(boolean startHand) {
+        if (startHand) {
+            for (Player player : players) {
+                if (player.getCardDesk().get(0).getCardName().equals(CardName.TWO_OF_CLUBS)) {
+                    startPositionOfTrick = player.getPosition();
+                    positionToGo = player.getPosition();
+                    return;
                 }
-            } else {
-                CardType cardTypeOfTrick = getPlayer(positionToGo.next()).getTrickCard().getCardType();
-                Position positionToGoNext = positionToGo.next();
-
-                for (Player player : players) {
-                    if (player.getTrickCard().getCardType().equals(cardTypeOfTrick)) {
-                        if (player.getTrickCard().getCardTypeOrder() > getPlayer(positionToGoNext).getTrickCard().getCardTypeOrder()) {
-                            positionToGoNext = player.getPosition();
-                        }
-                    }
-                }
-
-                positionToGo = positionToGoNext;
             }
+        } else {
+            positionToGo = positionToGo.next();
         }
-    }
-
-    private void calcTrick() {
-        if(trickDone()) increaseTrick();
-    }
-
-    private void calcHand() {
-        if (handDone()) increaseHand();
     }
 
     public boolean isOver() {
         boolean result = false;
 
-        for(Player player : players) {
+        for (Player player : players) {
             if (player.getAccumulatedPoint() >= 100) {
                 result = true;
                 break;
@@ -224,6 +189,16 @@ public class HeartGame implements Serializable {
 
     private CardType getCardTypeOfTrick() {
         return getPlayer(startPositionOfTrick).getTrickCard().getCardType();
+    }
+
+    private List<Card> getCardsOnBoard() {
+        List<Card> onBoardCards = new ArrayList<>();
+
+        for (Player player : players) {
+            onBoardCards.add(player.getTrickCard());
+        }
+
+        return onBoardCards;
     }
 
 
@@ -254,17 +229,22 @@ public class HeartGame implements Serializable {
 
     public void eatCards(Position positionToEat) {
         List<Card> cardsToEat = new ArrayList<>();
-        for(Player player : players) {
+        for (Player player : players) {
             if (player.getTrickCard().getPoint() > 0) {
                 cardsToEat.add(player.getTrickCard());
             }
+
         }
 
         for (Card cardToEat : cardsToEat) {
             getPlayer(positionToEat).eatCards(cardToEat);
         }
 
-        if (callback != null && positionToEat.equals(myPosition)) {
+        for (Player player : players) {
+            player.setTrickCard(new Card(CardName.UNKNOWN));
+        }
+
+        if (callback != null && positionToEat.equals(myPosition) && cardsToEat.size() > 0) {
             Thread thread = new Thread(() -> callback.onMyCurHandPointChanged());
             thread.start();
         }
@@ -274,7 +254,7 @@ public class HeartGame implements Serializable {
         Position positionToEat = startPositionOfTrick;
 
         CardType cardTypeOfTrick = getCardTypeOfTrick();
-        for(Player player : players) {
+        for (Player player : players) {
             if (player.getTrickCard().getCardType().equals(cardTypeOfTrick) && player.getTrickCard().getValue() > getPlayer(positionToEat).getTrickCard().getValue()) {
                 positionToEat = player.getPosition();
             }
@@ -301,7 +281,7 @@ public class HeartGame implements Serializable {
             }
         }
 
-        for(Player player : players) {
+        for (Player player : players) {
             player.calcAccumulatedPoint();
         }
     }
@@ -317,12 +297,29 @@ public class HeartGame implements Serializable {
         return winner;
     }
 
-    public boolean canIPlay(Card card) {
-        boolean result = true;
-        //TODO: kiểm tra xem có được đi lá bài đó không
+    public boolean canIPlay(Position position, Card card) {
+        CardType cardTypeOfTrick = getCardTypeOfTrick();
 
+        //Ở trick đầu tiên, không được đi quân có điểm
+        if (trick == 0) {
+            if (card.getCardName().equals(CardName.QUEEN_OF_SPADES)) return false;
+        }
 
-        return result;
+        //Bài giống loại, duyệt
+        if (card.getCardType().equals(cardTypeOfTrick)) return true;
+        else {
+            boolean hasCardTypeOfTrick = getPlayer(position).hasCardType(cardTypeOfTrick);
+
+            //Có bài giống loại mà không chịu đi, biến
+            if (hasCardTypeOfTrick) return false;
+
+            //Không có bài giống loại, mà đi lá bài không phải Loại Cơ, duyệt
+            if (!card.getCardType().equals(CardType.HEARTS)) return true;
+
+            //Không có bài giống loại, đi lá bài loại cơ, thì tim phải tan vỡ rồi mới được đi
+            detectHeartBroken(position, card);
+            return isHeartBroken();
+        }
     }
 
     public boolean exchangeDone() {
@@ -342,29 +339,43 @@ public class HeartGame implements Serializable {
         //Dành cho trong ván, mỗi khi có 1 thằng nào đó đi 1 quân bài thì gọi next
         //Nếu vừa đi xong 1 lá bài, mà vừa xong ván luôn, thì k tính toán gì, chỉ báo lại cho controller
         if (handDone()) {
-            Thread thread = new Thread(()-> {
-               callback.onHandDone();
+            Thread thread = new Thread(() -> {
+                callback.onHandDone();
             });
             thread.start();
             return;
         }
 
-        if(trickDone()) {
-            Thread thread = new Thread(()-> {
+        if (trickDone()) {
+            Thread thread = new Thread(() -> {
                 callback.onTrickDone(positionToEat());
             });
             thread.start();
             return;
         }
 
-        calcTurn();
+        calcTurn(false);
         setGameState(GameState.PLAYING);
+        if (host && isThisTurnForBot()) {
+            List<Card> cardsOnBoard = getCardsOnBoard();
+            Card card = getPlayer(positionToGo).autoPlayACard(trick, getCardTypeOfTrick(), cardsOnBoard.get(0), cardsOnBoard.get(1), cardsOnBoard.get(2), cardsOnBoard.get(3));
+            detectHeartBroken(positionToGo, card);
+            Thread thread = new Thread(() -> callback.onABotPlayedACard(positionToGo, card));
+            thread.start();
+        }
     }
 
     public void startTurn() {
-        //TODO: tính lượt đi, xong setState thành playing
-        calcTurn();
+        calcTurn(true);
         setGameState(GameState.PLAYING);
+    }
+
+    public boolean isThisTurnForBot() {
+        return getPlayer(positionToGo).isBot();
+    }
+
+    public boolean amILeadTrick(Position position) {
+        return position.equals(startPositionOfTrick);
     }
 
     //Getter và setter ----------------------------------------------
@@ -450,10 +461,6 @@ public class HeartGame implements Serializable {
         return hand;
     }
 
-    public void setHand(int hand) {
-        this.hand = hand;
-    }
-
     public void increaseHand() {
         hand++;
     }
@@ -462,16 +469,40 @@ public class HeartGame implements Serializable {
         return trick;
     }
 
-    public void setTrick(int trick) {
-        this.trick = trick;
-    }
-
     public void increaseTrick() {
         trick++;
         if (trick >= 13) trick = 0;
     }
 
     public boolean isHeartBroken() {
+        return heartBroken;
+    }
+
+    public boolean detectHeartBroken(Position position, Card card) {
+        if (heartBroken) return true;
+
+        //Nếu có bất kì người nào chỉ có bài loại cơ thì tim vỡ
+        for(Player player : players) {
+            if (player.allAreHearts()) {
+                heartBroken = true;
+                if (callback != null) {
+                    Thread thread = new Thread (() -> callback.onHeartBroken());
+                    thread.start();
+                }
+                return true;
+            }
+        }
+
+        //Nếu tôi đi lá bài cơ hợp lệ thì tim vỡ. (không dẫn đầu trick, không ở lượt đầu tiên)
+        if(!amILeadTrick(position) && getPlayer(myPosition).hasCardType(getCardTypeOfTrick()) && trick > 0) {
+            heartBroken = true;
+            if (callback != null) {
+                Thread thread = new Thread (() -> callback.onHeartBroken());
+                thread.start();
+            }
+            return true;
+        }
+
         return heartBroken;
     }
 
@@ -495,14 +526,6 @@ public class HeartGame implements Serializable {
         this.positionToGo = positionToGo;
     }
 
-    public GameModelCallback getCallback() {
-        return callback;
-    }
-
-    public void setCallback(GameModelCallback callback) {
-        this.callback = callback;
-    }
-
     public Position getStartPositionOfTrick() {
         return startPositionOfTrick;
     }
@@ -510,6 +533,8 @@ public class HeartGame implements Serializable {
     public void setStartPositionOfTrick(Position startPositionOfTrick) {
         this.startPositionOfTrick = startPositionOfTrick;
     }
+
+
 
     //End Getter và setter ------------------------------------------
 }

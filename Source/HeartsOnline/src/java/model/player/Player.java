@@ -13,16 +13,12 @@ public class Player implements Serializable {
     List<Card> eatenCards = new ArrayList<>();
     Card trickCard = new Card(CardName.UNKNOWN);
     List<Card> exchangeCards = new ArrayList<>();
+
     private String name = "BOT";
     private int curHandPoint = 0;
     private Position position;
     private int accumulatedPoint = 0;
     private boolean bot = false;
-    private boolean shotTheMoon = false;
-
-    public Player() {
-        bot = true;
-    }
 
     public Player(Position position) {
         this.position = position;
@@ -33,12 +29,6 @@ public class Player implements Serializable {
         this.position = position;
         this.name = name;
         this.bot = false;
-    }
-
-    public Player(Player oldPlayer, boolean bot) {
-        this.position = oldPlayer.getPosition();
-        this.accumulatedPoint = oldPlayer.getAccumulatedPoint();
-        this.bot = bot;
     }
 
     public void sortCards() {
@@ -62,26 +52,64 @@ public class Player implements Serializable {
 
     public Card autoPlayACard(int trickNum, CardType trickCardType, Card... cardsOnBoard) {
         //TODO: code máy chơi
-
         Card cardToPlay = new Card(CardName.UNKNOWN);
 
-        if (cardDesk.get(0).getCardName().equals(CardName.TWO_OF_CLUBS)) {
-            cardToPlay = cardDesk.get(0);
-        }
-        else if (cardsOnBoard.length > 0) {
-            for (int i = cardDesk.size(); i >= 0; i--) {
-                if (cardDesk.get(i).getCardType().equals(CardType.CLUBS)) {
-                    cardToPlay = cardDesk.get(i);
-                    break;
+        boolean amILeadTrick = trickCardType == null;
+        if (amILeadTrick) {
+            //Dẫn đầu lượt đầu tiên
+            if (trickNum == 0) {
+                cardToPlay = cardDesk.get(0);
+            }
+            //Dẫn đầu lượt khác
+            else {
+                cardToPlay = cardDesk.get(0);
+                for (Card card : cardDesk) {
+                    if (card.getValue() < cardToPlay.getValue() && !card.getCardType().equals(CardType.HEARTS)) {
+                        cardToPlay = card;
+                    }
                 }
             }
-        }
-        else {
+        } else {
+            //Theo lượt đầu tiên
+            if (trickNum == 0) {
+                //Nếu có chuồn, đi chuồn cao nhất
+                if (hasCardType(trickCardType)) {
+                    for (Card card : cardDesk) {
+                        if (card.getCardType().equals(trickCardType)) {
+                            cardToPlay = card;
+                        }
+                    }
+                } else {
+                    //Nếu không có chuồn thì đi con cao nhất cho phép
+                    if(allAreHearts()) cardToPlay = cardDesk.get(cardDesk.size() - 1);
+                    else {
+                        cardToPlay = cardDesk.get(0);
+                        for(Card card: cardDesk) {
+                            if (card.getValue() > cardToPlay.getValue() && card.getPoint() == 0) {
+                                cardToPlay = card;
+                            }
+                        }
 
+                    }
+                }
+            }
+            //Theo lượt khác
+            else {
+                Card highestSameTypeCardOnBoard = cardsOnBoard[0];
+                for (Card cardOnBoard : cardsOnBoard) {
+                    if (cardOnBoard.getCardType().equals(trickCardType)) {
+                        if (!highestSameTypeCardOnBoard.getCardType().equals(trickCardType)
+                                || cardOnBoard.getValue() > highestSameTypeCardOnBoard.getValue()) {
+                            highestSameTypeCardOnBoard = cardOnBoard;
+                        }
+                    }
+                }
+
+            }
         }
+
 
         playACard(cardToPlay);
-
         return cardToPlay;
     }
 
@@ -133,7 +161,6 @@ public class Player implements Serializable {
         eatenCards.clear();
         trickCard = new Card(CardName.UNKNOWN);
         exchangeCards.clear();
-        shotTheMoon = false;
     }
 
     public void resetAllExceptPersonalInfo() {
@@ -143,7 +170,6 @@ public class Player implements Serializable {
         eatenCards.clear();
         trickCard = new Card(CardName.UNKNOWN);
         exchangeCards.clear();
-        shotTheMoon = false;
     }
 
     public void resetHand() {
@@ -152,7 +178,6 @@ public class Player implements Serializable {
         eatenCards.clear();
         trickCard = new Card(CardName.UNKNOWN);
         exchangeCards.clear();
-        shotTheMoon = false;
     }
 
     public void clearCardDesks() {
@@ -163,15 +188,6 @@ public class Player implements Serializable {
         for (int i = 0; i < cardDesk.size(); i++) {
             if (cardDesk.get(i).getCardName().equals(card.getCardName())) {
                 cardDesk.remove(i);
-                break;
-            }
-        }
-    }
-
-    public void removeACardInEatenCards(Card card) {
-        for (int i = 0; i < eatenCards.size(); i++) {
-            if (eatenCards.get(i).getCardName().equals(card.getCardName())) {
-                eatenCards.remove(i);
                 break;
             }
         }
@@ -214,7 +230,21 @@ public class Player implements Serializable {
     }
 
     public boolean doesShootTheMoon() {
-        return eatenCards.size() == 13;
+        if(eatenCards.size() != 13) return false;
+        for (Card card : eatenCards) {
+            if (card.getCardName().equals(CardName.QUEEN_OF_SPADES))
+                return true;
+        }
+
+        return false;
+    }
+
+    public boolean allAreHearts() {
+        for (Card card : cardDesk) {
+            if (!card.getCardType().equals(CardType.HEARTS))
+                return false;
+        }
+        return true;
     }
 
     //Getter và setter -----------------------------------------------
@@ -239,10 +269,6 @@ public class Player implements Serializable {
         return eatenCards;
     }
 
-    public void setEatenCards(List<Card> eatenCards) {
-        this.eatenCards = eatenCards;
-    }
-
     public Position getPosition() {
         return position;
     }
@@ -253,10 +279,6 @@ public class Player implements Serializable {
 
     public int getAccumulatedPoint() {
         return accumulatedPoint;
-    }
-
-    public void setAccumulatedPoint(int accumulatedPoint) {
-        this.accumulatedPoint = accumulatedPoint;
     }
 
     public boolean isBot() {
