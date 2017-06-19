@@ -20,7 +20,6 @@ import model.GameState;
 import model.HeartGame;
 import model.card.Card;
 import model.card.CardName;
-import model.card.CardType;
 import model.player.Player;
 import model.player.Position;
 import org.apache.commons.lang3.text.WordUtils;
@@ -286,18 +285,12 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         //Đang trong ván, đúng lượt đi
         gameModel.setGameState(GameState.WAITING);
         if (gameModel.canIPlay(gameModel.getMyPosition(), chosenCard)) {
-            if (!gameModel.isHeartBroken()) {
-                if (chosenCard.getCardType().equals(CardType.HEARTS)) {
-                    onHeartBroken();
-                }
-            }
-
             mePlayCard(gameModel.getTrick(), chosenCard);
             gameModel.playACard(myPosition, chosenCard);
             Message msg = new Message(MessageType.PLAY_CARD, new PlayACardMsgContent(myPosition, chosenCard));
             connector.sendMessageToAll(msg);
 
-            Thread thread = new Thread(() -> gameModel.next(host));
+            Thread thread = new Thread(() -> gameModel.next(host, false));
             thread.start();
         } else {
             return;
@@ -448,18 +441,16 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         }
     }
 
-    public void onTrickDone(Position positionToEat) {
+    public synchronized void onTrickDone(Position positionToEat) {
         gameModel.eatCards(positionToEat);
         gameModel.increaseTrick();
-        collectCard();
-        gameModel.setStartPositionOfTrick(positionToEat);
-        gameModel.setPositionToGo(positionToEat);
-        gameModel.setGameState(GameState.PLAYING);
+        collectCard(positionToEat);
     }
 
-    public void onHandDone() {
+    public synchronized void onHandDone() {
         Thread thread = new Thread(() -> {
             gameModel.calcResultPoints();
+            showEatenCards();
             addChatLine("--------- Tổng kết: --------");
             addChatLine(gameModel.getName(Position.SOUTH) + ": " + gameModel.getPlayer(Position.SOUTH).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.SOUTH).getAccumulatedPoint());
             addChatLine(gameModel.getName(Position.WEST) + ": " + gameModel.getPlayer(Position.WEST).getCurHandPoint() + " -> tổng: " + gameModel.getPlayer(Position.WEST).getAccumulatedPoint());
@@ -623,6 +614,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     private void onHeartBroken(Object msg, Socket fromSocket) {
         gameModel.setHeartBroken(true);
         addChatLine("-- Trái tim Tan vỡ :3");
+
+        if (host) {
+            connector.sendMessageToAll(msg);
+        }
     }
 
     private void onTurnReceived(Object msg, Socket fromSocket) {
@@ -642,7 +637,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
             connector.sendMessageToAllExcept(msg, fromSocket);
         }
 
-        Thread thread = new Thread(() -> gameModel.next(host));
+        Thread thread = new Thread(() -> gameModel.next(host, false));
         thread.start();
     }
 
@@ -651,7 +646,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         Message msg = new Message(MessageType.PLAY_CARD, new PlayACardMsgContent(position, card));
         connector.sendMessageToAll(msg);
 
-        Thread thread = new Thread(() -> gameModel.next(host));
+        Thread thread = new Thread(() -> gameModel.next(host, false));
         thread.start();
     }
 
@@ -667,14 +662,14 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
     //view controller API -----------------------------------------------------------
 
-    public void addChatLine(String message) {
+    public synchronized void addChatLine(String message) {
         Platform.runLater(() -> {
             lstChatView.getItems().add(WordUtils.wrap(message, 45));
             lstChatView.scrollTo(lstChatView.getItems().size() - 1);
         });
     }
 
-    public void setTheme(String themeName) {
+    public synchronized void setTheme(String themeName) {
         themeName = themeName.toLowerCase();
         switch (themeName) {
             case "skin1":
@@ -686,9 +681,10 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         }
     }
 
-    private void resetView() {
+    private synchronized void resetView() {
         setNodeToAppear(btnStart);
         setNodeToGone(leftArrow, rightArrow, upArrow);
+        setNodeToGone(cardTrickMe, cardTrickWest, cardTrickNorth, cardTrickEast);
         for (ImageView card : cardWest) {
             setNodeToAppear(card);
             setCardFace(card, "card-back");
@@ -708,7 +704,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         }
     }
 
-    private void setDisableCommand(boolean b) {
+    private synchronized void setDisableCommand(boolean b) {
         Platform.runLater(() -> {
             btnOpenRoom.setDisable(b);
             txtConnectionString.setEditable(!b);
@@ -716,7 +712,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         });
     }
 
-    private void setNodeToGone(Node... nodes) {
+    private synchronized void setNodeToGone(Node... nodes) {
         for (Node node : nodes) {
             Platform.runLater(() -> {
                 node.getStyleClass().set(3, "invisible-img");
@@ -725,7 +721,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         }
     }
 
-    private void setNodeToAppear(Node... nodes) {
+    private synchronized void setNodeToAppear(Node... nodes) {
         for (Node node : nodes) {
             Platform.runLater(() -> {
                 node.getStyleClass().set(3, "visible-img");
@@ -734,11 +730,11 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         }
     }
 
-    private void setCardFace(Node node, String cardName) {
+    private synchronized void setCardFace(Node node, String cardName) {
         Platform.runLater(() -> node.getStyleClass().set(2, cardName));
     }
 
-    public void setPlayerName(String name, Position position) {
+    public synchronized void setPlayerName(String name, Position position) {
         gameModel.getPlayer(position).setName(name);
         refreshPlayersDisplayName();
     }
@@ -791,31 +787,31 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         Platform.runLater(() -> txtNameEast.setText(gameModel.getPlayers().get(3).getName()));
     }
 
-    public void westPlayCard(int trick, Card card) {
+    public synchronized void westPlayCard(int trick, Card card) {
         setNodeToGone(cardWest.get(12 - trick));
         setCardFace(cardTrickWest, card.getCssClassName());
         setNodeToAppear(cardTrickWest);
     }
 
-    public void northPlayCard(int trick, Card card) {
+    public synchronized void northPlayCard(int trick, Card card) {
         setNodeToGone(cardNorth.get(12 - trick));
         setCardFace(cardTrickNorth, card.getCssClassName());
         setNodeToAppear(cardTrickNorth);
     }
 
-    public void eastPlayCard(int trick, Card card) {
+    public synchronized void eastPlayCard(int trick, Card card) {
         setNodeToGone(cardEast.get(12 - trick));
         setCardFace(cardTrickEast, card.getCssClassName());
         setNodeToAppear(cardTrickEast);
     }
 
-    public void mePlayCard(int trick, Card card) {
+    public synchronized void mePlayCard(int trick, Card card) {
         setNodeToGone(cardMe.get(12 - trick));
         setCardFace(cardTrickMe, card.getCssClassName());
         setNodeToAppear(cardTrickMe);
     }
 
-    public void playACard(int trick, Card card, Position positionInView) {
+    public synchronized void playACard(int trick, Card card, Position positionInView) {
         switch (positionInView) {
             case SOUTH:
                 mePlayCard(trick, card);
@@ -835,11 +831,15 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         }
     }
 
-    public void collectCard() {
+    public synchronized void collectCard(Position positionToEat) {
         Thread thread = new Thread(() -> {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(3000);
                 setNodeToGone(cardTrickWest, cardTrickNorth, cardTrickEast, cardTrickMe);
+                gameModel.setStartPositionOfTrick(positionToEat);
+                gameModel.setPositionToGo(positionToEat);
+                gameModel.setGameState(GameState.PLAYING);
+                gameModel.next(host, true);
             } catch (Exception e) {
 
             }
@@ -847,7 +847,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         thread.start();
     }
 
-    public void distributeCard(List<Card> cards) {
+    public synchronized void distributeCard(List<Card> cards) {
         Thread thread = new Thread(() -> {
             for (ArrayList<ImageView> cardDesk : cardDesks) {
                 for (Node card : cardDesk) {
@@ -880,7 +880,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         thread.start();
     }
 
-    public void refreshMyCardDesk() {
+    public synchronized void refreshMyCardDesk() {
         List<Card> cards = gameModel.getCardDesk(gameModel.getMyPosition());
         Thread thread = new Thread(() -> {
             for (Node card : cardMe) {
@@ -901,7 +901,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         thread.start();
     }
 
-    public void showEatenCards() {
+    public synchronized void showEatenCards() {
         List<Card> meEatenCards = gameModel.getPlayers().get(0).getEatenCards();
         List<Card> westEatenCards = gameModel.getPlayers().get(1).getEatenCards();
         List<Card> northEatenCards = gameModel.getPlayers().get(2).getEatenCards();
@@ -936,7 +936,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         thread.start();
     }
 
-    public void setExchangeCardButton(int hand) {
+    public synchronized void setExchangeCardButton(int hand) {
         hand %= 4;
         switch (hand) {
             case 0:
@@ -960,32 +960,12 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         }
     }
 
-    public Connector getConnector() {
-        return connector;
-    }
-
-    public boolean isHost() {
-        return host;
-    }
-
     private boolean isSelected(Node card) {
         return card.getStyleClass().get(4).equals("selected-card");
     }
 
     private Card getCardByView(Node cardView) {
         return new Card(cardView.getStyleClass().get(2));
-    }
-
-    private int getCardIndexByView(Node cardView) {
-        int clickedCardIndex = -1;
-        for (int i = 0; i < 13; i++) {
-            if (cardMe.get(i).equals(cardView)) {
-                clickedCardIndex = i;
-                break;
-            }
-        }
-
-        return clickedCardIndex;
     }
 
     private void setCardChosen(boolean b, Node... cards) {

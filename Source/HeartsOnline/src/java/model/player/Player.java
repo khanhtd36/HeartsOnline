@@ -50,11 +50,12 @@ public class Player implements Serializable {
         }
     }
 
-    public Card autoPlayACard(int trickNum, CardType trickCardType, Card... cardsOnBoard) {
-        //TODO: code máy chơi
+    public Card autoPlayACard(int trickNum, CardType trickCardType, List<Card> cardsOnBoard) {
         Card cardToPlay = new Card(CardName.UNKNOWN);
 
-        boolean amILeadTrick = trickCardType == null;
+        boolean amILeadTrick = false;
+        if (trickCardType == null) amILeadTrick = true;
+
         if (amILeadTrick) {
             //Dẫn đầu lượt đầu tiên
             if (trickNum == 0) {
@@ -81,35 +82,66 @@ public class Player implements Serializable {
                     }
                 } else {
                     //Nếu không có chuồn thì đi con cao nhất cho phép
-                    if(allAreHearts()) cardToPlay = cardDesk.get(cardDesk.size() - 1);
+                    if (allAreHearts()) cardToPlay = cardDesk.get(cardDesk.size() - 1);
                     else {
                         cardToPlay = cardDesk.get(0);
-                        for(Card card: cardDesk) {
+                        for (Card card : cardDesk) {
                             if (card.getValue() > cardToPlay.getValue() && card.getPoint() == 0) {
                                 cardToPlay = card;
                             }
                         }
-
                     }
                 }
             }
             //Theo lượt khác
             else {
-                Card highestSameTypeCardOnBoard = cardsOnBoard[0];
-                for (Card cardOnBoard : cardsOnBoard) {
-                    if (cardOnBoard.getCardType().equals(trickCardType)) {
-                        if (!highestSameTypeCardOnBoard.getCardType().equals(trickCardType)
-                                || cardOnBoard.getValue() > highestSameTypeCardOnBoard.getValue()) {
-                            highestSameTypeCardOnBoard = cardOnBoard;
+                //Nếu chắc chắn trick này phải hốt bài thì đánh con cao nhất.
+                //Nếu có thể để không hốt bài thì đánh con cao nhất có thể.
+                Card highestCardOB = cardsOnBoard.get(0);
+                for (Card card : cardsOnBoard) {
+                    if (!card.getCardName().equals(CardName.UNKNOWN)) {
+                        if (card.getCardType().equals(trickCardType)) {
+                            if (highestCardOB.getCardName().equals(CardName.UNKNOWN))
+                                highestCardOB = card;
+                            else if (card.getValue() > highestCardOB.getValue()) {
+                                highestCardOB = card;
+                            }
                         }
                     }
                 }
-
+                cardToPlay = bestCardToFollow(highestCardOB);
             }
         }
 
 
         playACard(cardToPlay);
+        return cardToPlay;
+    }
+
+    private Card bestCardToFollow(Card highestSameTypeOnBoardCard) {
+        Card cardToPlay = cardDesk.get(0);
+        //Nếu có bài cùng loại, nếu tránh hốt được thì tránh, không thì cứ con cao nhất mà đi
+        if (hasCardType(highestSameTypeOnBoardCard.getCardType())) {
+            for (Card card : cardDesk) {
+                if (card.getCardType().equals(highestSameTypeOnBoardCard.getCardType())) {
+                    if (!cardToPlay.getCardType().equals(highestSameTypeOnBoardCard.getCardType())
+                            || (card.getValue() > cardToPlay.getValue() && card.getValue() < highestSameTypeOnBoardCard.getValue())
+                            || (card.getValue() > cardToPlay.getValue() && cardToPlay.getValue() > highestSameTypeOnBoardCard.getValue() && cardToPlay.getCardType().equals(highestSameTypeOnBoardCard.getCardType()))) {
+                        cardToPlay = card;
+                    }
+                }
+            }
+        }
+        //Nếu không có bài cùng loại thì đi con cao nhất, loại nào cũng dược
+        else {
+            cardToPlay = cardDesk.get(0);
+            for (Card card : cardDesk) {
+                if (card.getValue() > cardToPlay.getValue()) {
+                    cardToPlay = card;
+                }
+            }
+        }
+
         return cardToPlay;
     }
 
@@ -230,7 +262,7 @@ public class Player implements Serializable {
     }
 
     public boolean doesShootTheMoon() {
-        if(eatenCards.size() != 13) return false;
+        if (eatenCards.size() != 13) return false;
         for (Card card : eatenCards) {
             if (card.getCardName().equals(CardName.QUEEN_OF_SPADES))
                 return true;

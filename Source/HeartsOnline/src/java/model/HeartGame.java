@@ -335,7 +335,7 @@ public class HeartGame implements Serializable {
     }
 
     //Linh hồn của gameModel
-    public void next(boolean host) {
+    public void next(boolean host, boolean doneTrickLately) {
         //Dành cho trong ván, mỗi khi có 1 thằng nào đó đi 1 quân bài thì gọi next
         //Nếu vừa đi xong 1 lá bài, mà vừa xong ván luôn, thì k tính toán gì, chỉ báo lại cho controller
         if (handDone()) {
@@ -354,20 +354,29 @@ public class HeartGame implements Serializable {
             return;
         }
 
-        calcTurn(false);
+        if (!doneTrickLately) {
+            calcTurn(false);
+        }
         setGameState(GameState.PLAYING);
-        if (host && isThisTurnForBot()) {
-            List<Card> cardsOnBoard = getCardsOnBoard();
-            Card card = getPlayer(positionToGo).autoPlayACard(trick, getCardTypeOfTrick(), cardsOnBoard.get(0), cardsOnBoard.get(1), cardsOnBoard.get(2), cardsOnBoard.get(3));
-            detectHeartBroken(positionToGo, card);
-            Thread thread = new Thread(() -> callback.onABotPlayedACard(positionToGo, card));
-            thread.start();
+        if (host) {
+            detectBotGo();
         }
     }
 
     public void startTurn() {
         calcTurn(true);
         setGameState(GameState.PLAYING);
+        detectBotGo();
+    }
+
+    private void detectBotGo() {
+        if (isThisTurnForBot()) {
+            List<Card> cardsOnBoard = getCardsOnBoard();
+            Card card = getPlayer(positionToGo).autoPlayACard(trick, getCardTypeOfTrick(), cardsOnBoard);
+            detectHeartBroken(positionToGo, card);
+            Thread thread = new Thread(() -> callback.onABotPlayedACard(positionToGo, card));
+            thread.start();
+        }
     }
 
     public boolean isThisTurnForBot() {
