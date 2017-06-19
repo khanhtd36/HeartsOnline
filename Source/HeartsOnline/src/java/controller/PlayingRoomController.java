@@ -380,11 +380,38 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
         Position position = getPositionBySocket(socketToClient);
         gameModel.getPlayer(position).changeToBot();
+
         refreshPlayersDisplayName();
         socketPositionMap.remove(position);
         connector.shutdownConnectionTo(socketToClient);
 
         connector.sendMessageToAll(new Message(MessageType.A_PLAYER_EXIT, new APlayerExitMsgContent(position)));
+
+        if (gameModel.getGameState().equals(GameState.SHOWING_RESULT) || gameModel.getGameState().equals(GameState.NEW)) return;
+
+        if (gameModel.getPositionToGo().equals(position)) {
+            Card playCard = gameModel.getPlayer(position).autoPlayACard(gameModel.getTrick(), gameModel.getCardTypeOfTrick(), gameModel.getCardsOnBoard());
+            onABotPlayedACard(position, playCard);
+        } else if (!gameModel.exchangeDone()) {
+            gameModel.getPlayer(position).autoExchangeCards();
+            Position destPosition = gameModel.destPositionOfExchange(position);
+
+            gameModel.exchangeCards(position, destPosition);
+
+            if (!destPosition.equals(gameModel.getMyPosition())) {
+                Socket destSocket = getSocketByPosition(destPosition);
+                Message msgToDest = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(gameModel.getExchangeCards(position)));
+                connector.sendMessageTo(msgToDest, destSocket);
+            } else {
+                refreshMyCardDesk();
+            }
+
+            if (gameModel.exchangeDone()) {
+                gameModel.startTurn();
+                Message startTurnMsg = new Message(MessageType.TURN, new StartTurnMsgContent(gameModel.getPositionToGo()));
+                connector.sendMessageToAll(startTurnMsg);
+            }
+        }
     }
 
     public void onConnectionToServerLost(Socket socketToServer) {
@@ -578,10 +605,11 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     private void onAPlayerExit(Object msg, Socket fromSocket) {
         Position position = ((APlayerExitMsgContent) ((Message) msg).getContent()).getPosition();
         String name = gameModel.getName(position);
+        addChatLine("-- " + name + " vừa thoát");
+
         gameModel.getPlayer(position).changeToBot();
         refreshPlayersDisplayName();
 
-        addChatLine("-- " + name + " vừa thoát");
     }
 
     private void onReceiveCardDesk(Object msg, Socket fromSocket) {
@@ -593,6 +621,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
             gameModel.setGameState(GameState.WAITING);
         } else {
             gameModel.setGameState(GameState.EXCHANGING);
+            setExchangeCardButton(gameModel.getHand());
         }
     }
 
@@ -666,7 +695,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     public void onHeartBroken() {
         gameModel.setHeartBroken(true);
         addChatLine("-- Trái tim Tan vỡ :3");
-        Message msg = new Message(MessageType.HEART_BROKEN, "");
+        Message msg = new Message(MessageType.HEART_BROKEN, new HeartBrokenMsgContent());
         connector.sendMessageToAll(msg);
     }
 

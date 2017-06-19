@@ -187,11 +187,11 @@ public class HeartGame implements Serializable {
     }
 
 
-    private CardType getCardTypeOfTrick() {
+    public CardType getCardTypeOfTrick() {
         return getPlayer(startPositionOfTrick).getTrickCard().getCardType();
     }
 
-    private List<Card> getCardsOnBoard() {
+    public List<Card> getCardsOnBoard() {
         List<Card> onBoardCards = new ArrayList<>();
 
         for (Player player : players) {
