@@ -1,4 +1,4 @@
-package controller.networkmessage.msgcontent;
+package connection.networkmessage.msgcontent;
 
 import model.player.Player;
 import model.player.Position;

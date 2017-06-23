@@ -1,13 +1,13 @@
-package controller.networkmessage.msgcontent;
+package connection.networkmessage.msgcontent;
 
 import model.player.Position;
 
 import java.io.Serializable;
 
-public class APlayerExitMsgContent implements Serializable {
-    Position position;
+public class StartTurnMsgContent implements Serializable {
+    public Position position = Position.SOUTH;
 
-    public APlayerExitMsgContent(Position position) {
+    public StartTurnMsgContent(Position position) {
         this.position = position;
     }
 

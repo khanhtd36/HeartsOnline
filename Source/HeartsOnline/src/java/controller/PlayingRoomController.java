@@ -1,9 +1,9 @@
 package controller;
 
-import controller.connection.ConnectionCallback;
-import controller.connection.Connector;
-import controller.networkmessage.*;
-import controller.networkmessage.msgcontent.*;
+import connection.ConnectionCallback;
+import connection.Connector;
+import connection.networkmessage.*;
+import connection.networkmessage.msgcontent.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.Initializable;
@@ -961,7 +961,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         eatenCards.add(eastEatenCards);
 
         for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < eatenCards.get(i).size(); j++) {
+            for (int j = 0; j < eatenCards.get(i).size() && j < 13; j++) {
                 try {
                     setCardFace(cardDesks.get(i).get(j), eatenCards.get(i).get(j).getCssClassName());
                     setNodeToAppear(cardDesks.get(i).get(j));

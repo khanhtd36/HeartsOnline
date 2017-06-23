@@ -1,4 +1,4 @@
-package controller.connection;
+package connection;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;

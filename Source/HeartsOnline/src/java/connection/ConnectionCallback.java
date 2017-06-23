@@ -1,4 +1,4 @@
-package controller.connection;
+package connection;
 
 import java.net.Socket;
 
