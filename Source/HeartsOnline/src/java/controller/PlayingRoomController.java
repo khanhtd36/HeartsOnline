@@ -2,7 +2,8 @@ package controller;
 
 import controller.connection.ConnectionCallback;
 import controller.connection.Connector;
-import controller.networkMessage.*;
+import controller.networkmessage.*;
+import controller.networkmessage.msgcontent.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.Initializable;
@@ -848,12 +849,22 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     }
 
     public synchronized void mePlayCard(int trick, Card card) {
+        try {
+            collectingCardsThread.join();
+        } catch (Exception e) {
+
+        }
         setCardFace(cardTrickMe, card.getCssClassName());
         setNodeToAppear(cardTrickMe);
         refreshMyCardDesk();
     }
 
     public synchronized void playACard(int trick, Card card, Position positionInView) {
+        try {
+            collectingCardsThread.join();
+        } catch (Exception e) {
+
+        }
         switch (positionInView) {
             case SOUTH:
                 mePlayCard(trick, card);
@@ -873,8 +884,9 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         }
     }
 
+    Thread collectingCardsThread = new Thread();
     public synchronized void collectCard(Position positionToEat) {
-        Thread thread = new Thread(() -> {
+        collectingCardsThread = new Thread(() -> {
             try {
                 Thread.sleep(3000);
                 setNodeToGone(cardTrickWest, cardTrickNorth, cardTrickEast, cardTrickMe);
@@ -886,7 +898,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
             }
         });
-        thread.start();
+        collectingCardsThread.start();
     }
 
     public synchronized void distributeCard(List<Card> cards) {

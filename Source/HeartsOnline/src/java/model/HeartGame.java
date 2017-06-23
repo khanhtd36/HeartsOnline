@@ -212,7 +212,7 @@ public class HeartGame implements Serializable {
         getPlayer(myPosition).removeACardInExchangeCards(card);
     }
 
-    public void exchangeCards(Position srcPos, Position destPos) {
+    public synchronized void exchangeCards(Position srcPos, Position destPos) {
         for (Card cardToExchange : getPlayer(srcPos).getExchangeCards()) {
             getPlayer(srcPos).removeACardInCardDesk(cardToExchange);
             getPlayer(destPos).getCardDesk().add(cardToExchange);
@@ -220,7 +220,7 @@ public class HeartGame implements Serializable {
         getPlayer(destPos).sortCards();
     }
 
-    public void receiveExchangeCards(List<Card> receivedCards) {
+    public synchronized void receiveExchangeCards(List<Card> receivedCards) {
         getPlayer(myPosition).receiveExchangeCards(receivedCards);
     }
 
@@ -228,7 +228,7 @@ public class HeartGame implements Serializable {
         getPlayer(position).playACard(card);
     }
 
-    public void eatCards(Position positionToEat) {
+    public synchronized void eatCards(Position positionToEat) {
         List<Card> cardsToEat = new ArrayList<>();
         for (Player player : players) {
             if (player.getTrickCard().getPoint() > 0) {
@@ -298,7 +298,7 @@ public class HeartGame implements Serializable {
         return winner;
     }
 
-    public boolean canIPlay(Position position, Card card) {
+    public synchronized boolean canIPlay(Position position, Card card) {
         CardType cardTypeOfTrick = getCardTypeOfTrick();
 
         //Ở trick đầu tiên, không được đi quân có điểm
@@ -336,7 +336,7 @@ public class HeartGame implements Serializable {
     }
 
     //Linh hồn của gameModel
-    public void next(boolean host, boolean doneTrickLately) {
+    public synchronized void next(boolean host, boolean doneTrickLately) {
         //Dành cho trong ván, mỗi khi có 1 thằng nào đó đi 1 quân bài thì gọi next
         //Nếu vừa đi xong 1 lá bài, mà vừa xong ván luôn, thì k tính toán gì, chỉ báo lại cho controller
         if (handDone()) {
@@ -364,13 +364,13 @@ public class HeartGame implements Serializable {
         }
     }
 
-    public void startTurn() {
+    public synchronized void startTurn() {
         calcTurn(true);
         setGameState(GameState.PLAYING);
         detectBotGo();
     }
 
-    private void detectBotGo() {
+    private synchronized void detectBotGo() {
         if (isThisTurnForBot()) {
             List<Card> cardsOnBoard = getCardsOnBoard();
             Card card = getPlayer(positionToGo).autoPlayACard(trick, getCardTypeOfTrick(), cardsOnBoard);
@@ -384,17 +384,17 @@ public class HeartGame implements Serializable {
         return getPlayer(positionToGo).isBot();
     }
 
-    public boolean amILeadTrick(Position position) {
+    public synchronized boolean amILeadTrick(Position position) {
         return position.equals(startPositionOfTrick);
     }
 
     //Getter và setter ----------------------------------------------
 
-    public List<Card> getCardDesk(Position position) {
+    public synchronized List<Card> getCardDesk(Position position) {
         return getPlayer(position).getCardDesk();
     }
 
-    public void setCardDesk(List<Card> cards, Position position) {
+    public synchronized void setCardDesk(List<Card> cards, Position position) {
         getPlayer(position).setCardDesk(cards);
     }
 

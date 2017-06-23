@@ -263,13 +263,7 @@ public class Player implements Serializable {
     }
 
     public boolean doesShootTheMoon() {
-        if (eatenCards.size() != 14) return false;
-        for (Card card : eatenCards) {
-            if (card.getCardName().equals(CardName.QUEEN_OF_SPADES))
-                return true;
-        }
-
-        return false;
+        return (eatenCards.size() == 14);
     }
 
     public boolean allAreHearts() {

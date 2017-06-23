@@ -1,4 +1,4 @@
-package controller.networkMessage;
+package controller.networkmessage.msgcontent;
 
 import java.io.Serializable;
 

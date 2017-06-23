@@ -235,7 +235,7 @@ class Listener extends Thread {
     }
 }
 
-//Class này chỉ để nhận networkMessage
+//Class này chỉ để nhận networkmessage
 class MessageReceiver extends Thread {
     private Socket socket;
     private ObjectInputStream inputStream;
