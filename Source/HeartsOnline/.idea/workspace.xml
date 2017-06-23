@@ -7,38 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/Message.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/MessageType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/APlayerExitMsgContent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/CardDeskMsgContent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/ChatMsgContent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/ExchangeCardsMsgContent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/HeartBrokenMsgContent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/JoinAcceptMsgContent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/JoinRequestMsgContent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/NewPlayerJoinMsgContent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/PlayACardMsgContent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/StartTurnMsgContent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/UpdateNameMsgContent.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../Report.docx" afterPath="$PROJECT_DIR$/../../Report.docx" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" afterPath="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/connection/ConnectionCallback.java" afterPath="$PROJECT_DIR$/src/java/connection/ConnectionCallback.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/connection/Connector.java" afterPath="$PROJECT_DIR$/src/java/connection/Connector.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/connection/ListenCallback.java" afterPath="$PROJECT_DIR$/src/java/connection/ListenCallback.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/connection/MessageReceiveCallback.java" afterPath="$PROJECT_DIR$/src/java/connection/MessageReceiveCallback.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/Message.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/Message.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/MessageType.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/MessageType.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/APlayerExitMsgContent.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/APlayerExitMsgContent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/CardDeskMsgContent.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/CardDeskMsgContent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/ChatMsgContent.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/ChatMsgContent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/ExchangeCardsMsgContent.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/ExchangeCardsMsgContent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/HeartBrokenMsgContent.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/HeartBrokenMsgContent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/JoinAcceptMsgContent.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/JoinAcceptMsgContent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/JoinRequestMsgContent.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/JoinRequestMsgContent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/NewPlayerJoinMsgContent.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/NewPlayerJoinMsgContent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/PlayACardMsgContent.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/PlayACardMsgContent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/StartTurnMsgContent.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/StartTurnMsgContent.java" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/java/controller/networkmessage/msgcontent/UpdateNameMsgContent.java" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/UpdateNameMsgContent.java" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -104,8 +75,8 @@
       <file leaf-file-name="PlayingRoomController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="642" column="36" lean-forward="true" selection-start-line="642" selection-start-column="36" selection-end-line="642" selection-end-column="36" />
+            <state relative-caret-position="170">
+              <caret line="628" column="72" lean-forward="true" selection-start-line="628" selection-start-column="72" selection-end-line="628" selection-end-column="72" />
               <folding>
                 <element signature="method#initialize#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#setStageAndSetupListens#0;class#PlayingRoomController#0" expanded="false" />
@@ -113,6 +84,7 @@
                 <element signature="method#openRoom#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#joinRoom#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#startGame#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#exchangeCards#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#clickOnCard#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#submitChat#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#exitRoom#0;class#PlayingRoomController#0" expanded="false" />
@@ -125,6 +97,7 @@
                 <element signature="method#onConnectionToServerLost#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#onMsgReceived#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#onTrickDone#0;class#PlayingRoomController#0" expanded="false" />
+                <element signature="method#onHandDone#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#onMyCurHandPointChanged#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#onChat#0;class#PlayingRoomController#0" expanded="false" />
                 <element signature="method#onUpdateName#0;class#PlayingRoomController#0" expanded="false" />
@@ -375,6 +348,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HeartsOnline" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -921,7 +916,7 @@
       <workItem from="1498049745231" duration="90000" />
       <workItem from="1498116357517" duration="138000" />
       <workItem from="1498202851588" duration="50000" />
-      <workItem from="1498228102675" duration="3267000" />
+      <workItem from="1498228102675" duration="5224000" />
     </task>
     <task id="LOCAL-00001" summary="Connector gan hoan thien">
       <created>1495386782593</created>
@@ -1091,11 +1086,18 @@
       <option name="project" value="LOCAL" />
       <updated>1498230373128</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="tổ chức lại source code cho rạch ròi 3 phần 3 người làm.">
+      <created>1498231579887</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1498231579887</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="310391000" />
+    <option name="totallyTimeSpent" value="312348000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1133,7 +1135,7 @@
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39871383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39871383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1158,7 +1160,6 @@
     <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Connector gan hoan thien" />
     <MESSAGE value="Hoàn chỉnh class Connector" />
     <MESSAGE value="Hoàn thành class Connector" />
     <MESSAGE value="Thiết kế class card, player và message của game model" />
@@ -1183,17 +1184,12 @@
     <MESSAGE value="fix điều kiện shot the moon chuẩn. đề mề người chơi với nhau lỗi nát, toàn do nhiều thread cùng đập vào cái view." />
     <MESSAGE value="sửa hết lỗi do thread can thiệp view. chỉnh resource hình lại cho nhẹ.&#10;Còn 1 lỗi duy nhất: exchangeCard." />
     <MESSAGE value="Bỏ lớp thừa thải: ThreadMessage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bỏ lớp thừa thải: ThreadMessage" />
+    <MESSAGE value="tổ chức lại source code cho rạch ròi 3 phần 3 người làm." />
+    <option name="LAST_COMMIT_MESSAGE" value="tổ chức lại source code cho rạch ròi 3 phần 3 người làm." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java</url>
-          <line>226</line>
-          <properties />
-          <option name="timeStamp" value="105" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java</url>
           <line>629</line>
@@ -1203,11 +1199,7 @@
       </breakpoints>
       <option name="time" value="107" />
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="Application">
-        <watch expression="((java.util.ArrayList)((HashMap.Node)((HashMap)cardDesks).entrySet().toArray()[2]).getValue()).get(12)" custom="java.util.ArrayList,java.util.HashMap.Node,java.util.HashMap" />
-      </configuration>
-    </watches-manager>
+    <watches-manager />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1434,64 +1426,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="222" column="76" lean-forward="false" selection-start-line="222" selection-start-column="76" selection-end-line="222" selection-end-column="76" />
-          <folding>
-            <element signature="method#HeartGame#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#init#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#resetAll#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#resetAllExceptPersonalInfo#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#resetHand#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#generateCard#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#destPositionOfExchange#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#calcTurn#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#isOver#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#getCardsOnBoard#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#selectACard#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#exchangeCards#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#receiveExchangeCards#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#eatCards#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#positionToEat#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#calcResultPoints#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#winner#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#canIPlay#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#exchangeDone#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#next#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#startTurn#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#detectBotGo#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#setCardDesk#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#setPlayerName#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#getAvailablePosition#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#getPlayer#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#increaseTrick#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#detectHeartBroken#0;class#HeartGame#0" expanded="false" />
-            <element signature="method#setStartPositionOfTrick#0;class#HeartGame#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/Connector.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="149" column="0" lean-forward="true" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-          <folding>
-            <element signature="method#openListener#0;class#Connector#0" expanded="false" />
-            <element signature="method#connectTo#0;class#Connector#0" expanded="false" />
-            <element signature="e#1636#2558#0" expanded="false" />
-            <element signature="method#close#0;class#Connector#0" expanded="false" />
-            <element signature="method#shutdownConnectionTo#0;class#Connector#0" expanded="false" />
-            <element signature="method#sendMessageTo#0;class#Connector#0" expanded="false" />
-            <element signature="method#sendMessageToAllExcept#0;class#Connector#0" expanded="false" />
-            <element signature="method#sendMessageToAll#0;class#Connector#0" expanded="false" />
-            <element signature="method#onConnectionReceived#0;class#Connector#0" expanded="false" />
-            <element signature="method#onMsgReceived#0;class#Connector#0" expanded="false" />
-            <element signature="method#onStreamClosed#0;class#Connector#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/Message.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1596,10 +1530,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/connection/Connector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="125" column="32" lean-forward="true" selection-start-line="125" selection-start-column="32" selection-end-line="125" selection-end-column="32" />
+          <folding>
+            <element signature="method#openListener#0;class#Connector#0" expanded="false" />
+            <element signature="method#connectTo#0;class#Connector#0" expanded="false" />
+            <element signature="e#1636#2558#0" expanded="false" />
+            <element signature="method#close#0;class#Connector#0" expanded="false" />
+            <element signature="method#shutdownConnectionTo#0;class#Connector#0" expanded="false" />
+            <element signature="method#sendMessageToAllExcept#0;class#Connector#0" expanded="false" />
+            <element signature="method#sendMessageToAll#0;class#Connector#0" expanded="false" />
+            <element signature="method#onConnectionReceived#0;class#Connector#0" expanded="false" />
+            <element signature="method#onMsgReceived#0;class#Connector#0" expanded="false" />
+            <element signature="method#onStreamClosed#0;class#Connector#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="356" column="0" lean-forward="true" selection-start-line="356" selection-start-column="0" selection-end-line="356" selection-end-column="0" />
+          <folding>
+            <element signature="method#HeartGame#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#init#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#resetAll#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#resetAllExceptPersonalInfo#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#resetHand#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#generateCard#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#destPositionOfExchange#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#calcTurn#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#isOver#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#getCardsOnBoard#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#selectACard#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#exchangeCards#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#receiveExchangeCards#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#eatCards#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#positionToEat#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#calcResultPoints#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#winner#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#canIPlay#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#exchangeDone#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#startTurn#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#detectBotGo#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#setCardDesk#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#setPlayerName#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#getAvailablePosition#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#getPlayer#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#increaseTrick#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#detectHeartBroken#0;class#HeartGame#0" expanded="false" />
+            <element signature="method#setStartPositionOfTrick#0;class#HeartGame#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="642" column="36" lean-forward="true" selection-start-line="642" selection-start-column="36" selection-end-line="642" selection-end-column="36" />
+        <state relative-caret-position="170">
+          <caret line="628" column="72" lean-forward="true" selection-start-line="628" selection-start-column="72" selection-end-line="628" selection-end-column="72" />
           <folding>
             <element signature="method#initialize#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#setStageAndSetupListens#0;class#PlayingRoomController#0" expanded="false" />
@@ -1607,6 +1597,7 @@
             <element signature="method#openRoom#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#joinRoom#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#startGame#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#exchangeCards#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#clickOnCard#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#submitChat#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#exitRoom#0;class#PlayingRoomController#0" expanded="false" />
@@ -1619,6 +1610,7 @@
             <element signature="method#onConnectionToServerLost#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#onMsgReceived#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#onTrickDone#0;class#PlayingRoomController#0" expanded="false" />
+            <element signature="method#onHandDone#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#onMyCurHandPointChanged#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#onChat#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#onUpdateName#0;class#PlayingRoomController#0" expanded="false" />

@@ -220,7 +220,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
 
             gameModel.exchangeCards(srcPosition, destPosition);
 
-            Message exchangeCardsMsg = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(exchangeCards));
+            Message exchangeCardsMsg = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(gameModel.getExchangeCards(srcPosition)));
             if (host) {
                 if (!gameModel.getPlayer(destPosition).isBot()) {
                     Socket destSocket = getSocketByPosition(destPosition);
@@ -635,7 +635,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
             gameModel.getPlayer(srcPosition).setExchangeCards(receivedCards);
             gameModel.exchangeCards(srcPosition, destPosition);
 
-            if (!destPosition.equals(gameModel.getMyPosition())) {
+            if (!destPosition.equals(gameModel.getMyPosition()) && !gameModel.getPlayer(destPosition).isBot()) {
                 Socket destSocket = getSocketByPosition(destPosition);
                 Message msgToDest = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(receivedCards));
                 connector.sendMessageTo(msgToDest, destSocket);
