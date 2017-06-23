@@ -2,7 +2,8 @@ package controller;
 
 import connection.ConnectionCallback;
 import connection.Connector;
-import connection.networkmessage.*;
+import connection.networkmessage.Message;
+import connection.networkmessage.MessageType;
 import connection.networkmessage.msgcontent.*;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -219,24 +220,23 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
             Position destPosition = gameModel.destPositionOfExchange(srcPosition);
 
             gameModel.exchangeCards(srcPosition, destPosition);
+            refreshMyCardDesk();
 
-            Message exchangeCardsMsg = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(gameModel.getExchangeCards(srcPosition)));
+            Message exchangeCardsMsg = new Message(MessageType.EXCHANGE_CARD, new ExchangeCardsMsgContent(exchangeCards));
             if (host) {
                 if (!gameModel.getPlayer(destPosition).isBot()) {
                     Socket destSocket = getSocketByPosition(destPosition);
                     connector.sendMessageTo(exchangeCardsMsg, destSocket);
                 }
+                if (gameModel.exchangeDone()) {
+                    gameModel.startTurn();
+                    Message startTurnMsg = new Message(MessageType.TURN, new StartTurnMsgContent(gameModel.getPositionToGo()));
+                    connector.sendMessageToAll(startTurnMsg);
+                }
             } else {
                 connector.sendMessageToAll(exchangeCardsMsg);
             }
 
-            refreshMyCardDesk();
-
-            if (gameModel.exchangeDone()) {
-                gameModel.startTurn();
-                Message startTurnMsg = new Message(MessageType.TURN, new StartTurnMsgContent(gameModel.getPositionToGo()));
-                connector.sendMessageToAll(startTurnMsg);
-            }
         } else {
             addChatLine("-- chọn đủ 3 lá bài đi cha.");
         }
@@ -421,7 +421,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
         exitRoom();
     }
 
-    public void onMsgReceived(Object msg, Socket fromSocket) {
+    public synchronized void onMsgReceived(Object msg, Socket fromSocket) {
         Message message = (Message) msg;
         switch (message.getType()) {
             case CHAT:
