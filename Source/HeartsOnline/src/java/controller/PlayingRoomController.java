@@ -477,6 +477,7 @@ public class PlayingRoomController implements Initializable, ConnectionCallback,
     }
 
     public synchronized void onHandDone() {
+        onTrickDone(gameModel.positionToEat());
         Thread thread = new Thread(() -> {
             gameModel.calcResultPoints();
             if (gameModel.getPlayer(gameModel.getMyPosition()).doesShootTheMoon()) {
