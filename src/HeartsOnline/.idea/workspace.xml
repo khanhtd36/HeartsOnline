@@ -6,12 +6,177 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Ant Build/heartsonline.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Ant Build/heartsonline.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Release/Hearts Online.exe" beforeDir="false" afterPath="$PROJECT_DIR$/../../release/Hearts Online.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Release/HeartsOnline.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../release/HeartsOnline.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Report.docx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Report.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/artifacts/HeartsOnline_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/HeartsOnline_jar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/description.html" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/description.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/libraries/commons_lang3_3_5.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/commons_lang3_3_5.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/HeartsOnline.iml" beforeDir="false" afterPath="$PROJECT_DIR$/HeartsOnline.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/libs/commons-lang3-3.5.jar" beforeDir="false" afterPath="$PROJECT_DIR$/libs/commons-lang3-3.5.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/MainLauncher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/MainLauncher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/ConnectionCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/ConnectionCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/Connector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/Connector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/ListenCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/ListenCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/MessageReceiveCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/MessageReceiveCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/MessageType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/MessageType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/msgcontent/APlayerExitMsgContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/APlayerExitMsgContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/msgcontent/CardDeskMsgContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/CardDeskMsgContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/msgcontent/ChatMsgContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/ChatMsgContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/msgcontent/ExchangeCardsMsgContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/ExchangeCardsMsgContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/msgcontent/HeartBrokenMsgContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/HeartBrokenMsgContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/msgcontent/JoinAcceptMsgContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/JoinAcceptMsgContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/msgcontent/JoinRequestMsgContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/JoinRequestMsgContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/msgcontent/NewPlayerJoinMsgContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/NewPlayerJoinMsgContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/msgcontent/PlayACardMsgContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/PlayACardMsgContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/msgcontent/StartTurnMsgContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/StartTurnMsgContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/connection/networkmessage/msgcontent/UpdateNameMsgContent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/UpdateNameMsgContent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/controller/PlayingRoomController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/controller/PlayingRoomController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/model/GameModelCallback.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/GameModelCallback.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/model/GameState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/GameState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/model/HeartGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/HeartGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/model/card/Card.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/card/Card.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/model/card/CardName.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/card/CardName.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/model/card/CardType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/card/CardType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/model/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/java/model/player/Position.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/java/model/player/Position.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/icon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/leftArrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/leftArrow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/rightArrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/rightArrow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/10_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/10_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/10_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/10_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/10_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/10_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/10_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/10_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/2_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/2_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/2_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/2_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/2_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/2_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/2_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/2_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/3_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/3_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/3_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/3_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/3_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/3_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/3_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/3_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/4_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/4_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/4_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/4_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/4_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/4_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/4_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/4_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/5_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/5_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/5_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/5_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/5_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/5_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/5_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/5_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/6_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/6_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/6_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/6_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/6_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/6_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/6_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/6_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/7_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/7_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/7_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/7_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/7_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/7_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/7_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/7_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/8_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/8_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/8_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/8_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/8_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/8_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/8_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/8_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/9_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/9_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/9_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/9_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/9_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/9_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/9_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/9_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/ace_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/ace_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/ace_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/ace_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/ace_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/ace_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/ace_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/ace_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/card_back.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/card_back.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/jack_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/jack_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/jack_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/jack_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/jack_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/jack_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/jack_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/jack_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/king_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/king_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/king_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/king_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/king_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/king_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/king_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/king_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/queen_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/queen_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/queen_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/queen_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/queen_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/queen_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin1/queen_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin1/queen_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/10_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/10_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/10_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/10_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/10_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/10_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/10_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/10_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/2_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/2_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/2_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/2_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/2_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/2_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/2_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/2_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/3_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/3_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/3_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/3_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/3_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/3_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/3_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/3_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/4_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/4_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/4_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/4_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/4_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/4_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/4_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/4_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/5_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/5_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/5_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/5_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/5_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/5_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/5_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/5_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/6_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/6_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/6_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/6_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/6_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/6_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/6_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/6_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/7_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/7_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/7_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/7_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/7_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/7_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/7_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/7_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/8_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/8_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/8_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/8_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/8_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/8_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/8_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/8_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/9_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/9_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/9_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/9_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/9_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/9_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/9_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/9_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/ace_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/ace_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/ace_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/ace_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/ace_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/ace_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/ace_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/ace_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/card_back.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/card_back.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/jack_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/jack_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/jack_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/jack_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/jack_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/jack_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/jack_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/jack_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/king_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/king_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/king_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/king_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/king_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/king_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/king_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/king_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/queen_of_clubs.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/queen_of_clubs.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/queen_of_diamonds.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/queen_of_diamonds.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/queen_of_hearts.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/queen_of_hearts.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/skin2/queen_of_spades.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/skin2/queen_of_spades.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/start.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/start.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/images/upArrow.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/images/upArrow.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/styles/CardSkin1.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/styles/CardSkin1.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/styles/CardSkin2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/styles/CardSkin2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/styles/PlayingRoomStyle.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/styles/PlayingRoomStyle.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Source/HeartsOnline/src/resources/views/PlayingRoom.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/resources/views/PlayingRoom.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Trailer/Hearts Online demo.mp4" beforeDir="false" afterPath="$PROJECT_DIR$/../../demo/Hearts Online demo.mp4" afterDir="false" />
+    </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -62,18 +227,16 @@
     <option name="hideWarnings" value="true" />
     <option name="HIDE_WARNINGS" value="true" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FavoritesManager">
     <favorites_list name="JavaFxApplication" />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainLauncher.java" pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/java/MainLauncher.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
-              <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-              <folding />
+            <state relative-caret-position="192">
+              <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
             </state>
           </provider>
         </entry>
@@ -147,11 +310,6 @@
       </GitPushTagMode>
     </option>
   </component>
-  <component name="GradleLocalSettings">
-    <option name="externalProjectsViewState">
-      <projects_view />
-    </option>
-  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -216,7 +374,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
@@ -229,95 +387,40 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
-      <flattenPackages />
-      <showMembers />
-      <showModules />
-      <showLibraryContents />
-      <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <autoscrollToSource />
-      <autoscrollFromSource />
-      <sortByType />
-      <manualOrder />
+    <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
       <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HeartsOnline" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
+      <pane id="ProjectPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="GoToFile.includeJavaFiles" value="false" />
-    <property name="OverrideImplement.combined" value="false" />
-    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="recentsLimit" value="5" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="MemberChooser.showClasses" value="true" />
-    <property name="GoToClass.includeLibraries" value="false" />
-    <property name="dynamic.classpath" value="false" />
-    <property name="MemberChooser.copyJavadoc" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="ChangesTree.GroupingKeys" value="" />
+    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
     <property name="GenerateAntBuildDialog.enableUiFormCompile" value="true" />
     <property name="GenerateAntBuildDialog.forceTargetJdk" value="true" />
+    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
     <property name="GenerateAntBuildDialog.outputFileNameProperty" value="heartsonline" />
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="OverrideImplement.combined" value="false" />
+    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/BaiTap/Java/DoAn/1412204-1412207-1412243/Source/HeartsOnline/src/java/model/GameModelCallback.java" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1546531472866" />
+    <property name="dynamic.classpath" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="recentsLimit" value="5" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
-    <property name="SearchEverywhereHistoryKey" value="&#9;FILE&#9;file://D:/BaiTap/Java/DoAn/1412204-1412207-1412243/Source/HeartsOnline/src/java/model/GameModelCallback.java" />
-    <property name="ChangesBrowser.SHOW_FLATTEN" value="true" />
-    <property name="GenerateAntBuildDialog.generateSingleFile" value="true" />
-    <property name="GenerateAntBuildDialog.backupFiles" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
@@ -343,42 +446,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.HeartsOnline">
-    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
-      <module name="" />
-      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
-      <option name="PROGRAM_PARAMETERS" />
-      <predefined_log_file id="idea.log" enabled="true" />
-      <method />
-    </configuration>
-    <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android App">
-      <module name="" />
-      <option name="DEPLOY" value="true" />
-      <option name="ARTIFACT_NAME" value="" />
-      <option name="PM_INSTALL_OPTIONS" value="" />
-      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
-      <option name="MODE" value="default_activity" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="DEBUGGER_TYPE" value="Java" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <Java />
-      <Profilers>
-        <option name="ENABLE_ADVANCED_PROFILING" value="true" />
-        <option name="GAPID_ENABLED" value="false" />
-        <option name="GAPID_DISABLE_PCS" value="false" />
-        <option name="SUPPORT_LIB_ENABLED" value="true" />
-        <option name="INSTRUMENTATION_ENABLED" value="true" />
-      </Profilers>
-      <option name="DEEP_LINK" value="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <method />
-    </configuration>
+  <component name="RunManager">
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
       <module name="" />
       <option name="TESTING_TYPE" value="0" />
@@ -404,30 +472,6 @@
         <option name="SUPPORT_LIB_ENABLED" value="true" />
         <option name="INSTRUMENTATION_ENABLED" value="true" />
       </Profilers>
-      <method />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
@@ -560,22 +604,6 @@
       <option name="trusted" value="true" />
       <method />
     </configuration>
-    <configuration default="true" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list />
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <method />
-    </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
       <setting name="vmparams" value="" />
       <setting name="cmdLine" value="run-app" />
@@ -583,48 +611,6 @@
       <setting name="launchBrowser" value="true" />
       <setting name="launchBrowserUrl" value="" />
       <setting name="depsClasspath" value="false" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="JarApplication" factoryName="JAR Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Java Scratch" factoryName="Java Scratch">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="SCRATCH_FILE_ID" value="0" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="" />
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
@@ -643,72 +629,15 @@
     <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
       <method />
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType" factoryName="Kotlin">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="HeartsOnline" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="filePath" />
-      <option name="vmParameters" />
-      <option name="alternativeJrePath" />
-      <option name="programParameters" />
-      <option name="passParentEnvs" value="true" />
-      <option name="workingDirectory" />
-      <option name="isAlternativeJrePathEnabled" value="false" />
-      <envs />
-      <method />
-    </configuration>
-    <configuration default="true" type="Remote" factoryName="Remote">
-      <option name="USE_SOCKET_TRANSPORT" value="true" />
-      <option name="SERVER_MODE" value="false" />
-      <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="localhost" />
-      <option name="PORT" value="5005" />
-      <method />
-    </configuration>
     <configuration default="true" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
       <envs />
       <method />
     </configuration>
-    <configuration default="true" type="TestNG" factoryName="TestNG">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="ANNOTATION_TYPE" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="moduleWithDependencies" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <envs />
-      <properties />
-      <listeners />
-      <method />
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <node-interpreter>project</node-interpreter>
@@ -732,38 +661,97 @@
     <configuration default="true" type="osgi.bnd.run" factoryName="Test Launcher (JUnit)">
       <method />
     </configuration>
-    <configuration default="false" name="HeartsOnline" type="Application" factoryName="Application">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HeartsOnline" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="MainLauncher" />
+      <module name="HeartsOnline" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
+      <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="Client.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="MAIN_CLASS_NAME" value="MainLauncher" />
-      <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="HeartsOnline" />
-      <envs />
       <RunnerSettings RunnerId="Run" />
       <ConfigurationWrapper RunnerId="Run" />
-      <method />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-    <list size="1">
-      <item index="0" class="java.lang.String" itemvalue="Application.HeartsOnline" />
-    </list>
-    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
-      <Host>localhost</Host>
-      <Port>5050</Port>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
-  </component>
-  <component name="ShelveChangesManager" show_recycled="false">
-    <option name="remove_strategy" value="false" />
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -1034,43 +1022,43 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="0" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3279743" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19894099" sideWeight="0.6703755" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39871383" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329582" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.19838946" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Favorites" order="5" />
+      <window_info id="Capture Tool" order="6" />
+      <window_info id="Nl-Palette" order="7" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329582" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3279743" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39871383" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.329582" />
+      <window_info anchor="bottom" id="Application Servers" order="7" />
+      <window_info anchor="bottom" id="Changes" order="8" />
+      <window_info anchor="bottom" id="Profiler" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.329582" />
+      <window_info anchor="bottom" id="Event Log" order="11" weight="0.329582" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.329582" />
+      <window_info anchor="bottom" id="Problems" order="13" />
+      <window_info anchor="bottom" id="Version Control" order="14" show_stripe_button="false" weight="0.329582" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="JetGradle" order="4" />
+      <window_info anchor="right" id="Maven Projects" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Capture Analysis" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="Properties" order="10" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -1082,7 +1070,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
-    <option name="CHECK_COMMIT_MESSAGE_SPELLING" value="false" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
     <ignored-roots>
       <path value="$PROJECT_DIR$/../.." />
@@ -1115,303 +1102,11 @@
     <MESSAGE value="đã gửi được exchangeCard từ client lên server, còn server gửi xuống client thì còn lỗi." />
     <option name="LAST_COMMIT_MESSAGE" value="đã gửi được exchangeCard từ client lên server, còn server gửi xuống client thì còn lỗi." />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <option name="time" value="111" />
-    </breakpoint-manager>
-    <watches-manager />
-  </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/client/src/resources/views/Login.fxml" />
-    <entry file="file://$PROJECT_DIR$/client/src/java/controller/LoginController.java" />
-    <entry file="file://$PROJECT_DIR$/server/src/java/model/Room.java" />
-    <entry file="file://$PROJECT_DIR$/client/src/java/controller/MainHallController.java" />
-    <entry file="file://$PROJECT_DIR$/client/src/java/controller/HeartServer.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/scene/control/TextInputControl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="107">
-          <caret line="347" column="24" lean-forward="false" selection-start-line="347" selection-start-column="24" selection-end-line="347" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/controller/AnimationUtil.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/connection/ListenCallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="9" lean-forward="false" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/views/PlayingRoom.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="273">
-          <caret line="426" column="34" lean-forward="true" selection-start-line="426" selection-start-column="34" selection-end-line="426" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/beans/property/StringPropertyBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/Runnable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="461">
-          <caret line="67" column="25" lean-forward="false" selection-start-line="67" selection-start-column="25" selection-end-line="67" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/Desktop/Connector.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/Object.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="36" column="13" lean-forward="false" selection-start-line="36" selection-start-column="13" selection-end-line="36" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/controller/GameLoopThread.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/lang/Thread.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="695" column="29" lean-forward="false" selection-start-line="695" selection-start-column="29" selection-end-line="695" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/scene/Scene.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="3472" column="0" lean-forward="false" selection-start-line="3472" selection-start-column="0" selection-end-line="3472" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/event/Event.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="213">
-          <caret line="198" column="0" lean-forward="false" selection-start-line="198" selection-start-column="0" selection-end-line="198" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/ConnectionCallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="16" column="9" lean-forward="false" selection-start-line="16" selection-start-column="9" selection-end-line="16" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/jre/lib/rt.jar!/sun/reflect/misc/Trampoline.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/model/card/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="24" column="35" lean-forward="false" selection-start-line="24" selection-start-column="35" selection-end-line="24" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/model/player/Position.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="284">
-          <caret line="18" column="41" lean-forward="true" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/styles/PlayingRoomStyle.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/controller/GameLoopThread.java" />
-    <entry file="file://$PROJECT_DIR$/src/java/model/card/CardType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="14" lean-forward="true" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/resources/styles/CardSkin1.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="43" column="16" lean-forward="true" selection-start-line="43" selection-start-column="16" selection-end-line="43" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/src.zip!/java/util/Collections.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="1054" column="0" lean-forward="false" selection-start-line="1054" selection-start-column="0" selection-end-line="1054" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/collections/ObservableListBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="114" column="0" lean-forward="false" selection-start-line="114" selection-start-column="0" selection-end-line="114" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/model/GameState.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="19" lean-forward="true" selection-start-line="9" selection-start-column="19" selection-end-line="9" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/model/GameModelCallback.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="9" lean-forward="false" selection-start-line="7" selection-start-column="9" selection-end-line="7" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/StartTurnMsgContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_121/javafx-src.zip!/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="1770" column="0" lean-forward="false" selection-start-line="1770" selection-start-column="0" selection-end-line="1770" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/model/card/CardName.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/model/player/Player.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="243" column="0" lean-forward="true" selection-start-line="243" selection-start-column="0" selection-end-line="243" selection-end-column="0" />
-          <folding>
-            <element signature="method#Player#0;class#Player#0" expanded="false" />
-            <element signature="method#Player#1;class#Player#0" expanded="false" />
-            <element signature="method#sortCards#0;class#Player#0" expanded="false" />
-            <element signature="method#eatCards#0;class#Player#0" expanded="false" />
-            <element signature="method#autoPlayACard#0;class#Player#0" expanded="false" />
-            <element signature="method#bestCardToFollow#0;class#Player#0" expanded="false" />
-            <element signature="method#autoExchangeCards#0;class#Player#0" expanded="false" />
-            <element signature="method#playACard#0;class#Player#0" expanded="false" />
-            <element signature="method#changeToBot#0;class#Player#0" expanded="false" />
-            <element signature="method#resetAll#0;class#Player#0" expanded="false" />
-            <element signature="method#resetAllExceptPersonalInfo#0;class#Player#0" expanded="false" />
-            <element signature="method#resetHand#0;class#Player#0" expanded="false" />
-            <element signature="method#removeACardInCardDesk#0;class#Player#0" expanded="false" />
-            <element signature="method#removeACardInExchangeCards#0;class#Player#0" expanded="false" />
-            <element signature="method#receiveExchangeCards#0;class#Player#0" expanded="false" />
-            <element signature="method#calcCurHandPoint#0;class#Player#0" expanded="false" />
-            <element signature="method#calcAccumulatedPoint#0;class#Player#0" expanded="false" />
-            <element signature="method#allAreHearts#0;class#Player#0" expanded="false" />
-            <element signature="method#hasCardType#0;class#Player#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/Message.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/MessageType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="13" column="17" lean-forward="true" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/ChatMsgContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/APlayerExitMsgContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/PlayACardMsgContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/JoinAcceptMsgContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/NewPlayerJoinMsgContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/CardDeskMsgContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/JoinRequestMsgContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/UpdateNameMsgContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/HeartBrokenMsgContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/connection/networkmessage/msgcontent/ExchangeCardsMsgContent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/controller/ThreadMessage.java" />
     <entry file="file://$PROJECT_DIR$/src/java/connection/MessageReceiveCallback.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1430,7 +1125,7 @@
     <entry file="file://$PROJECT_DIR$/src/java/model/HeartGame.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
-          <caret line="253" column="20" lean-forward="false" selection-start-line="253" selection-start-column="20" selection-end-line="253" selection-end-column="20" />
+          <caret line="253" column="20" selection-start-line="253" selection-start-column="20" selection-end-line="253" selection-end-column="20" />
           <folding>
             <element signature="method#HeartGame#0;class#HeartGame#0" expanded="false" />
             <element signature="method#init#0;class#HeartGame#0" expanded="false" />
@@ -1466,7 +1161,7 @@
     <entry file="file://$PROJECT_DIR$/src/java/controller/PlayingRoomController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="185">
-          <caret line="512" column="5" lean-forward="false" selection-start-line="512" selection-start-column="5" selection-end-line="512" selection-end-column="5" />
+          <caret line="512" column="5" selection-start-line="512" selection-start-column="5" selection-end-line="512" selection-end-column="5" />
           <folding>
             <element signature="method#initialize#0;class#PlayingRoomController#0" expanded="false" />
             <element signature="method#setStageAndSetupListens#0;class#PlayingRoomController#0" expanded="false" />
@@ -1532,9 +1227,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/MainLauncher.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" column="47" lean-forward="true" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
-          <folding />
+        <state relative-caret-position="192">
+          <caret line="16" column="47" selection-start-line="16" selection-start-column="47" selection-end-line="16" selection-end-column="47" />
         </state>
       </provider>
     </entry>
